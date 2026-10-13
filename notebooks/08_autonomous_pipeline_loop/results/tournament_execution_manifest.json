@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-13T13:34:29Z",
+  "status": "VICTORY_CONFIRMED",
+  "stop_iteration": 5,
+  "total_iterations_run": 5,
+  "target_map50": 26.85,
+  "active_final_map50": 27.85,
+  "label_cost_reduction_percent": 40.1,
+  "figures": [
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/figure_07a_active_learning_curve.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/figure_07b_dynamic_class_deficit_evolution.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/figure_07c_per_class_gain_breakdown.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/figure_07d_per_class_radar.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/figure_07e_label_roi_efficiency.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/fig1_active_learning_curve.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/fig2_per_class_radar_progression.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/figures/fig3_label_efficiency_roi.png"
+  ],
+  "tables": [
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/tables/per_class_iterations_summary.md",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/results/tables/master_tournament_verdict.md"
+  ]
+}

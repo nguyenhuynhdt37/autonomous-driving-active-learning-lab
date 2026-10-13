@@ -1,0 +1,82 @@
+[
+  {
+    "class": "person",
+    "random_100": 41.2,
+    "active_60": 41.8,
+    "active_100": 38.34,
+    "delta_over_random": -2.86,
+    "delta_over_active_60": -3.46
+  },
+  {
+    "class": "rider",
+    "random_100": 8.5,
+    "active_60": 10.1,
+    "active_100": 8.39,
+    "delta_over_random": -0.11,
+    "delta_over_active_60": -1.71
+  },
+  {
+    "class": "car",
+    "random_100": 64.5,
+    "active_60": 64.9,
+    "active_100": 65.07,
+    "delta_over_random": 0.57,
+    "delta_over_active_60": 0.17
+  },
+  {
+    "class": "truck",
+    "random_100": 27.8,
+    "active_60": 28.5,
+    "active_100": 34.75,
+    "delta_over_random": 6.95,
+    "delta_over_active_60": 6.25
+  },
+  {
+    "class": "bus",
+    "random_100": 24.6,
+    "active_60": 25.4,
+    "active_100": 21.94,
+    "delta_over_random": -2.66,
+    "delta_over_active_60": -3.46
+  },
+  {
+    "class": "train",
+    "random_100": 14.2,
+    "active_60": 16.2,
+    "active_100": 0.0,
+    "delta_over_random": -14.2,
+    "delta_over_active_60": -16.2
+  },
+  {
+    "class": "motor",
+    "random_100": 13.5,
+    "active_60": 14.8,
+    "active_100": 5.68,
+    "delta_over_random": -7.82,
+    "delta_over_active_60": -9.12
+  },
+  {
+    "class": "bike",
+    "random_100": 10.4,
+    "active_60": 11.5,
+    "active_100": 10.5,
+    "delta_over_random": 0.1,
+    "delta_over_active_60": -1.0
+  },
+  {
+    "class": "traffic light",
+    "random_100": 31.8,
+    "active_60": 32.8,
+    "active_100": 39.08,
+    "delta_over_random": 7.28,
+    "delta_over_active_60": 6.28
+  },
+  {
+    "class": "traffic sign",
+    "random_100": 34.9,
+    "active_60": 36.5,
+    "active_100": 40.27,
+    "delta_over_random": 5.37,
+    "delta_over_active_60": 3.77
+  }
+]

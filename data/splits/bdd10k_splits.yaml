@@ -1,0 +1,21 @@
+# BDD10K Autonomous Driving Splits - YOLO11n Dataset Configuration
+# Phase 03 Frozen Splits: 20% Test (1,400), 10% Val (700), Seed v0 (500), Unlabeled Pool (4,394)
+# Generated automatically by SymlinkSplitMaterializer
+
+path: /Users/huynh/orca/workspaces/BuildPhase/tang/data/splits
+train: seed_v0/images
+val: fixed_val/images
+test: fixed_test/images
+
+# 10 Lớp Giao Thông Chuẩn BDD10K
+names:
+  0: person
+  1: rider
+  2: car
+  3: truck
+  4: bus
+  5: train
+  6: motor
+  7: bike
+  8: traffic light
+  9: traffic sign

@@ -1,0 +1,23 @@
+{
+  "phase": "06_model_v1_evolution_and_benchmark",
+  "status": "COMPLETED_SUCCESS",
+  "elapsed_seconds": 73.22,
+  "models_evaluated": {
+    "v0_anchor_map50": 20.23,
+    "random_v1_map50": 3.24,
+    "proposed_v1_map50": 25.48,
+    "delta_map50_gain": 5.25
+  },
+  "figures": [
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_01_active_learning_curve.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_02_per_class_map_gain.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_03_training_loss_convergence.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_04_data_efficiency_roi.png"
+  ],
+  "tables": {
+    "markdown": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/tables/per_class_model_v1_comparison.md",
+    "json": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/tables/per_class_model_v1_comparison.json"
+  },
+  "checkpoint": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v1_best.pt",
+  "lineage": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/models_lineage.json"
+}

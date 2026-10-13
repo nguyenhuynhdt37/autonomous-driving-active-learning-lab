@@ -1,0 +1,1745 @@
+{
+  "audit_timestamp": "2026-10-13T11:29:31Z",
+  "total_samples": 100,
+  "seed": 42,
+  "summary": {
+    "symlink_valid_rate": "100/100 (100.0%)",
+    "metadata_mapping_rate": "100/100 (100.0%)",
+    "total_boxes_audited": 1927,
+    "valid_boxes_rate": "1927/1927 (100.0%)",
+    "coordinate_mismatch_rate": "0/1927 (0.0%)",
+    "max_pixel_delta_overall": 0.0,
+    "split_distribution": {
+      "unlabeled_pool": 56,
+      "fixed_val": 14,
+      "seed_v0": 7,
+      "fixed_test": 23
+    },
+    "class_distribution": {
+      "bike": 16,
+      "bus": 20,
+      "car": 992,
+      "motor": 3,
+      "person": 169,
+      "rider": 4,
+      "traffic light": 318,
+      "traffic sign": 362,
+      "truck": 43
+    },
+    "weather_distribution": {
+      "undefined": 15,
+      "clear": 48,
+      "overcast": 12,
+      "rainy": 9,
+      "partly cloudy": 8,
+      "snowy": 8
+    },
+    "time_distribution": {
+      "daytime": 56,
+      "night": 41,
+      "dawn/dusk": 3
+    }
+  },
+  "records": [
+    {
+      "index": 1,
+      "image_id": "0b80f475-55a8484e",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 6,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 2,
+      "image_id": "0a4d38c3-8f2ea1a7",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 6,
+      "num_txt_boxes": 6,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 3,
+      "image_id": "07812b19-1a472b19",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 13,
+      "num_txt_boxes": 13,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 4,
+      "image_id": "0efe0129-c499802e",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 16,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 5,
+      "image_id": "0da41df0-2e70a8a9",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 9,
+      "num_txt_boxes": 9,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 6,
+      "image_id": "0a7eefe7-83d04ff8",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 22,
+      "num_txt_boxes": 22,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 7,
+      "image_id": "080a57f6-4f3ac2f0",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "tunnel",
+      "num_valid_objects": 7,
+      "num_txt_boxes": 7,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 8,
+      "image_id": "10453a95-40759ac3",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 18,
+      "num_txt_boxes": 18,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 9,
+      "image_id": "0ecebc1d-0f060556",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 12,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 10,
+      "image_id": "08780f20-02182d09",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 13,
+      "num_txt_boxes": 13,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 11,
+      "image_id": "0cd7b5f1-21b1e324",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "night",
+      "scene": "residential",
+      "num_valid_objects": 22,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 12,
+      "image_id": "0ef48e46-fd09a3a9",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 23,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 13,
+      "image_id": "083b1f31-a10adc37",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 21,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 14,
+      "image_id": "05c28cb7-a52fa59d",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 17,
+      "num_txt_boxes": 17,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 15,
+      "image_id": "09ac21d6-3c3afe65",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 42,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 16,
+      "image_id": "03b72f80-84574506",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 5,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 17,
+      "image_id": "0a0c3694-24fe9c8d",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 18,
+      "num_txt_boxes": 18,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 18,
+      "image_id": "0973a4ae-441acd83",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 30,
+      "num_txt_boxes": 30,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 19,
+      "image_id": "071055c2-651bcc30",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "undefined",
+      "num_valid_objects": 21,
+      "num_txt_boxes": 21,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 20,
+      "image_id": "07576c3b-5c9dccb3",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 11,
+      "num_txt_boxes": 11,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 21,
+      "image_id": "08ffb626-76ad5387",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 32,
+      "num_txt_boxes": 32,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 22,
+      "image_id": "06ea2cc4-ed1cdbdd",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 19,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 23,
+      "image_id": "0a0d6e22-f6446b68",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 17,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 24,
+      "image_id": "08280ddd-531747c4",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 23,
+      "num_txt_boxes": 23,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 25,
+      "image_id": "08a18849-8f2d5d07",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 7,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 26,
+      "image_id": "05d62296-30c620d5",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 10,
+      "num_txt_boxes": 10,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 27,
+      "image_id": "0e2c8a10-856129e1",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 16,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 28,
+      "image_id": "0be6646a-763ab32d",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 36,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 29,
+      "image_id": "0da76699-d50aac6e",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 20,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 30,
+      "image_id": "083965ae-096a80bc",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 4,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 31,
+      "image_id": "03ab1996-e21eb257",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 24,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 32,
+      "image_id": "07c73bfa-92365af9",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 15,
+      "num_txt_boxes": 15,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 33,
+      "image_id": "04c9fe6b-56257996",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 27,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 34,
+      "image_id": "09a1bb0d-8acc7b23",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 4,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 35,
+      "image_id": "0e5ec65d-55885a2d",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 19,
+      "num_txt_boxes": 19,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 36,
+      "image_id": "1193f7a6-08bda494",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 18,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 37,
+      "image_id": "0252f2b5-1f4c92f2",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 24,
+      "num_txt_boxes": 24,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 38,
+      "image_id": "0fe44a8b-5bd46af5",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 17,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 39,
+      "image_id": "116fb03b-0533a67b",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "dawn/dusk",
+      "scene": "city street",
+      "num_valid_objects": 10,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 40,
+      "image_id": "0178ff32-d94d3509",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 36,
+      "num_txt_boxes": 36,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 41,
+      "image_id": "0d90b4b6-19455040",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 22,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 42,
+      "image_id": "03c5f65d-d333d726",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 14,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 43,
+      "image_id": "00e02d60-54df99d1",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 18,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 44,
+      "image_id": "0e48b61d-831f1846",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 48,
+      "num_txt_boxes": 48,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 45,
+      "image_id": "0096f810-6bcc27da",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 21,
+      "num_txt_boxes": 21,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 46,
+      "image_id": "074496ba-19237a5b",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 46,
+      "num_txt_boxes": 46,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 47,
+      "image_id": "100a3dd7-edc04608",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 17,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 48,
+      "image_id": "00c4c672-26d36ad8",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 25,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 49,
+      "image_id": "0863712f-8829c77d",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 35,
+      "num_txt_boxes": 35,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 50,
+      "image_id": "06ec79fd-ea7c5c86",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 28,
+      "num_txt_boxes": 28,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 51,
+      "image_id": "02480aee-cb6bb3a5",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 28,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 52,
+      "image_id": "07919504-3a57c8d3",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 21,
+      "num_txt_boxes": 21,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 53,
+      "image_id": "01818f85-6397dd75",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 23,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 54,
+      "image_id": "0102614a-75ae85cf",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 8,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 55,
+      "image_id": "0a229f92-6799c19f",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 16,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 56,
+      "image_id": "0cb47bfe-4ce9e4b2",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 22,
+      "num_txt_boxes": 22,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 57,
+      "image_id": "117f55ba-bf778c91",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 19,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 58,
+      "image_id": "0cc45408-ce95bf47",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 21,
+      "num_txt_boxes": 21,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 59,
+      "image_id": "0e939805-b2355831",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 18,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 60,
+      "image_id": "0526fe78-ad2264aa",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 26,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 61,
+      "image_id": "07f58d35-2c967dc7",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 24,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 62,
+      "image_id": "0d2900c2-e4848766",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 40,
+      "num_txt_boxes": 40,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 63,
+      "image_id": "02364369-bd3d1838",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 41,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 64,
+      "image_id": "04262895-e1b3c150",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 18,
+      "num_txt_boxes": 18,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 65,
+      "image_id": "08718a8e-2c977510",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 11,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 66,
+      "image_id": "1017ef7a-779980f1",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 17,
+      "num_txt_boxes": 17,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 67,
+      "image_id": "0b22ff59-1a16b608",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 5,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 68,
+      "image_id": "0ab88790-45181ff1",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 4,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 69,
+      "image_id": "019c8305-3a3be0d6",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 5,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 70,
+      "image_id": "09297ff2-504a7e21",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 35,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 71,
+      "image_id": "04f42daf-44acb4b6",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 21,
+      "num_txt_boxes": 21,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 72,
+      "image_id": "0dc76339-3f762949",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 20,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 73,
+      "image_id": "02191150-4615d36f",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 28,
+      "num_txt_boxes": 28,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 74,
+      "image_id": "0d413bc5-aa945f9e",
+      "split": "seed_v0",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 18,
+      "num_txt_boxes": 18,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 75,
+      "image_id": "0c564b6a-69586c2d",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 13,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 76,
+      "image_id": "08b02c82-5551b303",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 20,
+      "num_txt_boxes": 20,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 77,
+      "image_id": "10719793-72719572",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 29,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 78,
+      "image_id": "0f9b9e50-27c466cf",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "dawn/dusk",
+      "scene": "city street",
+      "num_valid_objects": 25,
+      "num_txt_boxes": 25,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 79,
+      "image_id": "044f1bbf-6dd22b42",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 22,
+      "num_txt_boxes": 22,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 80,
+      "image_id": "08ffb626-fa887664",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 24,
+      "num_txt_boxes": 24,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 81,
+      "image_id": "0830c485-b51be801",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 20,
+      "num_txt_boxes": 20,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 82,
+      "image_id": "0248ab56-904b42ad",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 14,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 83,
+      "image_id": "0e50a202-01b64e71",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 32,
+      "num_txt_boxes": 32,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 84,
+      "image_id": "04f43439-19f3dd47",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 10,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 85,
+      "image_id": "0b607c1a-4eea95b4",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 20,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 86,
+      "image_id": "01c2135d-01175da1",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "highway",
+      "num_valid_objects": 5,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 87,
+      "image_id": "01ec6367-7092c37b",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "snowy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 38,
+      "num_txt_boxes": 38,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 88,
+      "image_id": "01eb2be1-84bd2126",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 16,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 89,
+      "image_id": "015bbc07-91083530",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "overcast",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 24,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 90,
+      "image_id": "06ff7d61-1fa52d1c",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 11,
+      "num_txt_boxes": 11,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 91,
+      "image_id": "0ca4bf18-be5ee8c4",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 16,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 92,
+      "image_id": "0cdaa475-135c7ac8",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 27,
+      "num_txt_boxes": 27,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 93,
+      "image_id": "0dad263c-b4240849",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 20,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 94,
+      "image_id": "0d05c79c-2dc0ef79",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 4,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 95,
+      "image_id": "0bdf03ce-9c7c3492",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "undefined",
+      "timeofday": "dawn/dusk",
+      "scene": "highway",
+      "num_valid_objects": 5,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 96,
+      "image_id": "027b216c-bfae3d6d",
+      "split": "fixed_val",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "partly cloudy",
+      "timeofday": "daytime",
+      "scene": "city street",
+      "num_valid_objects": 17,
+      "num_txt_boxes": 17,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 97,
+      "image_id": "0a5b6b75-b5beaa44",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "daytime",
+      "scene": "residential",
+      "num_valid_objects": 11,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 98,
+      "image_id": "0b580069-6b6c8c8c",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "highway",
+      "num_valid_objects": 6,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 99,
+      "image_id": "02d91e68-dffa6840",
+      "split": "fixed_test",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "rainy",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 6,
+      "num_txt_boxes": 6,
+      "max_pixel_delta": 0.0
+    },
+    {
+      "index": 100,
+      "image_id": "07e7e0ad-75c7cdb5",
+      "split": "unlabeled_pool",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "symlink_valid": true,
+      "metadata_found": true,
+      "weather": "clear",
+      "timeofday": "night",
+      "scene": "city street",
+      "num_valid_objects": 19,
+      "num_txt_boxes": "N/A (unlabeled)",
+      "max_pixel_delta": 0.0
+    }
+  ]
+}

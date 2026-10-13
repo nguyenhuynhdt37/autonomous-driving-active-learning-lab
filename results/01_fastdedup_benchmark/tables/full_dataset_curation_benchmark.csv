@@ -1,0 +1,4 @@
+Chiến Lược,Tổng Số Xe,Xe Nhỏ (<32px),Xe Bị Che Khuất,Số Cặp Xung Đột,Thông Lượng (FPS),Thời Gian (s),Tỷ Lệ Lọc Trùng (%)
+Keep-Most-Vehicles (Proposed),81,55,69,6,627.21,11.161,0.09
+Keep-First,72,47,61,6,627.21,11.161,0.09
+Random-Drop,74,48,63,6,627.21,11.161,0.09

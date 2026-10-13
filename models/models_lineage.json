@@ -1,0 +1,47 @@
+{
+  "yolo11n_v0_best": {
+    "model_id": "yolo11n_v0_best",
+    "filename": "yolo11n_v0_best.pt",
+    "val_mAP50": 20.23,
+    "val_recall": 21.33,
+    "val_precision": 28.35,
+    "fixed_test_mAP50": 19.53,
+    "sha256": "fe8f63276ad5cacffeecec12c04c59fdb7485e7d9fe94206efdf85db7be03959",
+    "recipe": "cfg_3_adamw_cosine_full_convergence_patience8",
+    "registered_at": "2026-10-12T09:43:01Z"
+  },
+  "rtdetr_v0_best": {
+    "model_id": "rtdetr_v0_best",
+    "architecture": "RT-DETR-Large-Transformer",
+    "filename": "rtdetr_v0_best.pt",
+    "val_mAP50": 0.12,
+    "val_mAP50_95": 0.02,
+    "val_recall": 1.08,
+    "val_precision": 20.43,
+    "sha256": "29be93ec14885c3fe954882d9a2f9ea98d8823f5ab8df985e6d370de86f1ffbf",
+    "recipe": "rtdetr_seed_v0_adamw_cosinelr_e10",
+    "epochs_trained": 10,
+    "duration_sec": 10447.59,
+    "registered_at": "2026-10-12T12:47:32.633693+00:00"
+  },
+  "yolo11n_v1_best": {
+    "model_id": "yolo11n_v1_best",
+    "filename": "yolo11n_v1_best.pt",
+    "train_images": 750,
+    "seed_v0_images": 500,
+    "active_v1_images": 250,
+    "fixed_test_mAP50": 25.48,
+    "fixed_test_mAP50_95": 14.82,
+    "fixed_test_precision": 34.5,
+    "fixed_test_recall": 27.8,
+    "sha256": "35fa679aae7aa78cdb5e36e8d9b675c2c6ff6b0a7f50f393ff527e3d9e24cb7e",
+    "recipe": "cfg_3_adamw_cosine_active_learning_iter1",
+    "overfit_defense": [
+      "AdamW weight decay 0.01",
+      "Cosine Annealing",
+      "Mosaic Augmentation",
+      "Early Stopping patience=8"
+    ],
+    "registered_at": "2026-10-12T23:26:24Z"
+  }
+}

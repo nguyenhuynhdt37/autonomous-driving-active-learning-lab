@@ -1,0 +1,71 @@
+{
+  "model": "full_active_100pct_best",
+  "pool_percentage": 100.0,
+  "images": 5565,
+  "macro_map50": 26.4,
+  "macro_map50_95": 13.45,
+  "macro_precision": 48.41,
+  "macro_recall": 28.66,
+  "macro_f1": 30.97,
+  "sha256": "cc65fdcf75fe05f9ac93210ebfc8f0b608fdbe6a67ed0b88741daceedc2bb943",
+  "per_class_map50": {
+    "person": 38.34,
+    "rider": 8.39,
+    "car": 65.07,
+    "truck": 34.75,
+    "bus": 21.94,
+    "train": 0.0,
+    "motor": 5.68,
+    "bike": 10.5,
+    "traffic light": 39.08,
+    "traffic sign": 40.27
+  },
+  "per_class_map50_95": {
+    "person": 16.3,
+    "rider": 3.43,
+    "car": 38.55,
+    "truck": 22.54,
+    "bus": 15.1,
+    "train": 0.0,
+    "motor": 2.39,
+    "bike": 4.42,
+    "traffic light": 12.55,
+    "traffic sign": 19.24
+  },
+  "per_class_precision": {
+    "person": 49.49,
+    "rider": 27.03,
+    "car": 58.43,
+    "truck": 45.21,
+    "bus": 30.51,
+    "train": 100.0,
+    "motor": 40.99,
+    "bike": 31.53,
+    "traffic light": 47.75,
+    "traffic sign": 53.14
+  },
+  "per_class_recall": {
+    "person": 38.03,
+    "rider": 10.1,
+    "car": 64.6,
+    "truck": 40.38,
+    "bus": 33.41,
+    "train": 0.0,
+    "motor": 4.41,
+    "bike": 11.13,
+    "traffic light": 45.2,
+    "traffic sign": 39.38
+  },
+  "per_class_f1": {
+    "person": 43.01,
+    "rider": 14.71,
+    "car": 61.36,
+    "truck": 42.66,
+    "bus": 31.89,
+    "train": 0.0,
+    "motor": 7.96,
+    "bike": 16.45,
+    "traffic light": 46.44,
+    "traffic sign": 45.24
+  }
+}

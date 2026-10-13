@@ -1,0 +1,63 @@
+# ==============================================================================
+# BDD10K ACTIVE LEARNING LAB - PRODUCTION HITL CONFIGURATION
+# ==============================================================================
+# Lưu ý: Các tham số này có thể được nạp TRỰC TIẾP qua CLI Arguments hoặc
+# Cell 1 của Notebook mà KHÔNG CẦN chỉnh sửa file này thủ công.
+#
+# Ví dụ nạp trực tiếp qua CLI:
+#   python run_production_cli.py \
+#       --model yolo11n.pt \
+#       --task detect \
+#       --raw-images /path/to/raw_images \
+#       --raw-labels /path/to/raw_labels.zip \
+#       --prelabel \
+#       --min-conf 0.70 \
+#       --watch-inbox
+# ==============================================================================
+
+pipeline:
+  name: "production_hitl_pipeline"
+  version: "1.0.0"
+  device: "mps"                 # "cuda", "mps", hoặc "cpu"
+  random_seed: 42
+
+model:
+  name: "yolo11n.pt"            # Hỗ trợ: yolo11n.pt, yolo11s.pt, yolo11n-seg.pt, yolo11n-pose.pt, rtdetr-l.pt
+  task: "detect"                # Hỗ trợ: "detect", "segment", "pose"
+  imgsz: 640
+  batch_size: 16
+  epochs_per_round: 15
+  patience: 5
+
+paths:
+  workspace_dir: "workspace"
+  raw_images_dir: "workspace/data/raw_images"
+  raw_labels_dir: "workspace/data/raw_labels"
+  splits_dir: "workspace/data/splits"
+  inbox_dir: "workspace/inbox"
+  outbox_dir: "workspace/outbox"
+  models_dir: "workspace/models"
+
+splits:
+  test_ratio: 0.20             # 20% Frozen Gold Test
+  val_ratio: 0.10              # 10% Frozen Validation
+  seed_ratio: 0.10             # 10% Seed Pool V0
+  # 60% còn lại tự động đưa vào unlabeled_pool
+
+active_learning:
+  budget_per_round: 200        # Số lượng ảnh khai thác mỗi vòng lặp
+  mining_strategy: "c6_super_fusion" # "c6_super_fusion", "entropy", "kcenter", "random"
+  prelabel_confidence_threshold: 0.70 # Ngưỡng độ tin cậy để xuất nhãn gợi ý
+  include_prelabels_in_task: true     # Xuất kèm file nhãn gợi ý trong ZIP
+
+stopping_criteria:
+  target_map50: 0.65           # Mục tiêu độ chính xác sản xuất
+  plateau_rounds: 2            # Số round liên tiếp cải thiện < delta
+  plateau_delta: 0.005         # Ngưỡng cải thiện tối thiểu (0.5% mAP)
+  uncertainty_floor: 0.05      # Sàn uncertainty cạn kiệt
+  max_rounds: 5                # Số vòng lặp tối đa
+
+export:
+  formats: ["pt", "onnx", "openvino"]
+  half_precision: true         # FP16
+  dynamic_batch: false

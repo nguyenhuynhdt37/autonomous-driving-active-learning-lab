@@ -1,0 +1,13 @@
+{
+  "cfg_name": "cfg_3_adamw_cosine",
+  "device": "mps",
+  "duration_sec": 1436.57,
+  "metrics": {
+    "precision": 53.09,
+    "recall": 22.2,
+    "map50": 20.89,
+    "map50_95": 10.51
+  },
+  "best_weights": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_04/runs/cfg_3_adamw_cosine/weights/best.pt",
+  "sha256": "40dcb8944ecfe22072339a103f0772c95dabb5581dbdcf4bc11f3eeb1d7e0e47"
+}

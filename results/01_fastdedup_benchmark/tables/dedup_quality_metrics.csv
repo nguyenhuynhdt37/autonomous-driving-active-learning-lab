@@ -1,0 +1,7 @@
+method,precision,recall,f1,tp,fp,fn
+No-Dedup (Raw Baseline),0.0,0.0,0.0,0,0,6
+aHash (HD < 5),18.75,100.0,31.58,6,26,0
+dHash (HD < 5),100.0,66.67,80.0,4,0,2
+Standard pHash (HD < 5),100.0,100.0,100.0,6,0,0
+ResNet50 Embedding (Cosine Sim > 0.95),71.43,83.33,76.92,5,2,1
+Proposed: pHash + Keep-Most-Vehicles (HD < 5),100.0,100.0,100.0,6,0,0

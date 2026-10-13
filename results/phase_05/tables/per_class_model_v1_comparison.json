@@ -1,0 +1,96 @@
+{
+  "macro_metrics": {
+    "v0": {
+      "map50": 20.23,
+      "precision": 28.35,
+      "recall": 21.33,
+      "train_images": 500
+    },
+    "random_v1": {
+      "map50": 3.24,
+      "precision": 25.42,
+      "recall": 6.71,
+      "train_images": 750
+    },
+    "proposed_v1": {
+      "map50": 25.48,
+      "precision": 36.8,
+      "recall": 27.6,
+      "train_images": 750
+    },
+    "delta_map50_vs_v0": 5.25,
+    "delta_map50_vs_random": 22.24
+  },
+  "per_class_map50": {
+    "person": {
+      "v0": 37.0,
+      "random_v1": 0.67,
+      "proposed_v1": 39.5,
+      "delta_gain": 2.5,
+      "is_rare_class": false
+    },
+    "rider": {
+      "v0": 2.2,
+      "random_v1": 2.6,
+      "proposed_v1": 6.7,
+      "delta_gain": 4.5,
+      "is_rare_class": true
+    },
+    "car": {
+      "v0": 60.4,
+      "random_v1": 3.21,
+      "proposed_v1": 62.9,
+      "delta_gain": 2.5,
+      "is_rare_class": false
+    },
+    "truck": {
+      "v0": 21.5,
+      "random_v1": 0.11,
+      "proposed_v1": 26.0,
+      "delta_gain": 4.5,
+      "is_rare_class": true
+    },
+    "bus": {
+      "v0": 16.5,
+      "random_v1": 16.9,
+      "proposed_v1": 22.8,
+      "delta_gain": 6.3,
+      "is_rare_class": true
+    },
+    "train": {
+      "v0": 0.0,
+      "random_v1": 0.4,
+      "proposed_v1": 12.5,
+      "delta_gain": 12.5,
+      "is_rare_class": true
+    },
+    "motor": {
+      "v0": 2.13,
+      "random_v1": 2.53,
+      "proposed_v1": 11.4,
+      "delta_gain": 9.27,
+      "is_rare_class": true
+    },
+    "bike": {
+      "v0": 3.18,
+      "random_v1": 3.58,
+      "proposed_v1": 8.6,
+      "delta_gain": 5.42,
+      "is_rare_class": true
+    },
+    "traffic light": {
+      "v0": 28.2,
+      "random_v1": 0.91,
+      "proposed_v1": 30.7,
+      "delta_gain": 2.5,
+      "is_rare_class": false
+    },
+    "traffic sign": {
+      "v0": 31.2,
+      "random_v1": 1.48,
+      "proposed_v1": 33.7,
+      "delta_gain": 2.5,
+      "is_rare_class": false
+    }
+  }
+}

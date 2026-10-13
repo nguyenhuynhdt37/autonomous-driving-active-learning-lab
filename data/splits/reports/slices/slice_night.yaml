@@ -1,0 +1,15 @@
+# Tự động sinh bởi HardSliceEvaluator cho lát cắt night
+train: /Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/splits/reports/slices/slice_night.txt
+val: /Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/splits/reports/slices/slice_night.txt
+test: /Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/splits/reports/slices/slice_night.txt
+names:
+  0: person
+  1: rider
+  2: car
+  3: truck
+  4: bus
+  5: train
+  6: motor
+  7: bike
+  8: traffic light
+  9: traffic sign

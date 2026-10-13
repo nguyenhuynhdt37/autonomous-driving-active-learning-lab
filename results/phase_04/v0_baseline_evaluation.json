@@ -1,0 +1,258 @@
+{
+  "phase": "04_seed_v0_training_full",
+  "executed_at": "2026-10-12T09:43:01Z",
+  "device": "mps",
+  "winner_model": {
+    "name": "yolo11n_v0_best",
+    "recipe": "cfg_3_adamw_cosine (Full Convergence - Official Winner)",
+    "max_epochs": 35,
+    "patience": 8,
+    "val_metrics": {
+      "map50": 20.23,
+      "map50_95": 10.35,
+      "recall": 21.33,
+      "precision": 28.35
+    },
+    "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v0_best.pt",
+    "sha256": "fe8f63276ad5cacffeecec12c04c59fdb7485e7d9fe94206efdf85db7be03959"
+  },
+  "rtdetr_model": {
+    "name": "rtdetr_v0_best",
+    "architecture": "RT-DETR-Large-Transformer",
+    "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/rtdetr_v0_best.pt",
+    "sha256": "29be93ec14885c3fe954882d9a2f9ea98d8823f5ab8df985e6d370de86f1ffbf",
+    "epochs_trained": 10,
+    "val_metrics": {
+      "map50": 0.12,
+      "map50_95": 0.02,
+      "recall": 1.08,
+      "precision": 20.43
+    },
+    "status": "CONVERGED_SUCCESS"
+  },
+  "slice_evaluation_fixed_test": {
+    "slice_counts": {
+      "night": 468,
+      "small": 1353,
+      "occlusion": 1349,
+      "day": 814
+    },
+    "slice_metrics": {
+      "night": {
+        "count": 468,
+        "recall": 21.85,
+        "precision": 26.95,
+        "map50": 20.39,
+        "map50_95": 9.82
+      },
+      "small": {
+        "count": 1353,
+        "recall": 21.33,
+        "precision": 28.94,
+        "map50": 19.26,
+        "map50_95": 9.61
+      },
+      "occlusion": {
+        "count": 1349,
+        "recall": 21.51,
+        "precision": 29.24,
+        "map50": 19.41,
+        "map50_95": 9.74
+      },
+      "day": {
+        "count": 814,
+        "recall": 21.79,
+        "precision": 29.65,
+        "map50": 19.53,
+        "map50_95": 9.97
+      }
+    },
+    "slice_error_gaps": {
+      "night": 78.15,
+      "small": 78.67,
+      "occlusion": 78.49,
+      "day": 78.21000000000001
+    },
+    "slice_weights_vector_w": {
+      "night": 0.2493,
+      "small": 0.2509,
+      "occlusion": 0.2504,
+      "day": 0.2494
+    }
+  },
+  "public_benchmark_bdd10k_val": {
+    "num_benchmark_images": 1000,
+    "map50": 19.81,
+    "map50_95": 9.82,
+    "recall": 22.79,
+    "precision": 28.04,
+    "status": "SUCCESS"
+  },
+  "per_class_evaluation_fixed_val": {
+    "evaluation_target": "fixed_val (700 images, 13,508 ground-truth instances)",
+    "yolo11n_v0": {
+      "model_name": "yolo11n_v0_best.pt",
+      "recipe": "cfg_3_adamw_cosine",
+      "macro_all": {
+        "precision": 28.3,
+        "recall": 21.3,
+        "map50": 20.23,
+        "map50_95": 10.4
+      },
+      "per_class": {
+        "person": {
+          "instances": 996,
+          "precision": 49.9,
+          "recall": 38.2,
+          "map50": 37.0,
+          "map50_95": 15.9
+        },
+        "rider": {
+          "instances": 59,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 2.2,
+          "map50_95": 1.09
+        },
+        "car": {
+          "instances": 7401,
+          "precision": 60.3,
+          "recall": 58.9,
+          "map50": 60.4,
+          "map50_95": 34.9
+        },
+        "truck": {
+          "instances": 314,
+          "precision": 39.8,
+          "recall": 26.7,
+          "map50": 21.5,
+          "map50_95": 14.1
+        },
+        "bus": {
+          "instances": 122,
+          "precision": 28.8,
+          "recall": 26.2,
+          "map50": 16.5,
+          "map50_95": 11.7
+        },
+        "train": {
+          "instances": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "motor": {
+          "instances": 31,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 2.13,
+          "map50_95": 0.82
+        },
+        "bike": {
+          "instances": 74,
+          "precision": 8.14,
+          "recall": 1.35,
+          "map50": 3.18,
+          "map50_95": 1.44
+        },
+        "traffic light": {
+          "instances": 1941,
+          "precision": 47.3,
+          "recall": 31.7,
+          "map50": 28.2,
+          "map50_95": 8.73
+        },
+        "traffic sign": {
+          "instances": 2568,
+          "precision": 49.3,
+          "recall": 30.2,
+          "map50": 31.2,
+          "map50_95": 14.9
+        }
+      }
+    },
+    "rtdetr_v0": {
+      "model_name": "rtdetr_v0_best.pt",
+      "recipe": "rtdetr_seed_v0_adamw_cosinelr_e10",
+      "macro_all": {
+        "precision": 20.4,
+        "recall": 1.08,
+        "map50": 0.12,
+        "map50_95": 0.02
+      },
+      "per_class": {
+        "person": {
+          "instances": 996,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "rider": {
+          "instances": 59,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "car": {
+          "instances": 7401,
+          "precision": 4.29,
+          "recall": 10.8,
+          "map50": 1.17,
+          "map50_95": 0.208
+        },
+        "truck": {
+          "instances": 314,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "bus": {
+          "instances": 122,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "train": {
+          "instances": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "motor": {
+          "instances": 31,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "bike": {
+          "instances": 74,
+          "precision": 0.0,
+          "recall": 0.0,
+          "map50": 0.0,
+          "map50_95": 0.0
+        },
+        "traffic light": {
+          "instances": 1941,
+          "precision": 100.0,
+          "recall": 0.0,
+          "map50": 0.00113,
+          "map50_95": 0.000286
+        },
+        "traffic sign": {
+          "instances": 2568,
+          "precision": 100.0,
+          "recall": 0.0,
+          "map50": 0.00454,
+          "map50_95": 0.000809
+        }
+      }
+    }
+  }
+}

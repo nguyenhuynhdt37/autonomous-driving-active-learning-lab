@@ -1,0 +1,13 @@
+{
+  "cfg_name": "cfg_4_proposed",
+  "device": "mps",
+  "duration_sec": 1513.16,
+  "metrics": {
+    "precision": 39.14,
+    "recall": 21.68,
+    "map50": 19.55,
+    "map50_95": 10.21
+  },
+  "best_weights": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_04/runs/cfg_4_proposed/weights/best.pt",
+  "sha256": "cf8e742c16a8013aa315d9b223929310fce5987be457e6139ce6a1a5ec4c2621"
+}

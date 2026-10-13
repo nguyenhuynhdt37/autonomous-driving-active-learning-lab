@@ -1,0 +1,2218 @@
+{
+  "quality_gated_policy": {
+    "per_class_precision": {
+      "person": 0.6402,
+      "rider": 0.0,
+      "car": 0.8286,
+      "truck": 0.4407,
+      "bus": 0.4783,
+      "train": 0.2,
+      "motor": 0.2,
+      "bike": 0.5,
+      "traffic light": 0.6895,
+      "traffic sign": 0.6185
+    },
+    "quality_threshold": 0.75,
+    "active_prelabel_classes": [
+      "car"
+    ],
+    "gated_classes": [
+      "person",
+      "rider",
+      "truck",
+      "bus",
+      "train",
+      "motor",
+      "bike",
+      "traffic light",
+      "traffic sign"
+    ],
+    "total_images_analyzed": 250,
+    "manual_effort_seconds": 11250.0,
+    "assisted_effort_seconds": 8250.0,
+    "annotation_effort_reduction_pct": 26.67,
+    "time_saved_hours": 0.83,
+    "theoretical_cost_saved_usd": 12.45
+  },
+  "hitl_routing_stats": {
+    "tier_1_auto_count": 64,
+    "tier_2_oracle_count": 186,
+    "spot_check_count": 6,
+    "spot_check_errors": 0,
+    "spot_check_error_rate": 0.0,
+    "rollback_triggered": false
+  },
+  "sample_annotations": [
+    {
+      "image_name": "01818f85-516d8d03.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.363 <= 0.58)",
+      "num_boxes": 62,
+      "boxes": [
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.321097,
+          "y_center": 0.417125,
+          "width": 0.034583,
+          "height": 0.028178,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.28039,
+          "y_center": 0.600285,
+          "width": 0.01513,
+          "height": 0.025617,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.41764,
+          "y_center": 0.569545,
+          "width": 0.008646,
+          "height": 0.01537,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.462001,
+          "y_center": 0.457258,
+          "width": 0.021614,
+          "height": 0.034583,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.477491,
+          "y_center": 0.47519,
+          "width": 0.03098,
+          "height": 0.029459,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.527204,
+          "y_center": 0.459179,
+          "width": 0.009366,
+          "height": 0.007685,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.526483,
+          "y_center": 0.467505,
+          "width": 0.007925,
+          "height": 0.011528,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.622666,
+          "y_center": 0.468786,
+          "width": 0.008646,
+          "height": 0.008966,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.622306,
+          "y_center": 0.479032,
+          "width": 0.006484,
+          "height": 0.011528,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.648603,
+          "y_center": 0.486717,
+          "width": 0.008646,
+          "height": 0.014089,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.747667,
+          "y_center": 0.445731,
+          "width": 0.019453,
+          "height": 0.032021,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.749829,
+          "y_center": 0.473269,
+          "width": 0.007925,
+          "height": 0.01537,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.794858,
+          "y_center": 0.487998,
+          "width": 0.036023,
+          "height": 0.032021,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.877352,
+          "y_center": 0.516817,
+          "width": 0.010087,
+          "height": 0.040987,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.526543,
+          "y_center": 0.489919,
+          "width": 0.006484,
+          "height": 0.019213,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.609037,
+          "y_center": 0.458539,
+          "width": 0.007205,
+          "height": 0.017932,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.491,
+          "y_center": 0.501767,
+          "width": 0.010807,
+          "height": 0.014089,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.564488,
+          "y_center": 0.458859,
+          "width": 0.006484,
+          "height": 0.017932,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.140672,
+          "y_center": 0.589825,
+          "width": 0.113834,
+          "height": 0.088378,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.290529,
+          "y_center": 0.549478,
+          "width": 0.043228,
+          "height": 0.038425,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.329075,
+          "y_center": 0.533468,
+          "width": 0.04539,
+          "height": 0.044829,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 3,
+          "cls_name": "truck",
+          "x_center": 0.388874,
+          "y_center": 0.529625,
+          "width": 0.049712,
+          "height": 0.060199,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.583761,
+          "y_center": 0.504329,
+          "width": 0.005764,
+          "height": 0.012808,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.591686,
+          "y_center": 0.504969,
+          "width": 0.005764,
+          "height": 0.008966,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.590965,
+          "y_center": 0.510733,
+          "width": 0.010087,
+          "height": 0.012808,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.574034,
+          "y_center": 0.50625,
+          "width": 0.006484,
+          "height": 0.011528,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.566469,
+          "y_center": 0.499205,
+          "width": 0.008646,
+          "height": 0.007685,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.568271,
+          "y_center": 0.507531,
+          "width": 0.009366,
+          "height": 0.008966,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.559265,
+          "y_center": 0.501127,
+          "width": 0.005764,
+          "height": 0.006404,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.560706,
+          "y_center": 0.50689,
+          "width": 0.010087,
+          "height": 0.007685,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.556023,
+          "y_center": 0.512654,
+          "width": 0.010807,
+          "height": 0.008966,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.544855,
+          "y_center": 0.512654,
+          "width": 0.008646,
+          "height": 0.011528,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.539812,
+          "y_center": 0.515216,
+          "width": 0.010087,
+          "height": 0.014089,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.532607,
+          "y_center": 0.517778,
+          "width": 0.008646,
+          "height": 0.011528,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.569351,
+          "y_center": 0.518418,
+          "width": 0.014409,
+          "height": 0.012808,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.572593,
+          "y_center": 0.532507,
+          "width": 0.013689,
+          "height": 0.025617,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 4,
+          "cls_name": "bus",
+          "x_center": 0.610418,
+          "y_center": 0.515856,
+          "width": 0.020173,
+          "height": 0.035863,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.626629,
+          "y_center": 0.52162,
+          "width": 0.012248,
+          "height": 0.024336,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.637436,
+          "y_center": 0.531867,
+          "width": 0.020894,
+          "height": 0.029459,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.590605,
+          "y_center": 0.530586,
+          "width": 0.022335,
+          "height": 0.024336,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.589524,
+          "y_center": 0.538911,
+          "width": 0.018732,
+          "height": 0.028178,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.603934,
+          "y_center": 0.547237,
+          "width": 0.027378,
+          "height": 0.042268,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.55242,
+          "y_center": 0.542113,
+          "width": 0.032421,
+          "height": 0.057638,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.517117,
+          "y_center": 0.515856,
+          "width": 0.012248,
+          "height": 0.025617,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.504149,
+          "y_center": 0.52098,
+          "width": 0.01513,
+          "height": 0.01537,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.657933,
+          "y_center": 0.539103,
+          "width": 0.010087,
+          "height": 0.037144,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.663697,
+          "y_center": 0.542946,
+          "width": 0.014409,
+          "height": 0.047391,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.681348,
+          "y_center": 0.542306,
+          "width": 0.033862,
+          "height": 0.053795,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.691435,
+          "y_center": 0.551271,
+          "width": 0.032421,
+          "height": 0.048672,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.723496,
+          "y_center": 0.557035,
+          "width": 0.054756,
+          "height": 0.073008,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.764202,
+          "y_center": 0.56408,
+          "width": 0.074208,
+          "height": 0.094782,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.801306,
+          "y_center": 0.574326,
+          "width": 0.086456,
+          "height": 0.110152,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.951957,
+          "y_center": 0.604298,
+          "width": 0.094382,
+          "height": 0.222865,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.466384,
+          "y_center": 0.509986,
+          "width": 0.021614,
+          "height": 0.016651,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.484396,
+          "y_center": 0.51639,
+          "width": 0.017291,
+          "height": 0.014089,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.453055,
+          "y_center": 0.511907,
+          "width": 0.012248,
+          "height": 0.010247,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.442609,
+          "y_center": 0.51639,
+          "width": 0.010087,
+          "height": 0.008966,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.450174,
+          "y_center": 0.520233,
+          "width": 0.012248,
+          "height": 0.008966,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.461701,
+          "y_center": 0.528558,
+          "width": 0.016571,
+          "height": 0.020493,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.449093,
+          "y_center": 0.53112,
+          "width": 0.012968,
+          "height": 0.012808,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.435404,
+          "y_center": 0.5324,
+          "width": 0.018732,
+          "height": 0.017932,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 6,
+          "cls_name": "motor",
+          "x_center": 0.862474,
+          "y_center": 0.596869,
+          "width": 0.101586,
+          "height": 0.12296,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": true,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "10f19d84-af73762a.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.447 <= 0.58)",
+      "num_boxes": 40,
+      "boxes": [
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.297911,
+          "y_center": 0.262057,
+          "width": 0.015024,
+          "height": 0.060701,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.311569,
+          "y_center": 0.525501,
+          "width": 0.012292,
+          "height": 0.019424,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.303375,
+          "y_center": 0.525501,
+          "width": 0.00956,
+          "height": 0.024281,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.480926,
+          "y_center": 0.506077,
+          "width": 0.012292,
+          "height": 0.014568,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.446782,
+          "y_center": 0.521859,
+          "width": 0.00956,
+          "height": 0.021853,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.411954,
+          "y_center": 0.527929,
+          "width": 0.005463,
+          "height": 0.019424,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.375761,
+          "y_center": 0.501221,
+          "width": 0.006829,
+          "height": 0.024281,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.34708,
+          "y_center": 0.497579,
+          "width": 0.006829,
+          "height": 0.021853,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.471366,
+          "y_center": 0.55221,
+          "width": 0.012292,
+          "height": 0.024281,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.482975,
+          "y_center": 0.565564,
+          "width": 0.027316,
+          "height": 0.050989,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.442685,
+          "y_center": 0.561922,
+          "width": 0.00956,
+          "height": 0.033993,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.432441,
+          "y_center": 0.56435,
+          "width": 0.021853,
+          "height": 0.033993,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.425612,
+          "y_center": 0.565564,
+          "width": 0.010926,
+          "height": 0.041277,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.40854,
+          "y_center": 0.569207,
+          "width": 0.02595,
+          "height": 0.058273,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.491853,
+          "y_center": 0.618982,
+          "width": 0.045071,
+          "height": 0.152968,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.492536,
+          "y_center": 0.657831,
+          "width": 0.040974,
+          "height": 0.206385,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.317032,
+          "y_center": 0.560708,
+          "width": 0.015024,
+          "height": 0.060701,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.334788,
+          "y_center": 0.563136,
+          "width": 0.031413,
+          "height": 0.070414,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.133335,
+          "y_center": 0.557066,
+          "width": 0.010926,
+          "height": 0.019424,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.153821,
+          "y_center": 0.561922,
+          "width": 0.008195,
+          "height": 0.019424,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.168845,
+          "y_center": 0.567992,
+          "width": 0.010926,
+          "height": 0.031565,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.181137,
+          "y_center": 0.571635,
+          "width": 0.008195,
+          "height": 0.038849,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.174991,
+          "y_center": 0.570421,
+          "width": 0.00956,
+          "height": 0.041277,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.179088,
+          "y_center": 0.595915,
+          "width": 0.015024,
+          "height": 0.029137,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.190697,
+          "y_center": 0.571635,
+          "width": 0.013658,
+          "height": 0.033993,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.099873,
+          "y_center": 0.559494,
+          "width": 0.012292,
+          "height": 0.019424,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.115579,
+          "y_center": 0.559494,
+          "width": 0.008195,
+          "height": 0.019424,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.10875,
+          "y_center": 0.563136,
+          "width": 0.005463,
+          "height": 0.026709,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.293131,
+          "y_center": 0.570421,
+          "width": 0.010926,
+          "height": 0.041277,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.293131,
+          "y_center": 0.587417,
+          "width": 0.008195,
+          "height": 0.021853,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.139481,
+          "y_center": 0.595915,
+          "width": 0.066923,
+          "height": 0.058273,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.269913,
+          "y_center": 0.576491,
+          "width": 0.038242,
+          "height": 0.038849,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.218696,
+          "y_center": 0.576491,
+          "width": 0.055997,
+          "height": 0.058273,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.071191,
+          "y_center": 0.600771,
+          "width": 0.105165,
+          "height": 0.077698,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.00589,
+          "y_center": 0.588631,
+          "width": 0.01178,
+          "height": 0.06313,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.006317,
+          "y_center": 0.622624,
+          "width": 0.010926,
+          "height": 0.033993,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.371664,
+          "y_center": 0.566778,
+          "width": 0.055997,
+          "height": 0.08741,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.457025,
+          "y_center": 0.565564,
+          "width": 0.027316,
+          "height": 0.036421,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.663941,
+          "y_center": 0.719746,
+          "width": 0.337349,
+          "height": 0.548741,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.801886,
+          "y_center": 0.537642,
+          "width": 0.015024,
+          "height": 0.106835,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "065b4523-bbf99c03.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.542 <= 0.58)",
+      "num_boxes": 39,
+      "boxes": [
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.492222,
+          "y_center": 0.024961,
+          "width": 0.016381,
+          "height": 0.041602,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.47116,
+          "y_center": 0.022881,
+          "width": 0.023401,
+          "height": 0.045763,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.165187,
+          "y_center": 0.364022,
+          "width": 0.111157,
+          "height": 0.16225,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.894141,
+          "y_center": 0.470108,
+          "width": 0.209443,
+          "height": 0.34114,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.235976,
+          "y_center": 0.377543,
+          "width": 0.037442,
+          "height": 0.060324,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.265228,
+          "y_center": 0.358822,
+          "width": 0.044463,
+          "height": 0.072804,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.29214,
+          "y_center": 0.362982,
+          "width": 0.018721,
+          "height": 0.039522,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.292725,
+          "y_center": 0.350501,
+          "width": 0.026912,
+          "height": 0.056163,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.312616,
+          "y_center": 0.350501,
+          "width": 0.022231,
+          "height": 0.047843,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.324902,
+          "y_center": 0.347381,
+          "width": 0.023401,
+          "height": 0.041602,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.333092,
+          "y_center": 0.33906,
+          "width": 0.030422,
+          "height": 0.049923,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.352398,
+          "y_center": 0.33906,
+          "width": 0.015211,
+          "height": 0.037442,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.361174,
+          "y_center": 0.33594,
+          "width": 0.011701,
+          "height": 0.027042,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.369949,
+          "y_center": 0.33594,
+          "width": 0.012871,
+          "height": 0.027042,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.378725,
+          "y_center": 0.33594,
+          "width": 0.009361,
+          "height": 0.022881,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.384575,
+          "y_center": 0.33698,
+          "width": 0.009361,
+          "height": 0.016641,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.390426,
+          "y_center": 0.33906,
+          "width": 0.011701,
+          "height": 0.016641,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.520303,
+          "y_center": 0.3349,
+          "width": 0.025742,
+          "height": 0.045763,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.522644,
+          "y_center": 0.342181,
+          "width": 0.021061,
+          "height": 0.052003,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.533174,
+          "y_center": 0.347381,
+          "width": 0.023401,
+          "height": 0.054083,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.558916,
+          "y_center": 0.347381,
+          "width": 0.042123,
+          "height": 0.079045,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.574712,
+          "y_center": 0.353621,
+          "width": 0.031592,
+          "height": 0.091525,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.635555,
+          "y_center": 0.349461,
+          "width": 0.111157,
+          "height": 0.149769,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.763093,
+          "y_center": 0.417065,
+          "width": 0.172,
+          "height": 0.180971,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.843797,
+          "y_center": 0.315585,
+          "width": 0.024511,
+          "height": 0.073696,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.757828,
+          "y_center": 0.222573,
+          "width": 0.018721,
+          "height": 0.037442,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.4618,
+          "y_center": 0.349461,
+          "width": 0.011701,
+          "height": 0.033282,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.461215,
+          "y_center": 0.33386,
+          "width": 0.010531,
+          "height": 0.052003,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.430793,
+          "y_center": 0.344261,
+          "width": 0.033932,
+          "height": 0.043683,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.405637,
+          "y_center": 0.3349,
+          "width": 0.014041,
+          "height": 0.020801,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.470251,
+          "y_center": 0.3349,
+          "width": 0.00819,
+          "height": 0.045763,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.491312,
+          "y_center": 0.33698,
+          "width": 0.033932,
+          "height": 0.058243,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.514977,
+          "y_center": 0.286909,
+          "width": 0.010531,
+          "height": 0.014561,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.48748,
+          "y_center": 0.297309,
+          "width": 0.009361,
+          "height": 0.014561,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.457059,
+          "y_center": 0.292109,
+          "width": 0.009361,
+          "height": 0.016641,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.416106,
+          "y_center": 0.287949,
+          "width": 0.009361,
+          "height": 0.016641,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.915141,
+          "y_center": 0.278588,
+          "width": 0.031592,
+          "height": 0.047843,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.125929,
+          "y_center": 0.229705,
+          "width": 0.009361,
+          "height": 0.016641,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.757767,
+          "y_center": 0.30459,
+          "width": 0.016381,
+          "height": 0.037442,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "0d22eba4-cf29ffea.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.530 <= 0.58)",
+      "num_boxes": 12,
+      "boxes": [
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.367503,
+          "y_center": 0.578819,
+          "width": 0.007798,
+          "height": 0.020796,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.34167,
+          "y_center": 0.585751,
+          "width": 0.006824,
+          "height": 0.013864,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.564414,
+          "y_center": 0.683665,
+          "width": 0.027295,
+          "height": 0.081451,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.563439,
+          "y_center": 0.641207,
+          "width": 0.031194,
+          "height": 0.110911,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.437689,
+          "y_center": 0.623877,
+          "width": 0.021446,
+          "height": 0.020796,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.413319,
+          "y_center": 0.629942,
+          "width": 0.025345,
+          "height": 0.036393,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.36799,
+          "y_center": 0.62821,
+          "width": 0.022421,
+          "height": 0.029461,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.382612,
+          "y_center": 0.623011,
+          "width": 0.008773,
+          "height": 0.022529,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.053127,
+          "y_center": 0.659403,
+          "width": 0.092607,
+          "height": 0.064121,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.150608,
+          "y_center": 0.650738,
+          "width": 0.065312,
+          "height": 0.053723,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.212021,
+          "y_center": 0.649872,
+          "width": 0.051665,
+          "height": 0.045058,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.301703,
+          "y_center": 0.579686,
+          "width": 0.008773,
+          "height": 0.025995,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "100f050c-38355edc.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.453 <= 0.58)",
+      "num_boxes": 11,
+      "boxes": [
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.632425,
+          "y_center": 0.479502,
+          "width": 0.022793,
+          "height": 0.027725,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.628226,
+          "y_center": 0.558412,
+          "width": 0.009597,
+          "height": 0.027725,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.535254,
+          "y_center": 0.55308,
+          "width": 0.005998,
+          "height": 0.017062,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.41349,
+          "y_center": 0.569075,
+          "width": 0.026392,
+          "height": 0.031991,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.456677,
+          "y_center": 0.570142,
+          "width": 0.019194,
+          "height": 0.021327,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.558647,
+          "y_center": 0.581872,
+          "width": 0.014396,
+          "height": 0.02346,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.540052,
+          "y_center": 0.577102,
+          "width": 0.015595,
+          "height": 0.01392,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.607832,
+          "y_center": 0.617061,
+          "width": 0.069579,
+          "height": 0.098104,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 6,
+          "cls_name": "motor",
+          "x_center": 0.738593,
+          "y_center": 0.641587,
+          "width": 0.03359,
+          "height": 0.070379,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.742192,
+          "y_center": 0.604265,
+          "width": 0.021594,
+          "height": 0.072512,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.875895,
+          "y_center": 0.701303,
+          "width": 0.248211,
+          "height": 0.262322,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "07db090a-3abe99ae.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.488 <= 0.58)",
+      "num_boxes": 12,
+      "boxes": [
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.641073,
+          "y_center": 0.340342,
+          "width": 0.030375,
+          "height": 0.055421,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.448431,
+          "y_center": 0.402869,
+          "width": 0.015987,
+          "height": 0.024158,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.43804,
+          "y_center": 0.439105,
+          "width": 0.009592,
+          "height": 0.017053,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.115105,
+          "y_center": 0.395763,
+          "width": 0.019184,
+          "height": 0.029842,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.468415,
+          "y_center": 0.361658,
+          "width": 0.015987,
+          "height": 0.027,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.601905,
+          "y_center": 0.645158,
+          "width": 0.062349,
+          "height": 0.252947,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.6079,
+          "y_center": 0.557053,
+          "width": 0.074339,
+          "height": 0.312632,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.460821,
+          "y_center": 0.517263,
+          "width": 0.03597,
+          "height": 0.045474,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.293359,
+          "y_center": 0.498079,
+          "width": 0.031974,
+          "height": 0.049737,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.245798,
+          "y_center": 0.491684,
+          "width": 0.04876,
+          "height": 0.065368,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.114306,
+          "y_center": 0.482447,
+          "width": 0.046362,
+          "height": 0.044053,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.540355,
+          "y_center": 0.514421,
+          "width": 0.012789,
+          "height": 0.079579,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": true,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "0b9bbe1e-74caa23f.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.500 <= 0.58)",
+      "num_boxes": 13,
+      "boxes": [
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.588828,
+          "y_center": 0.490312,
+          "width": 0.025049,
+          "height": 0.079687,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 7,
+          "cls_name": "bike",
+          "x_center": 0.588169,
+          "y_center": 0.518437,
+          "width": 0.021094,
+          "height": 0.065625,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.348887,
+          "y_center": 0.503203,
+          "width": 0.022412,
+          "height": 0.035156,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.402281,
+          "y_center": 0.499687,
+          "width": 0.018457,
+          "height": 0.032812,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.505772,
+          "y_center": 0.502031,
+          "width": 0.025049,
+          "height": 0.0375,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 3,
+          "cls_name": "truck",
+          "x_center": 0.402281,
+          "y_center": 0.477422,
+          "width": 0.029004,
+          "height": 0.044531,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.29022,
+          "y_center": 0.518437,
+          "width": 0.068555,
+          "height": 0.070312,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.375913,
+          "y_center": 0.509062,
+          "width": 0.044824,
+          "height": 0.065625,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.325816,
+          "y_center": 0.51375,
+          "width": 0.013184,
+          "height": 0.032812,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.533457,
+          "y_center": 0.499687,
+          "width": 0.022412,
+          "height": 0.032812,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.451719,
+          "y_center": 0.5325,
+          "width": 0.09624,
+          "height": 0.145312,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.046324,
+          "y_center": 0.567656,
+          "width": 0.092285,
+          "height": 0.126562,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.96456,
+          "y_center": 0.383672,
+          "width": 0.030322,
+          "height": 0.049219,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "0710389f-038050ae.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.442 <= 0.58)",
+      "num_boxes": 16,
+      "boxes": [
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.035234,
+          "y_center": 0.380506,
+          "width": 0.013673,
+          "height": 0.056094,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.394938,
+          "y_center": 0.379571,
+          "width": 0.009466,
+          "height": 0.028047,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.418603,
+          "y_center": 0.387985,
+          "width": 0.011569,
+          "height": 0.041136,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.5506,
+          "y_center": 0.38518,
+          "width": 0.016828,
+          "height": 0.072922,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.858241,
+          "y_center": 0.39567,
+          "width": 0.036812,
+          "height": 0.167871,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 5,
+          "cls_name": "train",
+          "x_center": 0.383895,
+          "y_center": 0.250554,
+          "width": 0.008414,
+          "height": 0.031787,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 5,
+          "cls_name": "train",
+          "x_center": 0.372851,
+          "y_center": 0.248684,
+          "width": 0.009466,
+          "height": 0.031787,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 5,
+          "cls_name": "train",
+          "x_center": 0.145144,
+          "y_center": 0.273927,
+          "width": 0.012621,
+          "height": 0.029917,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 5,
+          "cls_name": "train",
+          "x_center": 0.130419,
+          "y_center": 0.278601,
+          "width": 0.012621,
+          "height": 0.020568,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 4,
+          "cls_name": "bus",
+          "x_center": 0.325522,
+          "y_center": 0.344979,
+          "width": 0.026294,
+          "height": 0.022438,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.340246,
+          "y_center": 0.375831,
+          "width": 0.019984,
+          "height": 0.031787,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.327625,
+          "y_center": 0.376766,
+          "width": 0.019984,
+          "height": 0.033657,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.487494,
+          "y_center": 0.382376,
+          "width": 0.055744,
+          "height": 0.041136,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.201564,
+          "y_center": 0.475866,
+          "width": 0.282623,
+          "height": 0.381441,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.708687,
+          "y_center": 0.382557,
+          "width": 0.024866,
+          "height": 0.122418,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.344301,
+          "y_center": 0.420813,
+          "width": 0.032517,
+          "height": 0.06631,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "012979cd-e13274a9.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.405 <= 0.58)",
+      "num_boxes": 13,
+      "boxes": [
+        {
+          "cls_id": 6,
+          "cls_name": "motor",
+          "x_center": 0.67552,
+          "y_center": 0.564359,
+          "width": 0.046335,
+          "height": 0.151017,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 6,
+          "cls_name": "motor",
+          "x_center": 0.680239,
+          "y_center": 0.633766,
+          "width": 0.057489,
+          "height": 0.137288,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.63292,
+          "y_center": 0.555036,
+          "width": 0.015445,
+          "height": 0.054915,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 0,
+          "cls_name": "person",
+          "x_center": 0.644932,
+          "y_center": 0.554274,
+          "width": 0.006864,
+          "height": 0.041186,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 8,
+          "cls_name": "traffic light",
+          "x_center": 0.423126,
+          "y_center": 0.480617,
+          "width": 0.009439,
+          "height": 0.025932,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 4,
+          "cls_name": "bus",
+          "x_center": 0.381511,
+          "y_center": 0.504043,
+          "width": 0.048051,
+          "height": 0.048814,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.408539,
+          "y_center": 0.54414,
+          "width": 0.0266,
+          "height": 0.045763,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.382798,
+          "y_center": 0.544903,
+          "width": 0.030032,
+          "height": 0.062542,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.35105,
+          "y_center": 0.547191,
+          "width": 0.054057,
+          "height": 0.082373,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.281548,
+          "y_center": 0.569528,
+          "width": 0.112405,
+          "height": 0.135763,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.490054,
+          "y_center": 0.629782,
+          "width": 0.194778,
+          "height": 0.274576,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.58015,
+          "y_center": 0.554056,
+          "width": 0.03518,
+          "height": 0.056441,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.508931,
+          "y_center": 0.484976,
+          "width": 0.016303,
+          "height": 0.010678,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    },
+    {
+      "image_name": "0081e3ea-2c0ec19d.jpg",
+      "tier": "tier_1_auto_accept",
+      "decision_reason": "Đồng thuận cao giữa YOLO11n và RT-DETR (D_QBC = 0.365 <= 0.58)",
+      "num_boxes": 11,
+      "boxes": [
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.809653,
+          "y_center": 0.446953,
+          "width": 0.071191,
+          "height": 0.044531,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.730552,
+          "y_center": 0.486797,
+          "width": 0.018457,
+          "height": 0.030469,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.712754,
+          "y_center": 0.386015,
+          "width": 0.122607,
+          "height": 0.119531,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.439854,
+          "y_center": 0.495,
+          "width": 0.019775,
+          "height": 0.023437,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 9,
+          "cls_name": "traffic sign",
+          "x_center": 0.390415,
+          "y_center": 0.483281,
+          "width": 0.013184,
+          "height": 0.01875,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 1,
+          "cls_name": "rider",
+          "x_center": 0.431284,
+          "y_center": 0.57,
+          "width": 0.013184,
+          "height": 0.032812,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 6,
+          "cls_name": "motor",
+          "x_center": 0.432603,
+          "y_center": 0.586406,
+          "width": 0.010547,
+          "height": 0.01875,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.431944,
+          "y_center": 0.575859,
+          "width": 0.027686,
+          "height": 0.030469,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.410191,
+          "y_center": 0.575859,
+          "width": 0.010547,
+          "height": 0.021094,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.397007,
+          "y_center": 0.573515,
+          "width": 0.026367,
+          "height": 0.044531,
+          "is_oracle_gt": true
+        },
+        {
+          "cls_id": 2,
+          "cls_name": "car",
+          "x_center": 0.992246,
+          "y_center": 0.670781,
+          "width": 0.014502,
+          "height": 0.09375,
+          "is_oracle_gt": true
+        }
+      ],
+      "is_spot_checked": false,
+      "spot_check_passed": true,
+      "ground_truth_matched": true
+    }
+  ]
+}

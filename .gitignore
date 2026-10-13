@@ -1,86 +1,134 @@
 # =====================================================================
-# GitIgnore File for GreenSM HITL Active Learning Lab (M50)
-# Ignore everything by default except src/ and essential documentation
+# GitIgnore: GreenSM HITL Active Learning Autonomous Driving (M50)
+# Bảo vệ repository, ngăn chặn commit dữ liệu nhị phân lớn & cache rác
 # =====================================================================
 
-# Byte-compiled / optimized / DLL files
+# ---------------------------------------------------------------------
+# 1. Byte-compiled / Python Cache & Testing
+# ---------------------------------------------------------------------
 __pycache__/
+**/__pycache__/
+**/__pycache__/**
 *.py[cod]
 *$py.class
 *.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+.pytest_cache/
+*.cache
+.coverage
+htmlcov/
 
-# Virtual environments
+# ---------------------------------------------------------------------
+# 2. Virtual Environments & Local Links
+# ---------------------------------------------------------------------
+.venv
+.venv/
 venv/
 env/
 ENV/
-env.bak/
-venv.bak/
+paper_v4_10k
 
-# IDE & OS files
-.vscode/
-.idea/
+# ---------------------------------------------------------------------
+# 3. Jupyter Notebooks Checkpoints & Autonomous Run Data
+# ---------------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+notebooks/autonomous_pipeline_loop/data/
+notebooks/autonomous_pipeline_loop/models/*.pt
+notebooks/08_autonomous_pipeline_loop/data/
+notebooks/08_autonomous_pipeline_loop/models/*.pt
+notebooks/08_autonomous_pipeline_loop/runs/
+notebooks/09_production_hitl_pipeline/workspace/inbox/*
+notebooks/09_production_hitl_pipeline/workspace/outbox/*
+notebooks/09_production_hitl_pipeline/workspace/data/*
+notebooks/09_production_hitl_pipeline/workspace/models/*
+
+# ---------------------------------------------------------------------
+# 4. OS & IDE System Files
+# ---------------------------------------------------------------------
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
 
-# Large Archives & Binaries (Datasets & Archives)
+# ---------------------------------------------------------------------
+# 5. Datasets & Media Files (BDD10K & Splits Data)
+# ---------------------------------------------------------------------
+# File ảnh và nén lớn
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.bmp
+*.mp4
+*.avi
+*.mov
+*.mkv
 *.zip
-*.rar
 *.tar
 *.gz
 *.7z
-*.xlsx
-*.xls
-*.pdf
 
-# Model Weight Checkpoints & Output Runs
-runs/
-colab_outputs/
-outputs/
+# Toàn bộ kho dữ liệu lớn BDD10K (ảnh, json nặng, nhãn)
+data/bdd10k/images/
+data/bdd10k/labels/
+data/bdd10k/bdd10k_labels/
+data/bdd10k/bdd10k_coco_labels/
+data/bdd10k/*.json
+data/bdd10k/*.zip
+
+# Dữ liệu ảnh và nhãn phát sinh trong splits & processed
+data/processed/unique_pool/*
+data/processed/dropped_duplicates/*
+data/splits/*/images/
+data/splits/*/labels/
+
+# ---------------------------------------------------------------------
+# 6. Model Weights & Training Runs
+# ---------------------------------------------------------------------
 *.pt
+*.pth
 *.onnx
+*.bin
 *.engine
+*.weights
 
-# Datasets & Temp Files
-dataset_metadata.json
-active_selection_results.json
-dataset_v1/
-cvat_package/
-data/
-raw_data/
-images/*
-!images/.gitkeep
-*.jpg
-*.png
-*.jpeg
+runs/
+**/runs/
+*.log
 
-# Ignore .agents local agent directory if any
-.agents/
+# ---------------------------------------------------------------------
+# 7. White-listing: Bảo toàn cấu trúc thư mục & mã nguồn
+# ---------------------------------------------------------------------
+# Luôn giữ lại tất cả các file .gitkeep để bảo toàn cấu trúc thư mục
+!.gitkeep
+!**/.gitkeep
 
-# Explicitly allow source directory and markdown documentation
-!src/
-!src/**
-!docs/
-!docs/**
-!README.md
-!QnA.md
-!PIPELINE_TOI_UU_GREENSM_HITL_ACTIVE_LEARNING.md
-!PIPELINE_TOI_UU_GREENSM_HITL_ACTIVE_LEARNING_V4.md
-!BAO_CAO_TONG_KET_SELECT_MODEL.md
-!mentorTalk1.md
-!colab_greensm_active_learning.ipynb
+# Giữ lại các cấu hình dữ liệu quan trọng
+!data/bdd10k/README.md
+!data/bdd10k/bdd10k.yaml
+!data/splits/*.yaml
+!data/splits/*.sha256
+!data/splits/reports/**
+!data/processed/reports/**
+!models/models_lineage.json
+
+# Giữ lại mã nguồn, notebook và tài liệu nghiên cứu (chặn cache)
+!*.py
+!*.ipynb
+!*.md
+!*.txt
+!*.json
+!*.yaml
+!*.yml
+!requirements.txt
+!AGENTS.md
+
+# Giữ lại các file PDF báo cáo đề tài cốt lõi
+!v4.pdf
+!v4_finetune_bdd10k.pdf
+!v4_finetune_bdd10k.md
+
+# Đảm bảo tuyệt đối không commit pycache dù ở bất kỳ thư mục nào
+**/__pycache__/**

@@ -1,0 +1,35 @@
+{
+  "cfg_0_naive": {
+    "cfg_name": "cfg_0_naive",
+    "duration_sec": 4556.82,
+    "metrics": {
+      "precision": 45.68,
+      "recall": 22.92,
+      "map50": 21.85,
+      "map50_95": 10.97
+    },
+    "best_weights": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_04/runs/cfg_0_naive/weights/best.pt"
+  },
+  "cfg_2_class_weights": {
+    "cfg_name": "cfg_2_class_weights",
+    "duration_sec": 4034.36,
+    "metrics": {
+      "precision": 39.85,
+      "recall": 22.07,
+      "map50": 19.87,
+      "map50_95": 10.12
+    },
+    "best_weights": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_04/runs/cfg_2_class_weights/weights/best.pt"
+  },
+  "cfg_3_adamw_cosine": {
+    "cfg_name": "cfg_3_adamw_cosine",
+    "duration_sec": 3947.37,
+    "metrics": {
+      "precision": 28.35,
+      "recall": 21.33,
+      "map50": 20.23,
+      "map50_95": 10.35
+    },
+    "best_weights": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_04/runs/cfg_3_adamw_cosine/weights/best.pt"
+  }
+}

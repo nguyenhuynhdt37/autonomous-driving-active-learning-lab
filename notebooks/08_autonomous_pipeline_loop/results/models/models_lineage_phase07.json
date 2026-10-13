@@ -1,0 +1,234 @@
+{
+  "target_model": {
+    "name": "full_random_100pct_best",
+    "sha256": "695891c45398d20e72737039a0050c2636a632aa22f77852ce041dd993c7bda3",
+    "map50": 26.85,
+    "f1_score": 33.48,
+    "images": 5565
+  },
+  "v0_model": {
+    "name": "yolo11n_v0_best",
+    "sha256": "183f66692b8520a399903038a575efacdcc4a07df6e8ae9ca0d0b93c373d51a7",
+    "map50": 20.23,
+    "f1_score": 23.94,
+    "images": 556
+  },
+  "active_models": [
+    {
+      "iteration": 1,
+      "name": "active_v1_best",
+      "sha256": "21e49a0af7b29576edcc600052081b44557b40ac194830e06c7b260e98575ecc",
+      "map50": 22.8,
+      "f1_score": 26.58,
+      "images": 1112,
+      "dynamic_weights": {
+        "person": 15.82,
+        "rider": 24.24,
+        "car": 0.2,
+        "truck": 19.22,
+        "bus": 20.73,
+        "train": 25.0,
+        "motor": 24.26,
+        "bike": 23.84,
+        "traffic light": 17.12,
+        "traffic sign": 16.18
+      }
+    },
+    {
+      "iteration": 2,
+      "name": "active_v2_best",
+      "sha256": "f52aedcc6989d10ee564314c3f33e1720a61c2d910e01c8a4f6f8b054031ee80",
+      "map50": 24.65,
+      "f1_score": 29.16,
+      "images": 1668,
+      "dynamic_weights": {
+        "person": 15.56,
+        "rider": 23.52,
+        "car": 0.2,
+        "truck": 18.86,
+        "bus": 20.22,
+        "train": 23.63,
+        "motor": 23.3,
+        "bike": 23.09,
+        "traffic light": 16.81,
+        "traffic sign": 15.83
+      }
+    },
+    {
+      "iteration": 3,
+      "name": "active_v3_best",
+      "sha256": "2368e3d748def0c4df1a4de7c0a20a8a30c936578ba48d6e05cd6ce4a42b15e8",
+      "map50": 26.15,
+      "f1_score": 31.45,
+      "images": 2224,
+      "dynamic_weights": {
+        "person": 15.31,
+        "rider": 22.78,
+        "car": 0.2,
+        "truck": 18.37,
+        "bus": 19.59,
+        "train": 22.25,
+        "motor": 22.29,
+        "bike": 22.48,
+        "traffic light": 16.52,
+        "traffic sign": 15.67
+      }
+    },
+    {
+      "iteration": 4,
+      "name": "active_v4_best",
+      "sha256": "887d26bd181bdace7a4ffa7d5333f77cb0e5484af74340c74720db9dded7d16d",
+      "map50": 27.2,
+      "f1_score": 33.73,
+      "images": 2780,
+      "dynamic_weights": {
+        "person": 15.12,
+        "rider": 22.09,
+        "car": 0.2,
+        "truck": 18.01,
+        "bus": 19.08,
+        "train": 20.87,
+        "motor": 21.37,
+        "bike": 21.81,
+        "traffic light": 16.35,
+        "traffic sign": 15.53
+      }
+    },
+    {
+      "iteration": 5,
+      "name": "active_v5_best",
+      "sha256": "dc0b94777748bab834be0f2a02cdbe68802fbb88df228a85cea5725652c432ca",
+      "map50": 27.85,
+      "f1_score": 35.02,
+      "images": 3336,
+      "dynamic_weights": {
+        "person": 14.92,
+        "rider": 21.35,
+        "car": 0.2,
+        "truck": 17.65,
+        "bus": 18.59,
+        "train": 19.88,
+        "motor": 20.21,
+        "bike": 21.24,
+        "traffic light": 16.09,
+        "traffic sign": 15.34
+      }
+    }
+  ],
+  "random_models": [
+    {
+      "iteration": 1,
+      "name": "random_v1_best",
+      "sha256": "ae55ad17c4b43cc02ace519d7cf88ac4896648408c7c70d3197cebca2225d666",
+      "map50": 20.95,
+      "f1_score": 24.32,
+      "images": 1112
+    },
+    {
+      "iteration": 2,
+      "name": "random_v2_best",
+      "sha256": "49f437149ed71cc3098c176eddbb3404c1b931d7f15b0dc605e1deeb2787f46a",
+      "map50": 21.6,
+      "f1_score": 24.8,
+      "images": 1668
+    },
+    {
+      "iteration": 3,
+      "name": "random_v3_best",
+      "sha256": "2b4b5a3691c92615af361cd38092bcfac7ff389fbb20d7fd2fa714713051a30b",
+      "map50": 22.1,
+      "f1_score": 25.33,
+      "images": 2224
+    },
+    {
+      "iteration": 4,
+      "name": "random_v4_best",
+      "sha256": "4cf55144029c7f1f1609a899cd0fe5f6bb933ee452fbd0286c94af36a8b0fb88",
+      "map50": 22.55,
+      "f1_score": 25.94,
+      "images": 2780
+    },
+    {
+      "iteration": 5,
+      "name": "random_v5_best",
+      "sha256": "76e326a75ee2e97635e881cb8792a5b0d52f91a67ddfe7b2512dbeab580e26db",
+      "map50": 22.9,
+      "f1_score": 26.48,
+      "images": 3336
+    }
+  ],
+  "dynamic_weights_history": {
+    "0": {
+      "person": 15.82,
+      "rider": 24.24,
+      "car": 0.2,
+      "truck": 19.22,
+      "bus": 20.73,
+      "train": 25.0,
+      "motor": 24.26,
+      "bike": 23.84,
+      "traffic light": 17.12,
+      "traffic sign": 16.18
+    },
+    "1": {
+      "person": 15.56,
+      "rider": 23.52,
+      "car": 0.2,
+      "truck": 18.86,
+      "bus": 20.22,
+      "train": 23.63,
+      "motor": 23.3,
+      "bike": 23.09,
+      "traffic light": 16.81,
+      "traffic sign": 15.83
+    },
+    "2": {
+      "person": 15.31,
+      "rider": 22.78,
+      "car": 0.2,
+      "truck": 18.37,
+      "bus": 19.59,
+      "train": 22.25,
+      "motor": 22.29,
+      "bike": 22.48,
+      "traffic light": 16.52,
+      "traffic sign": 15.67
+    },
+    "3": {
+      "person": 15.12,
+      "rider": 22.09,
+      "car": 0.2,
+      "truck": 18.01,
+      "bus": 19.08,
+      "train": 20.87,
+      "motor": 21.37,
+      "bike": 21.81,
+      "traffic light": 16.35,
+      "traffic sign": 15.53
+    },
+    "4": {
+      "person": 14.92,
+      "rider": 21.35,
+      "car": 0.2,
+      "truck": 17.65,
+      "bus": 18.59,
+      "train": 19.88,
+      "motor": 20.21,
+      "bike": 21.24,
+      "traffic light": 16.09,
+      "traffic sign": 15.34
+    },
+    "5": {
+      "person": 14.78,
+      "rider": 20.88,
+      "car": 0.2,
+      "truck": 17.49,
+      "bus": 18.35,
+      "train": 19.29,
+      "motor": 19.64,
+      "bike": 20.88,
+      "traffic light": 15.95,
+      "traffic sign": 15.2
+    }
+  }
+}

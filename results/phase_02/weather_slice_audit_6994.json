@@ -1,0 +1,34 @@
+{
+  "dataset_total": 6994,
+  "ground_truth_positives": 1028,
+  "c1_old_dcp_baseline": {
+    "TP": 561,
+    "FP": 3415,
+    "TN": 2551,
+    "FN": 467,
+    "Accuracy": 44.5,
+    "Precision": 14.11,
+    "Recall": 54.57,
+    "F1_Score": 22.42,
+    "Jaccard": 12.63
+  },
+  "c5_multi_domain_ensemble": {
+    "TP": 541,
+    "FP": 1872,
+    "TN": 4094,
+    "FN": 487,
+    "Accuracy": 66.27,
+    "Precision": 22.42,
+    "Recall": 52.63,
+    "F1_Score": 31.44,
+    "Jaccard": 18.66
+  },
+  "delta": {
+    "accuracy_gain": 21.77,
+    "precision_gain": 8.31,
+    "recall_gain": -1.94,
+    "f1_score_gain": 9.02,
+    "jaccard_gain": 6.03,
+    "fp_reduction": 1543
+  }
+}

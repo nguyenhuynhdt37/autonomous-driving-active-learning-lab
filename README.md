@@ -1,190 +1,225 @@
-# GREENSM HUMAN-IN-THE-LOOP ACTIVE LEARNING LAB (M50 - V4.0)
+# 🚗 BDD10K Active Learning Lab — Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Cho Thị Giác Xe Tự Hành
 
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Model YOLO11n](https://img.shields.io/badge/Model-YOLO11n-green.svg)](https://docs.ultralytics.com/)
-[![Master Documentation](https://img.shields.io/badge/Docs-V4.0_Master_Doc-orange.svg)](docs/PROJECT_MASTER_DOCUMENTATION.md)
-[![Colab Notebook](https://img.shields.io/badge/Colab-Ready_Notebook-yellow.svg)](colab_greensm_active_learning.ipynb)
+![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![Ultralytics YOLO11n](https://img.shields.io/badge/Ultralytics-YOLO11n-00FFFF?style=for-the-badge&logo=yolo&logoColor=black)
+![Tests Passing](https://img.shields.io/badge/Tests-72%2F72%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)
+![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-Dự án nghiên cứu và phát triển hệ thống **End-to-End Human-in-the-Loop Active Learning** cho bài toán **Nhận diện xe điện GreenSM trong dòng giao thông hỗn hợp tại Việt Nam (5-Class Taxonomy: `greensm, car, motorcycle, bus, truck`)**.
-
-> 📖 **Tài liệu Chi tiết Toàn diện**: Xem ngay tại [docs/PROJECT_MASTER_DOCUMENTATION.md](docs/PROJECT_MASTER_DOCUMENTATION.md)  
-> 🚀 **Notebook Chạy Colab**: Mở trực tiếp [colab_greensm_active_learning.ipynb](colab_greensm_active_learning.ipynb)
+> **Một khung làm việc Data-Centric AI chuẩn Production**: Kết hợp lọc trùng Perceptual Hash tại cạnh biên (&gt;360 FPS), trích xuất hồ sơ vật lý đa miền không cần nhãn, khai thác tích cực C6 Super-Fusion và định tuyến Human-in-the-Loop hai tầng trên tập dữ liệu xe tự hành **Berkeley DeepDrive (BDD10K)**.
 
 ---
 
-## 🎯 1. MỤC TIÊU BÀI TOÁN & GIÁ TRỊ THỰC TIỄN
+## 👨‍💻 Tác Giả &amp; Bản Quyền Nghiên Cứu
 
-### 1.1. Mục tiêu Kỹ thuật (Data-Centric AI)
-Thay vì liên tục thay đổi kiến trúc mô hình hoặc gán nhãn thủ công hàng ngàn bức ảnh ngẫu nhiên, dự án giải quyết bài toán:
-> **Với cùng một ngân sách gán nhãn thủ công cố định, sử dụng quy trình Active Learning 2 Tầng (Two-Tier HITL) để chọn lọc chính xác các bức ảnh mang giá trị nhất cho mô hình YOLO11n, giúp tăng mAP nhanh nhất và giảm tối đa công sức nhân sự.**
-
-### 1.2. Định vị Ứng dụng Thực tế (Enterprise & Commercial Value)
-- **Giám sát Mật độ Đội xe GreenSM (Fleet Density & Hotspot Monitoring)**: Đo lường tần suất và mật độ hiện diện của xe taxi/ô tô điện GreenSM tại các điểm nóng giao thông (Sân bay, Trung tâm thương mại, nút giao trọng điểm).
-- **Phân tích Thị phần Thương hiệu (OOH Impression Share)**: Đo lường tỉ lệ xuất hiện ngoài trời của xe GreenSM so với các hãng xe công nghệ / taxi truyền thống khác.
-- **Giải quyết các Lát cắt Khó (Weak Slices)**: Xe nhỏ cự ly xa ($<32 \times 32\text{px}$), điều kiện thiếu sáng ban đêm (Night slice), che khuất một phần (Occlusion), và nhận diện chính xác tránh nhầm lẫn với ô tô cá nhân màu xanh lục khác.
+- **Tác Giả**: Nguyễn Xuân Huỳnh
+- **GitHub**: [@nguyenhuynhdt37](https://github.com/nguyenhuynhdt37)
+- **Định Hướng**: Công bố bài báo khoa học (Scientific Publication) &amp; Khung đối chuẩn MLOps cho hệ thống xe tự hành thực tế.
 
 ---
 
-## 🏗️ 2. KIẾN TRÚC PIPELINE TỔNG THỂ (TWO-TIER ACTIVE HITL V3.0)
+## 🏆 Thành Tích Cốt Lõi: Đánh Bại Trần 100% Dữ Liệu Với Chỉ 60% Ngân Sách
 
-```text
-               RAW GREENSM DATA (Video Streams / Image Batches)
-                                      │
-                                      ▼
-                 [INTRA-VIDEO FASTDEDUP: pHash / Embedding]
-            (Lọc frame trùng trong cùng Video — Rule Keep-Most-Vehicles)
-                                      │
-                                      ▼
-                   AUTOMATED DATA PROFILING & BASELINE MEASURE
-               (Tagging: Day/Night, Blur, Small Object, Density)
-               (Đo Baseline: Time/Image gán tay vs nhãn mồi CVAT)
-                                      │
-      ┌───────────────────────────────┴───────────────────────────────┐
-      ▼                                                               ▼
- FIXED TEST SET                                                UNLABELED POOL
-(Video-Aware Split)                                                   │
-      │                                                               ▼
- QA & Freeze                                                   SEED SELECTION (~10%)
-(Dùng chung V0..Vk)                                           (Stratified Sampling)
-      │                                                               │
-      │                                                               ▼
-      │                                                         DATASET V0
-      │                                                               │
-      │                                                               ▼
-      │                                                       TRAIN MODEL V0 (YOLO11n)
-      │                                                               │
-      └───────────────────────────────┬───────────────────────────────┘
-                                      │
-                                      ▼
-                          INFERENCE ON UNLABELED POOL
-                                      │
-                                      ▼
-                       1-CLASS COST-AWARE MINING & SCORING
-               (Score = Conf_Uncertainty × Dynamic_Slice_Weight × Anomaly / Effort)
-                                      │
-                                      ▼
-                         DIVERSITY CLUSTERING (K-Means)
-                   (Tránh dồn ảnh cùng bối cảnh / góc quay)
-                                      │
-                                      ▼
-                      TWO-TIER HUMAN-IN-THE-LOOP (HITL)
-                                      │
-      ┌───────────────────────────────┼───────────────────────────────┐
-      ▼                               ▼                               ▼
- HIGH CONFIDENCE               BUFFER ZONE (GAP)              LOW/MEDIUM CONFIDENCE
-(Conf >= 0.85 &               (0.70 < Conf < 0.85)             (0.20 <= Conf <= 0.70)
- Exclude Night/Small)         (Chuyển sang Tier 2)            + Weak Slice (Night/Small)
-      │                               │                               │
-      ▼                               └───────────────┬───────────────┘
-TIER 1: AUTO-ACCEPT                                   │
-(Gán nhãn tự động)                                    ▼
-      │                                     TIER 2: CVAT HUMAN REVIEW
-      ├────────────────┐                    (Sửa nhãn mồi / Vẽ bổ sung)
-      ▼                ▼                              │
-[SPOT-CHECK QA]  [PRE-LABEL]                          │
-(Random 5-10%)         │                              │
-      │                └──────────────┬───────────────┘
-      ▼                               │
-(Measure Accuracy)                    ▼
-                                 DATASET V1 (Lineage Manifest + Git Tag)
-                                      │
-                                      ▼
-                            TRAIN MODEL V1 (YOLO11n)
-                                      │
-                                      ▼
-                  EVALUATION & STATISTICAL SIGNIFICANCE CHECK
-                    (Multi-Seed Run: Gain > Natural Variance)
-                                      │
-                                      ▼
-                 A/B TESTING & ABLATION STUDY BENCHMARK
-         (Random vs Active vs Active-No-AutoLabel on Fixed Test)
+```mermaid
+graph LR
+    subgraph Victory["CHIẾN THẮNG TUYỆT ĐỐI CỦA PROPOSED ACTIVE LEARNING"]
+        V0["Model Mầm V0<br/>(10% Dữ Liệu / 500 ảnh)<br/><b>mAP50 = 20.23%</b>"] --> R5["Random Baseline V5<br/>(60% Dữ Liệu / 3.336 ảnh)<br/><b>mAP50 = 22.90%</b>"]
+        R5 --> CEIL["100% Target Ceiling<br/>(100% Dữ Liệu / 5.565 ảnh)<br/><b>mAP50 = 26.85%</b>"]
+        V0 ==> A5["Proposed Active V5<br/>(60% Dữ Liệu / 3.336 ảnh)<br/><b>mAP50 = 27.85%</b>"]
+        A5 -.->|Vượt trần +1.00% mAP<br/>Tiết kiệm 40.1% ngân sách nhãn| CEIL
+    end
+
+    style V0 fill:#f8f9fa,stroke:#495057,stroke-width:1px
+    style R5 fill:#ffe3e3,stroke:#e03131,stroke-width:2px
+    style CEIL fill:#fff3bf,stroke:#f08c00,stroke-width:2px
+    style A5 fill:#d3f9d8,stroke:#2b8a3e,stroke-width:3px
+```
+
+
+| Tiêu Chí Đánh Giá Vĩ Mô                  | Mốc Đo Lường     | Ghi Chú Bản Án &amp; Giá Trị Khoa Học                               |
+| :---------------------------------------- | :----------------: | :------------------------------------------------------------------- |
+| **Model Mầm V0 Baseline**                | **20.23%**       | Điểm xuất phát chung (500 ảnh mầm phân tầng Hybrid Mix 80/20)       |
+| **Random Baseline Final (V5)**           | **22.90%**       | Nhánh ngẫu nhiên tại cùng mốc 60% ngân sách dữ liệu                 |
+| **100% Random Target (Ceiling)**         | **26.85%**       | Trần đối chứng tối cao khi nạp toàn bộ 5.565 ảnh                    |
+| **Proposed Super-Fusion Final (V5)**     | **27.85%**       | Thành tích chung cuộc của phương pháp đề xuất                       |
+| **Cách biệt vượt trội vs Random V5**     | **+4.95%**       | Minh chứng giá trị vượt bậc của Active Super-Fusion                 |
+| **So sánh với Trần 100% Target**         | **+1.00%**       | Đánh bại trần 100% dữ liệu với ít hơn 2.229 ảnh                     |
+| **Tỷ lệ Tiết kiệm Ngân Sách Nhãn (ROI)** | **40.1%**        | Tiết kiệm trực tiếp ngân sách gán nhãn thực tế (\~$12.000 / chu kỳ) |
+| **Bộ rào chắn dừng 5 tầng**              | **ĐẠT (PASSED)** | Tự động niêm phong chiến thắng `VICTORY_CONFIRMED` tại Vòng 5       |
+
+
+---
+
+## 🗺️ Hệ Thống Tài Liệu Chuẩn Production (Documentation Grid)
+
+Hệ thống tài liệu chuyên sâu được module hóa toàn diện trong thư mục [`docs/`](docs/):
+
+
+| Module Tài Liệu                               | Trọng Tâm Kỹ Thuật & Giá Trị Thực Tiễn                                                                                  | Liên Kết Nhanh                                                     |
+| :--------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------: |
+| 🚀 **Hướng Dẫn Bắt Đầu (Getting Started)**    | **Cẩm nang cho người mới: Quy trình 5 bước từ Git Clone/Pull đến cài đặt, tái tạo symlinks và chạy thực nghiệm.**           | [**Xem Hướng Dẫn ➔**](GETTING_STARTED.md)                           |
+| **01. Executive Summary & Business Case**     | Bài toán kinh doanh, chi phí gán nhãn, phân tích ROI định lượng, chứng minh tiết kiệm 40.1% ngân sách.                      | [Xem Tài Liệu ➔](docs/01_EXECUTIVE_SUMMARY_AND_BUSINESS_CASE.md)   |
+| **02. System Architecture & Data Flow**       | Kiến trúc toàn trình A-Z, sơ đồ luồng dữ liệu 6 chặng liên hoàn, cơ chế Zero Data Leakage qua Video ID.                     | [Xem Tài Liệu ➔](docs/02_SYSTEM_ARCHITECTURE_AND_DATA_FLOW.md)     |
+| **03. Deep Technical Design (Phases 01-07)**  | Bóc tách toán học từng Phase: pHash DCT, Multi-Domain Profiler, Hybrid Mix 80/20, Cfg-3 Recipe, C6 Super-Fusion.            | [Xem Tài Liệu ➔](docs/03_DEEP_TECHNICAL_DESIGN_PHASES_01_TO_07.md) |
+| **04. Production Runbook & Operations**       | Cẩm nang vận hành CLI, Jupyter Notebooks, cấu hình phần cứng MPS / CUDA / CPU, cơ chế O(1) Symlink.                         | [Xem Tài Liệu ➔](docs/04_PRODUCTION_RUNBOOK_AND_OPERATIONS.md)     |
+| **05. Edge Deployment & Streaming HITL**      | Triển khai trên xe tự hành, Dashcam streaming, CPU dedup >360 FPS, Uncertainty Trigger, tích hợp CVAT & Export INT8.        | [Xem Tài Liệu ➔](docs/05_EDGE_DEPLOYMENT_AND_STREAMING_HITL.md)    |
+| **06. Benchmarks & Experimental Results**     | Toàn văn kết quả thực nghiệm: Bảng 10 lớp 5 chỉ số, tiến hóa vector thâm hụt lớp $C_w$, so sánh 3 trục trần hiệu năng.      | [Xem Tài Liệu ➔](docs/06_BENCHMARKS_AND_EXPERIMENTAL_RESULTS.md)   |
+| **07. Troubleshooting & Maintenance FAQ**     | Sổ tay xử lý sự cố (OOM, broken symlinks, staled cache), quy trình kiểm toán 100 ảnh ngẫu nhiên, FAQ.                       | [Xem Tài Liệu ➔](docs/07_TROUBLESHOOTING_AND_MAINTENANCE_FAQ.md)   |
+| 🔄 **08. Production Continuous Learning**    | **Vận hành liên tục: Trích xuất tập khó, xuất gói CVAT, nạp nhãn train V2 và 5 rào chắn dừng.**                           | [**Xem Tài Liệu ➔**](docs/08_PRODUCTION_CONTINUOUS_LEARNING_GUIDE.md) |
+
+
+---
+
+## 🏛️ Sơ Đồ Luồng Dữ Liệu Toàn Trình (End-to-End Pipeline Flow)
+
+```mermaid
+flowchart TB
+    RAW["Khung Hình Dashcam Xe Tự Hành (10.000 ảnh)"] --> FAST["1. Dual-Stream FastDedup (>360 FPS CPU)<br/>pHash HD < 5 + Keep-Most-Vehicles"]
+    FAST --> PROF["2. Multi-Domain Profiler (Không Cần Nhãn)<br/>Phân loại: Đêm (35%), Mờ (20%), Nhỏ (20%), Che (25%)"]
+    PROF --> SPLIT["3. Stratified Video-Isolated Splitting<br/>Hybrid Mix 80/20 (Zero Data Leakage)"]
+    
+    SPLIT --> TEST["Frozen Gold Test Set (1.400 ảnh - 20%)"]
+    SPLIT --> VAL["Fixed Validation Set (700 ảnh - 10%)"]
+    SPLIT --> SEED["Seed V0 (500 ảnh) ➔ Model V0 (20.23% mAP)"]
+    SPLIT --> POOL["Unlabeled Pool (4.394 ảnh)"]
+
+    POOL --> C6["4. C6 Super-Fusion Mining Engine<br/>Bất định + Thâm hụt lớp C_w + Submodular 32D"]
+    C6 --> ROUTER["5. Two-Tier HITL Consensus Router<br/>Pre-labeling tự động (Giảm 26.67% công sức)"]
+    ROUTER --> RETRAIN["6. Continuous Retraining (YOLO11n Cfg-3)<br/>AdamW + Cosine LR + Focal Loss"]
+    RETRAIN --> GATES{"Bộ Rào Chắn Dừng 5 Tầng"}
+    GATES -->|Tiếp tục| POOL
+    GATES -->|Dừng tại Vòng 5: mAP 27.85%| VICTORY["7. Niêm Phong Xuất Xưởng (ONNX / TensorRT / OpenVINO INT8)"]
+
+    style RAW fill:#f8f9fa,stroke:#495057,stroke-width:1px
+    style FAST fill:#e9ecef,stroke:#495057,stroke-width:1px
+    style PROF fill:#dee2e6,stroke:#495057,stroke-width:1px
+    style SPLIT fill:#ced4da,stroke:#495057,stroke-width:1px
+    style C6 fill:#e3fafc,stroke:#1098ad,stroke-width:2px
+    style ROUTER fill:#d0ebff,stroke:#1971c2,stroke-width:2px
+    style RETRAIN fill:#d3f9d8,stroke:#2b8a3e,stroke-width:2px
+    style VICTORY fill:#b2f2bb,stroke:#2b8a3e,stroke-width:3px
 ```
 
 ---
 
-## 📁 3. CẤU TRÚC THƯ MỤC DỰ ÁN (PROJECT STRUCTURE)
+## ⚡ Hướng Dẫn Khởi Động Nhanh (Quickstart)
 
-```text
-Buildphase/
-├── docs/                                 # Tài liệu Kỹ thuật Chi tiết
-│   ├── PROJECT_MASTER_DOCUMENTATION.md   # ⭐ Tài liệu Tổng quan Toàn diện Toàn bộ Dự án V4.0 (Master Doc)
-│   ├── PIPELINE_TOI_UU_GREENSM_HITL_ACTIVE_LEARNING_V4.md # Thiết kế Chi tiết Pipeline V4.0
-│   ├── BAO_CAO_TONG_KET_SELECT_MODEL.md  # Báo cáo chọn mô hình YOLO11n & Đối đầu RT-DETR
-│   └── mentorTalk1.md                    # Tổng hợp góp ý chuyên sâu từ Mentor
-├── src/                                  # Toàn bộ Mã nguồn Python Tự động hóa Pipeline
-│   ├── data_profiling.py                 # Bước 1: Lọc trùng FastDedup & Metadata Profiling 5 Lát cắt
-│   ├── active_selection.py               # Bước 2: Active Mining 5 Classes & Lọc Đa dạng Core-Set
-│   ├── cvat_automation.py                # Bước 3: Đóng gói Pre-labels CVAT & Assembly Dataset V1
-│   ├── train_yolo11n.py                  # Bước 4: Wrapper Training YOLO11n & Multi-Seed Run
-│   ├── evaluate_benchmark.py             # Bước 5: Đánh giá Đa lát cắt & Xuất Báo cáo 3 Trụ Cột ROI
-│   ├── export_quantize.py                # Bước 6: Xuất ONNX & Lượng tử hóa OpenVINO INT8 (Edge CPU)
-│   ├── colab_runner.py                   # Master Pipeline Runner chạy 1 lệnh cho Colab
-│   └── README.md                         # Hướng dẫn chi tiết thư mục src
-├── colab_greensm_active_learning.ipynb   # 🚀 Google Colab Interactive Notebook (Sẵn sàng chạy)
-├── QnA.md                                # Bộ hỏi đáp cốt lõi & giải thích các thắc mắc bản chất
-├── vovong.zip                            # Kho dữ liệu mẫu (400 ảnh + nhãn)
-├── .gitignore                            # Cấu hình GitIgnore
-└── README.md                             # Tổng quan dự án (File này)
-```
+> [!TIP]
+> **Bạn vừa mới `git clone` hoặc `git pull` repo về máy?**  
+> Hãy đọc cẩm nang hướng dẫn đầy đủ từng bước từ thiết lập môi trường, chuẩn bị dữ liệu BDD10K đến tái tạo symlinks tự động tại: 👉 [**GETTING_STARTED.md (Cẩm Nang Bắt Đầu Toàn Diện)**](GETTING_STARTED.md)
 
----
-
-## 🚀 4. HƯỚNG DẪN SỬ DỤNG VÀ CHẠY TRÊN GOOGLE COLAB
-
-### 4.1. Chạy Tự động Toàn bộ Pipeline (Master Script)
-Chỉ cần 2 Cell lệnh trên Notebook Google Colab:
-
-```python
-# Cell 1: Mount Google Drive & Cài thư viện
-from google.colab import drive
-drive.mount('/content/drive')
-
-!pip install -q ultralytics imagehash opencv-python-headless scikit-learn pyyaml requests
-```
-
-```python
-# Cell 2: Chạy Master Execution Script
-!python src/colab_runner.py \
-    --data-dir /content/drive/MyDrive/GreenSM_Data/raw_images \
-    --output-dir /content/drive/MyDrive/GreenSM_Outputs \
-    --top-k 200 \
-    --epochs 30
-```
-
-### 4.2. Chạy Từng Bước Độc lập (Step-by-Step Execution)
+### Bước 1: Khởi tạo môi trường ảo và cài đặt thư viện
 
 ```bash
-# Bước 1: Intra-Video Deduplication & Profiling
-python src/data_profiling.py --data-dir path/to/images --output-json dataset_metadata.json
+# Clone dự án và truy cập thư mục gốc
+git clone https://github.com/nguyenhuynhdt37/bdd10k-active-learning-ai.git
+cd tang
 
-# Bước 2: 1-Class Active Mining & 2-Tier HITL Split
-python src/active_selection.py --metadata-json dataset_metadata.json --top-k 200
+# Khởi tạo virtual environment Python 3.11+
+python3 -m venv .venv
+source .venv/bin/activate
 
-# Bước 3: Assembly Dataset V1 & Pre-labels
-python src/cvat_automation.py --action assemble --selection-json active_selection_results.json --output-dir dataset_v1
+# Cài đặt thư viện phụ thuộc
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-# Bước 4: Train YOLO11n Multi-Seed (3 Seeds)
-python src/train_yolo11n.py --data-yaml dataset_v1/dataset.yaml --seeds 42 123 999 --epochs 30
+### Bước 2: Chạy bộ kiểm thử tự động toàn diện (72/72 Tests)
 
-# Bước 5: Đánh giá Benchmark & Sinh Báo cáo Markdown
-python src/evaluate_benchmark.py --test-yaml dataset_v1/dataset.yaml --output-report BAO_CAO_BENCHMARK_A_B_TEST.md
+```bash
+# Xác nhận tính toàn vẹn của mã nguồn và thuật toán
+PYTHONPATH=. pytest tests/
+```
+
+*Tất cả 72 Unit &amp; Integration tests sẽ vượt qua thành công (`72 passed in ~56s`).*
+
+### Bước 3: Chạy quy trình kiểm toán chất lượng dữ liệu $O(1)$
+
+```bash
+# Kiểm toán 100 ảnh ngẫu nhiên: Zero broken links, sai số pixel = 0.000000 px
+python scripts/audit_random_100_images.py
+```
+
+### Bước 4: Khởi chạy Vòng lặp Tự Trị Toàn Trình (Autonomous Loop)
+
+```bash
+# Thực thi chuỗi lặp tự động từ Vòng 1 đến Vòng 5
+python scripts/run_phase_07_autonomous_loop.py
 ```
 
 ---
 
-## 📊 5. CHỈ SỐ ROI & HIỆU QUẢ DỰ DỰ KIẾN (TARGET METRICS)
+## 📂 Cấu Trúc Dự Án Phẳng Chuẩn Mực (Directory Layout)
 
-- **Mô hình YOLO11n V1**: Target $mAP_{50-95} \ge 78\%$, Small Object Recall $\ge 90\%$.
-- **Tiết kiệm Công sức Nhân sự**: Tiết kiệm **$\ge 65\%$ tổng thời gian gán nhãn** (Thời gian review nhãn mồi CVAT $\approx 12\text{s/ảnh}$ so với $45\text{s/ảnh}$ gán vẽ từ đầu).
-- **Tái lập & Thống kê**: Đạt khả năng tái lập 100% qua file `manifest.yaml` và kiểm định mức tăng $\Delta mAP > \sigma_{seed}$ (dao động tự nhiên giữa các seed).
+```text
+tang/
+├── README.md                                  # Cửa ngõ chính của dự án & Bảng kết quả tổng quan
+├── requirements.txt                           # Danh mục thư viện phụ e thuộc Python
+├── AGENTS.md                                  # Quy chuẩn kiến trúc & phương pháp luận nghiên cứu
+├── docs/                                      # [Tài liệu Production Chuyên Sâu]
+│   ├── 01_EXECUTIVE_SUMMARY_AND_BUSINESS_CASE.md
+│   ├── 02_SYSTEM_ARCHITECTURE_AND_DATA_FLOW.md
+│   ├── 03_DEEP_TECHNICAL_DESIGN_PHASES_01_TO_07.md
+│   ├── 04_PRODUCTION_RUNBOOK_AND_OPERATIONS.md
+│   ├── 05_EDGE_DEPLOYMENT_AND_STREAMING_HITL.md
+│   ├── 06_BENCHMARKS_AND_EXPERIMENTAL_RESULTS.md
+│   └── 07_TROUBLESHOOTING_AND_MAINTENANCE_FAQ.md
+│
+├── data/                                      # [Kiến trúc dữ liệu 3 tầng]
+│   ├── bdd10k/                                # Tầng 0: Gốc BDD10K bất biến (Read-Only 100%)
+│   ├── raw/                                   # Tầng 1: Dữ liệu thô ban đầu
+│   ├── processed/                             # Tầng 2: Kết quả lọc trùng FastDedup (Unique Pool)
+│   └── splits/                                # Tầng 3: fixed_test, fixed_val, seed_v0, unlabeled_pool
+│
+├── src/                                       # [Mã nguồn module lõi dùng chung]
+│   ├── paths.py                               # Quản lý đường dẫn tự động
+│   ├── utils.py                               # Tiện ích cố định seed & phần cứng
+│   ├── dedup.py                               # 6 thuật toán lọc trùng FastDedup
+│   ├── profiling.py                           # 11 phép đo đặc trưng vật lý không nhãn
+│   ├── active_mining.py                       # C6 Super-Fusion & Two-Tier Router
+│   ├── autonomous_loop.py                     # Động cơ lặp tự trị & 5 rào chắn dừng
+│   └── metrics.py                             # Bộ đo đạc đánh giá chuẩn quốc tế
+│
+├── scripts/                                   # [Bộ công cụ thực thi CLI độc lập]
+│   ├── audit_random_100_images.py             # Script kiểm toán 100 ảnh ngẫu nhiên O(1)
+│   ├── run_phase_01_benchmark.py              # CLI chạy Phase 01 FastDedup
+│   ├── run_phase_02_profiling_benchmark.py    # CLI chạy Phase 02 Profiler
+│   ├── run_phase_03_frozen_splits.py          # CLI chạy Phase 03 Splitting
+│   ├── run_phase_04_v0_training.py            # CLI huấn luyện Model V0
+│   ├── run_phase_05_active_tournament.py      # CLI đấu trường Active Mining
+│   ├── run_phase_06_model_v1_training.py      # CLI huấn luyện Model V1
+│   └── run_phase_07_autonomous_loop.py        # CLI vòng lặp tự trị toàn trình
+│
+├── tests/                                     # [Bộ kiểm thử tự động 72 Unit & Integration Tests]
+│   ├── test_phase_02_weather_tournament.py
+│   ├── test_phase_03_splits.py
+│   ├── test_phase_04_training.py
+│   ├── test_phase_05_active_mining.py
+│   ├── test_phase_06_model_v1.py
+│   └── test_phase_07_autonomous_loop.py
+│
+├── models/                                    # Checkpoints mô hình đã niêm phong (SHA-256)
+├── results/                                   # Báo cáo, biểu đồ 300 DPI và bảng dữ liệu đối chuẩn
+└── notebooks/                                 # Chuỗi 7 Jupyter Notebooks thực nghiệm trực quan
+```
 
 ---
 
-## 📜 6. PHÂN CÔNG VAI TRÒ VÀ ĐỘC LẬP QA
+## 📜 Giấy Phép &amp; Trích Dẫn (License &amp; Citation)
 
-- **Active Learning & Training Lead**: Phụ trách viết code pipeline, mining và huấn luyện mô hình.
-- **Fixed Test QA Lead (Độc lập)**: Phụ trách kiểm định chất lượng, đóng băng tập Test và ngẫu nhiên Spot-check (5-10%) chất lượng nhãn máy tự duyệt Tier 1.
-- **Reproducibility Lead**: Phụ trách quản lý file `manifest.yaml`, git tags và checkpoints.
+Dự án phát hành theo giấy phép **MIT License**. Mọi cá nhân, tổ chức nghiên cứu hoặc doanh nghiệp có thể tự do sử dụng, chỉnh sửa và tích hợp vào các sản phẩm thương mại.
+
+Nếu dự án này hữu ích cho công trình nghiên cứu hoặc sản phẩm của bạn, vui lòng trích dẫn:
+
+```bibtex
+@article{nguyen2026bdd10kactive,
+  title={Closed-Loop Active Learning and Two-Tier Human-in-the-Loop Consensus for Long-Tail Autonomous Driving Perception},
+  author={Nguyen, Xuan Huynh},
+  journal={arXiv preprint},
+  year={2026}
+}
+```
 
 ---
-*Dự án thuộc Cohort Build Phase — GreenSM Vehicle Active Learning Lab (M50).*
+
+*Tài liệu thuộc hệ thống kiến trúc chuẩn Production của BDD10K Active Learning Lab.*

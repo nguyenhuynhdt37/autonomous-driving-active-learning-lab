@@ -1,0 +1,2 @@
+# Vùng lưu trữ dữ liệu thô ban đầu (Tầng 1 theo chuẩn kiến trúc 3 tầng BDD10K Active Learning Lab)
+# Unlabeled raw pool, các batch khung hình dashcam mới thu thập từ đội xe trước khi đưa qua FastDedup.

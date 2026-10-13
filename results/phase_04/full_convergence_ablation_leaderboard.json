@@ -1,0 +1,97 @@
+{
+  "phase": "04_seed_v0_training_ablation_full_convergence",
+  "generated_at": "2026-10-12T07:25:00Z",
+  "dataset": "BDD10K Active Learning Lab (Paper V4.0)",
+  "evaluation_sets": {
+    "validation_set": "fixed_val (700 images, 13,508 objects - Freeze)",
+    "test_set": "fixed_test (1,400 images - Stress test 4 hard slices)",
+    "public_benchmark": "bdd10k_val (1,000 images - UC Berkeley Ground-truth)"
+  },
+  "seed_pool_size": 500,
+  "leaderboard": [
+    {
+      "rank": 1,
+      "config_id": "cfg_0_naive",
+      "recipe": "Naive Baseline (SGD, Linear LR, No Freeze, No Class-weights)",
+      "device": "cpu (8 cores)",
+      "duration_sec": 4556.82,
+      "val_map50": 21.85,
+      "val_map50_95": 10.97,
+      "val_recall": 22.92,
+      "val_precision": 45.68,
+      "checkpoint": "paper_v4_10k/results/phase_04/runs/cfg_0_naive/weights/best.pt"
+    },
+    {
+      "rank": 2,
+      "config_id": "cfg_3_adamw_cosine",
+      "recipe": "AdamW + Cosine Annealing LR (Smooth Multi-scale Convergence)",
+      "device": "mps (Apple Silicon GPU)",
+      "duration_sec": 1436.57,
+      "val_map50": 20.89,
+      "val_map50_95": 10.51,
+      "val_recall": 22.20,
+      "val_precision": 53.09,
+      "checkpoint": "paper_v4_10k/results/phase_04/runs/cfg_3_adamw_cosine/weights/best.pt"
+    },
+    {
+      "rank": 3,
+      "config_id": "cfg_1_freeze",
+      "recipe": "Backbone Freezing 10L Warmup 5 epochs (Gradient Shock Prevention)",
+      "device": "mps (Apple Silicon GPU)",
+      "duration_sec": 1823.90,
+      "val_map50": 20.52,
+      "val_map50_95": 10.65,
+      "val_recall": 21.66,
+      "val_precision": 50.29,
+      "checkpoint": "paper_v4_10k/models/yolo11n_v0_best.pt"
+    },
+    {
+      "rank": 4,
+      "config_id": "cfg_2_class_weights",
+      "recipe": "Class-Weighted Loss (Rare Classes Heavy Penalty)",
+      "device": "cpu (8 cores)",
+      "duration_sec": 4034.36,
+      "val_map50": 19.87,
+      "val_map50_95": 10.12,
+      "val_recall": 22.07,
+      "val_precision": 39.85,
+      "checkpoint": "paper_v4_10k/results/phase_04/runs/cfg_2_class_weights/weights/best.pt"
+    },
+    {
+      "rank": 5,
+      "config_id": "cfg_4_proposed",
+      "recipe": "Full Proposed Recipe (Freeze 10L + AdamW Cosine + Class-weights)",
+      "device": "mps (Apple Silicon GPU)",
+      "duration_sec": 1513.16,
+      "val_map50": 19.55,
+      "val_map50_95": 10.21,
+      "val_recall": 21.68,
+      "val_precision": 39.14,
+      "checkpoint": "paper_v4_10k/results/phase_04/runs/cfg_4_proposed/weights/best.pt"
+    }
+  ],
+  "counterpart_model": {
+    "architecture": "RT-DETR (Real-time Detection Transformer - rtdetr-l)",
+    "status": "Verified & Initialized",
+    "checkpoint": "paper_v4_10k/models/rtdetr_v0_best.pt",
+    "size_mb": 63.18
+  },
+  "hard_slice_evaluation_fixed_test": {
+    "night": { "count": 468, "recall": 21.44, "map50": 19.57 },
+    "small": { "count": 1353, "recall": 19.45, "map50": 18.73 },
+    "occlusion": { "count": 1349, "recall": 19.54, "map50": 18.81 },
+    "day": { "count": 814, "recall": 19.27, "map50": 18.98 }
+  },
+  "vector_w_for_phase_05": {
+    "W_night": 0.2453,
+    "W_small": 0.2515,
+    "W_occlusion": 0.2512,
+    "W_day": 0.2520
+  },
+  "public_benchmark_bdd10k_val": {
+    "num_images": 1000,
+    "map50": 19.76,
+    "recall": 21.07,
+    "precision": 49.59
+  }
+}

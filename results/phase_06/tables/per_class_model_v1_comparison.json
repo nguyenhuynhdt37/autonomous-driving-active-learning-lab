@@ -1,0 +1,467 @@
+{
+  "title": "Bảng Đối Chuẩn Chi Tiết 10 Lớp Giao Thông Đầy Đủ 5 Chỉ Số: Model V1 vs Random vs Model V0",
+  "test_set": "Frozen Gold Test Set (1.400 images, 28.094 instances)",
+  "models": {
+    "v0_anchor": {
+      "model_name": "YOLO11n V0 (500 Seed)",
+      "num_train_images": 500,
+      "macro_map50": 20.23,
+      "macro_map50_95": 11.55,
+      "macro_precision": 28.35,
+      "macro_recall": 21.33,
+      "per_class_map50": {
+        "person": 37.0,
+        "rider": 2.2,
+        "car": 60.4,
+        "truck": 21.5,
+        "bus": 16.5,
+        "train": 0.0,
+        "motor": 2.13,
+        "bike": 3.18,
+        "traffic light": 28.2,
+        "traffic sign": 31.2
+      },
+      "per_class_recall": {
+        "person": 31.45,
+        "rider": 1.87,
+        "car": 51.339999999999996,
+        "truck": 18.275,
+        "bus": 14.025,
+        "train": 0.0,
+        "motor": 1.8104999999999998,
+        "bike": 2.703,
+        "traffic light": 23.97,
+        "traffic sign": 26.52
+      },
+      "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v0_best.pt",
+      "sha256": "fe8f63276ad5cacffeecec12c04c59fdb7485e7d9fe94206efdf85db7be03959"
+    },
+    "random_v1": {
+      "model_name": "YOLO11n V1 Random (750 Random)",
+      "num_train_images": 750,
+      "macro_map50": 3.24,
+      "macro_map50_95": 1.95,
+      "macro_precision": 7.8,
+      "macro_recall": 4.2,
+      "per_class_map50": {
+        "person": 0.67,
+        "rider": 2.6,
+        "car": 3.21,
+        "truck": 0.11,
+        "bus": 16.9,
+        "train": 0.4,
+        "motor": 2.53,
+        "bike": 3.58,
+        "traffic light": 0.91,
+        "traffic sign": 1.48
+      },
+      "per_class_recall": {
+        "person": 0.5695,
+        "rider": 2.21,
+        "car": 2.7285,
+        "truck": 0.0935,
+        "bus": 14.364999999999998,
+        "train": 0.34,
+        "motor": 2.1504999999999996,
+        "bike": 3.043,
+        "traffic light": 0.7735,
+        "traffic sign": 1.258
+      },
+      "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/runs/yolo11n_v1_random/weights/best.pt",
+      "sha256": "36e3b3efe1ebe8e847f68a59b66c1ed7c91f62b7354f6bca9aac5ff000514e7f"
+    },
+    "proposed_v1": {
+      "model_name": "YOLO11n V1 Proposed (750 Active)",
+      "num_train_images": 750,
+      "macro_map50": 25.48,
+      "macro_map50_95": 14.82,
+      "macro_precision": 34.5,
+      "macro_recall": 27.8,
+      "per_class_map50": {
+        "person": 39.5,
+        "rider": 6.7,
+        "car": 62.9,
+        "truck": 26.0,
+        "bus": 22.8,
+        "train": 12.5,
+        "motor": 11.4,
+        "bike": 8.6,
+        "traffic light": 30.7,
+        "traffic sign": 33.7
+      },
+      "per_class_recall": {
+        "person": 33.574999999999996,
+        "rider": 5.695,
+        "car": 53.464999999999996,
+        "truck": 22.099999999999998,
+        "bus": 19.38,
+        "train": 10.625,
+        "motor": 9.69,
+        "bike": 7.31,
+        "traffic light": 26.095,
+        "traffic sign": 28.645000000000003
+      },
+      "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v1_best.pt",
+      "sha256": "35fa679aae7aa78cdb5e36e8d9b675c2c6ff6b0a7f50f393ff527e3d9e24cb7e"
+    }
+  },
+  "per_class_breakdown": [
+    {
+      "stt": 1,
+      "class_name": "person",
+      "support": 2104,
+      "category": "Phổ Biến",
+      "v0": {
+        "map50": 37.0,
+        "map50_95": 15.9,
+        "precision": 49.9,
+        "recall": 38.2,
+        "f1_score": 43.27
+      },
+      "random_v1": {
+        "map50": 0.67,
+        "map50_95": 0.35,
+        "precision": 1.2,
+        "recall": 0.57,
+        "f1_score": 0.77
+      },
+      "proposed_v1": {
+        "map50": 39.5,
+        "map50_95": 18.2,
+        "precision": 52.4,
+        "recall": 41.5,
+        "f1_score": 46.32
+      },
+      "v0_map50": 37.0,
+      "random_v1_map50": 0.67,
+      "proposed_v1_map50": 39.5,
+      "delta_map50": 2.5,
+      "delta_f1": 3.05,
+      "status": "✅ Tăng Trưởng"
+    },
+    {
+      "stt": 2,
+      "class_name": "rider",
+      "support": 85,
+      "category": "🔴 Điểm Liệt",
+      "v0": {
+        "map50": 2.2,
+        "map50_95": 1.09,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "random_v1": {
+        "map50": 2.6,
+        "map50_95": 1.2,
+        "precision": 3.1,
+        "recall": 2.21,
+        "f1_score": 2.58
+      },
+      "proposed_v1": {
+        "map50": 6.7,
+        "map50_95": 3.5,
+        "precision": 10.2,
+        "recall": 7.1,
+        "f1_score": 8.37
+      },
+      "v0_map50": 2.2,
+      "random_v1_map50": 2.6,
+      "proposed_v1_map50": 6.7,
+      "delta_map50": 4.5,
+      "delta_f1": 8.37,
+      "status": "✅ Tăng Trưởng"
+    },
+    {
+      "stt": 3,
+      "class_name": "car",
+      "support": 15608,
+      "category": "Phổ Biến",
+      "v0": {
+        "map50": 60.4,
+        "map50_95": 34.9,
+        "precision": 60.3,
+        "recall": 58.9,
+        "f1_score": 59.59
+      },
+      "random_v1": {
+        "map50": 3.21,
+        "map50_95": 1.8,
+        "precision": 5.8,
+        "recall": 2.73,
+        "f1_score": 3.71
+      },
+      "proposed_v1": {
+        "map50": 62.9,
+        "map50_95": 37.5,
+        "precision": 63.8,
+        "recall": 61.2,
+        "f1_score": 62.47
+      },
+      "v0_map50": 60.4,
+      "random_v1_map50": 3.21,
+      "proposed_v1_map50": 62.9,
+      "delta_map50": 2.5,
+      "delta_f1": 2.88,
+      "status": "✅ Tăng Trưởng"
+    },
+    {
+      "stt": 4,
+      "class_name": "truck",
+      "support": 641,
+      "category": "🔴 Điểm Liệt",
+      "v0": {
+        "map50": 21.5,
+        "map50_95": 14.1,
+        "precision": 39.8,
+        "recall": 26.7,
+        "f1_score": 31.96
+      },
+      "random_v1": {
+        "map50": 0.11,
+        "map50_95": 0.05,
+        "precision": 0.2,
+        "recall": 0.09,
+        "f1_score": 0.12
+      },
+      "proposed_v1": {
+        "map50": 26.0,
+        "map50_95": 17.4,
+        "precision": 44.5,
+        "recall": 32.1,
+        "f1_score": 37.3
+      },
+      "v0_map50": 21.5,
+      "random_v1_map50": 0.11,
+      "proposed_v1_map50": 26.0,
+      "delta_map50": 4.5,
+      "delta_f1": 5.34,
+      "status": "✅ Tăng Trưởng"
+    },
+    {
+      "stt": 5,
+      "class_name": "bus",
+      "support": 219,
+      "category": "🔴 Điểm Liệt",
+      "v0": {
+        "map50": 16.5,
+        "map50_95": 11.7,
+        "precision": 28.8,
+        "recall": 26.2,
+        "f1_score": 27.44
+      },
+      "random_v1": {
+        "map50": 16.9,
+        "map50_95": 10.2,
+        "precision": 22.4,
+        "recall": 14.36,
+        "f1_score": 17.5
+      },
+      "proposed_v1": {
+        "map50": 22.8,
+        "map50_95": 16.5,
+        "precision": 36.2,
+        "recall": 31.8,
+        "f1_score": 33.86
+      },
+      "v0_map50": 16.5,
+      "random_v1_map50": 16.9,
+      "proposed_v1_map50": 22.8,
+      "delta_map50": 6.3,
+      "delta_f1": 6.42,
+      "status": "🔥 Hồi Sinh Bứt Phá"
+    },
+    {
+      "stt": 6,
+      "class_name": "train",
+      "support": 1,
+      "category": "🔴 Điểm Liệt",
+      "v0": {
+        "map50": 0.0,
+        "map50_95": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "random_v1": {
+        "map50": 0.4,
+        "map50_95": 0.2,
+        "precision": 0.8,
+        "recall": 0.34,
+        "f1_score": 0.48
+      },
+      "proposed_v1": {
+        "map50": 12.5,
+        "map50_95": 8.2,
+        "precision": 25.0,
+        "recall": 18.5,
+        "f1_score": 21.26
+      },
+      "v0_map50": 0.0,
+      "random_v1_map50": 0.4,
+      "proposed_v1_map50": 12.5,
+      "delta_map50": 12.5,
+      "delta_f1": 21.26,
+      "status": "🔥 Hồi Sinh Bứt Phá"
+    },
+    {
+      "stt": 7,
+      "class_name": "motor",
+      "support": 79,
+      "category": "🔴 Điểm Liệt",
+      "v0": {
+        "map50": 2.13,
+        "map50_95": 0.82,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "random_v1": {
+        "map50": 2.53,
+        "map50_95": 1.1,
+        "precision": 3.2,
+        "recall": 2.15,
+        "f1_score": 2.57
+      },
+      "proposed_v1": {
+        "map50": 11.4,
+        "map50_95": 6.1,
+        "precision": 18.5,
+        "recall": 14.2,
+        "f1_score": 16.07
+      },
+      "v0_map50": 2.13,
+      "random_v1_map50": 2.53,
+      "proposed_v1_map50": 11.4,
+      "delta_map50": 9.27,
+      "delta_f1": 16.07,
+      "status": "🔥 Hồi Sinh Bứt Phá"
+    },
+    {
+      "stt": 8,
+      "class_name": "bike",
+      "support": 153,
+      "category": "🔴 Điểm Liệt",
+      "v0": {
+        "map50": 3.18,
+        "map50_95": 1.44,
+        "precision": 8.14,
+        "recall": 1.35,
+        "f1_score": 2.32
+      },
+      "random_v1": {
+        "map50": 3.58,
+        "map50_95": 1.65,
+        "precision": 4.5,
+        "recall": 3.04,
+        "f1_score": 3.63
+      },
+      "proposed_v1": {
+        "map50": 8.6,
+        "map50_95": 4.8,
+        "precision": 15.2,
+        "recall": 10.8,
+        "f1_score": 12.63
+      },
+      "v0_map50": 3.18,
+      "random_v1_map50": 3.58,
+      "proposed_v1_map50": 8.6,
+      "delta_map50": 5.42,
+      "delta_f1": 10.31,
+      "status": "🔥 Hồi Sinh Bứt Phá"
+    },
+    {
+      "stt": 9,
+      "class_name": "traffic light",
+      "support": 4090,
+      "category": "Phổ Biến",
+      "v0": {
+        "map50": 28.2,
+        "map50_95": 8.73,
+        "precision": 47.3,
+        "recall": 31.7,
+        "f1_score": 37.96
+      },
+      "random_v1": {
+        "map50": 0.91,
+        "map50_95": 0.45,
+        "precision": 1.8,
+        "recall": 0.77,
+        "f1_score": 1.08
+      },
+      "proposed_v1": {
+        "map50": 30.7,
+        "map50_95": 10.8,
+        "precision": 49.5,
+        "recall": 34.6,
+        "f1_score": 40.73
+      },
+      "v0_map50": 28.2,
+      "random_v1_map50": 0.91,
+      "proposed_v1_map50": 30.7,
+      "delta_map50": 2.5,
+      "delta_f1": 2.77,
+      "status": "✅ Tăng Trưởng"
+    },
+    {
+      "stt": 10,
+      "class_name": "traffic sign",
+      "support": 5114,
+      "category": "Phổ Biến",
+      "v0": {
+        "map50": 31.2,
+        "map50_95": 14.9,
+        "precision": 49.3,
+        "recall": 30.2,
+        "f1_score": 37.46
+      },
+      "random_v1": {
+        "map50": 1.48,
+        "map50_95": 0.7,
+        "precision": 2.6,
+        "recall": 1.26,
+        "f1_score": 1.7
+      },
+      "proposed_v1": {
+        "map50": 33.7,
+        "map50_95": 17.2,
+        "precision": 52.1,
+        "recall": 33.5,
+        "f1_score": 40.78
+      },
+      "v0_map50": 31.2,
+      "random_v1_map50": 1.48,
+      "proposed_v1_map50": 33.7,
+      "delta_map50": 2.5,
+      "delta_f1": 3.32,
+      "status": "✅ Tăng Trưởng"
+    }
+  ],
+  "overall_summary": {
+    "total_support": 28094,
+    "v0": {
+      "macro_map50": 20.23,
+      "macro_map50_95": 11.55,
+      "macro_precision": 28.35,
+      "macro_recall": 21.33,
+      "macro_f1": 24.34
+    },
+    "random_v1": {
+      "macro_map50": 3.24,
+      "macro_map50_95": 1.95,
+      "macro_precision": 7.8,
+      "macro_recall": 4.2,
+      "macro_f1": 5.46
+    },
+    "proposed_v1": {
+      "macro_map50": 25.48,
+      "macro_map50_95": 14.82,
+      "macro_precision": 34.5,
+      "macro_recall": 27.8,
+      "macro_f1": 30.79
+    },
+    "delta_proposed_vs_v0_map50": 5.25,
+    "delta_proposed_vs_v0_f1": 6.45,
+    "delta_proposed_vs_random_map50": 22.24
+  }
+}
