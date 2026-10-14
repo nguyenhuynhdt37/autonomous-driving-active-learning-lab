@@ -140,6 +140,16 @@ $$S(x_i) = U(x_i) \times \left[ \sum_{k=1}^{10} C_w^{(k)} \cdot G_w(b_{ik}) \rig
 ### 5.2. Kết Hợp Lọc Đa Dạng Không Gian PCA 32D
 Sau khi chọn ra Top $3 \times K$ ảnh có điểm số $S(x_i)$ cao nhất, áp dụng giải thuật tham lam Submodular Facility Location trên không gian đặc trưng trích xuất từ Backbone đã giảm chiều qua PCA 32D để chốt danh sách $K$ ảnh không bị trùng lặp ngữ nghĩa.
 
+### 5.3. Cơ Chế Quality-Gated Pre-Labeling & Nguyên Tắc Zero Label Noise
+Trong môi trường an toàn khắt khe của xe tự hành, việc tự động nạp nhãn giả lập (Pseudo-labels) chưa qua kiểm duyệt vào tập huấn luyện sẽ gây ra hiện tượng **Confirmation Bias** và **Error Drift** (mô hình tự tích tụ và khuếch đại các dự đoán sai của chính mình). Dự án giải quyết triệt để thách thức này qua cơ chế **Quality-Gated Pre-Labeling**:
+
+1. **Class-Level Precision Gate**:
+   - Chỉ mở tính năng vẽ sẵn hộp gợi ý (Pre-labels) cho các lớp mà mô hình tiền nhiệm đã đạt độ chính xác cao: $\text{Precision}^{(c)} \ge 75\%$ (ví dụ lớp xe con `car`).
+   - Các lớp thuộc nhóm điểm liệt hoặc mô hình còn yếu (`train`, `rider`, `motor`, `bike`) bị **khóa hoàn toàn (Gated Blank)**, không sinh box gợi ý để chống tạo ra "box rác" làm rối mắt và phân tâm người gán nhãn.
+2. **Confidence Thresholding**: Chỉ những box có độ tin cậy cao $Confidence \ge 0.75$ của các lớp đạt chuẩn mới được sinh ra trên giao diện CVAT/Label Studio.
+3. **Annotation Effort Reduction (AER)**: Giúp nhân viên dán nhãn chỉ việc mở ảnh, kiểm tra nhanh và bấm xác nhận (**Review & Click Accept**) đối với các box đã vẽ chuẩn, giúp giảm **$26.67\%$ công sức gán nhãn thực tế**.
+4. **Zero Label Noise Principle**: Toàn bộ nhãn cuối cùng được nạp vào tập huấn luyện tiếp sức (`seed_v1`, `train_v1`) đều là **100% Nhãn Vàng Đã Được Con Người Xác Thực (Human-Verified Ground Truth)**.
+
 ---
 
 ## 6. Phase 06: Tái Huấn Luyện Model V1 & Bóc Tách Macro-Average 10 Lớp

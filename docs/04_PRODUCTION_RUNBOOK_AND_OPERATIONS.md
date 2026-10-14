@@ -114,11 +114,11 @@ python scripts/run_phase_04_v0_training.py
 ```
 - **Nhiệm vụ**: Huấn luyện YOLO11n trên tập mầm 500 ảnh với cấu hình AdamW + Cosine LR + Focal Loss $\gamma = 1.5$. Checkpoint niêm phong lưu tại `models/yolo11n_v0_best.pt`.
 
-### 3.5. Phase 05: Đấu Trường Active Mining & Two-Tier HITL Routing
+### 3.5. Phase 05: Đấu Trường Active Mining & Quality-Gated HITL Pre-Labeling
 ```bash
 python scripts/run_phase_05_active_tournament.py
 ```
-- **Nhiệm vụ**: Chạy giải đấu 6 chiến lược chọn mẫu, áp dụng C6 Super-Fusion bốc 250 ảnh đợt 1, xuất báo cáo HITL tiết kiệm 26.67% công sức tại `results/phase_05/`.
+- **Nhiệm vụ**: Chạy giải đấu 6 chiến lược chọn mẫu, áp dụng C6 Super-Fusion bốc 250 ảnh đợt 1, thẩm định chính sách Quality-Gated Pre-Labeling tiết kiệm 26.67% công sức (AER) và đóng gói 100% nhãn vàng vào `seed_v1/labels/`.
 
 ### 3.6. Phase 06: Tái Huấn Luyện Model V1 & Bóc Tách 10 Lớp
 ```bash
@@ -131,6 +131,18 @@ python scripts/run_phase_06_model_v1_training.py
 python scripts/run_phase_07_autonomous_loop.py
 ```
 - **Nhiệm vụ**: Khởi chạy toàn bộ chuỗi lặp tự động từ Vòng 1 đến Vòng 5. Tự động kiểm tra 5 rào chắn an toàn, dừng tại Vòng 5 đạt mAP 27.85% và niêm phong bản án `VICTORY_CONFIRMED`.
+
+### 3.8. Phase 09: Vận Hành Vòng Lặp Production HITL Thực Chiến (Zero Simulation)
+```bash
+python notebooks/09_production_hitl_pipeline/run_production_cli.py \
+    --model yolo11n.pt \
+    --task detect \
+    --budget 200 \
+    --prelabel \
+    --min-conf 0.70 \
+    --watch-inbox
+```
+- **Nhiệm vụ**: Vận hành Production với 100% dữ liệu & nhãn thực tế do người dùng nạp. Tự động xuất gói gán nhãn ra `outbox/` (kèm pre-labels lọc `conf >= 0.70`), lắng nghe file ZIP nhãn thả vào `inbox/`, tự động giải nén, kiểm toán tọa độ $[0, 1]$, tích lũy tập train và kích hoạt huấn luyện tiếp sức đến khi thỏa mãn rào chắn dừng.
 
 ---
 

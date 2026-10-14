@@ -58,7 +58,7 @@ flowchart TD
         
         N --> O["Tính Vector Thâm Hụt Lớp Động C_w: Lớp liệt tăng vọt 25x, car tụt đáy 0.2x"]
         
-        O --> P["Model V(k-1) Inference trên Unlabeled Pool: Margin Uncertainty U_i + Pseudo-labels"]
+        O --> P["Model V(k-1) Inference trên Unlabeled Pool: Đo Margin Uncertainty U_i & Sinh Pseudo-labels (Chỉ dùng chấm điểm)"]
         
         E --> Q["Quán quân C6 Super-Fusion: S(x_i) = U_i * sum(C_w * G_w) * E(x_i) * B(x_i)"]
         P --> Q
@@ -67,7 +67,7 @@ flowchart TD
         
         R --> S["Tuyển chọn Batch k: đúng 556 ảnh (10% pool)"]
         
-        S --> T["Simulated Oracle Gán Nhãn Vàng O(1): Chỉ cấp nhãn SAU KHI ảnh đã chọn"]
+        S --> T["Cấp 100% Nhãn Vàng Đã Xác Thực (Zero Label Noise): Tuyệt đối không nạp Pseudo-labels vào Train"]
         
         T --> U["Huấn luyện Liên tục (Continuous Fine-Tuning): Kế thừa weights V_(k-1)"]
         
@@ -148,7 +148,7 @@ $$C_w^{(k)}(c) = 1.0 + \alpha \cdot (1.0 - F_1^{(k-1)}(c)) + \beta \cdot (1.0 - 
 
 #### 2. Model $V_{k-1}$ Inference trên Unlabeled Pool
 - Chạy batch inference trên kho chưa gán nhãn để đo độ tự tin: $\text{Margin Uncertainty } U_i = 1 - \text{Confidence}$.
-- Trích xuất các hộp dự đoán nghi ngờ (Pseudo-labels).
+- Trích xuất các hộp dự đoán nghi ngờ (Pseudo-labels). **Lưu ý nguyên tắc sống còn**: Các hộp này TUYỆT ĐỐI CHỈ DÙNG để tính điểm thâm hụt lớp $C_w$ và hình học $G_w$ phục vụ khai thác mẫu khó, KHÔNG BAO GIỜ dùng làm nhãn huấn luyện nhằm triệt tiêu Confirmation Bias!
 
 #### 3. Điểm Tuyển Chọn Quán Quân C6 Super-Fusion
 Mỗi ảnh $x_i$ được chấm điểm tổng hợp qua 4 Trụ Cột:

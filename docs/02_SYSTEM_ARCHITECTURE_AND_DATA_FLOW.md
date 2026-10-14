@@ -31,12 +31,13 @@ flowchart TB
         SPLIT --> POOL["Unlabeled Pool (4.394 ảnh)<br/>Kho mỏ dữ liệu cho Active Mining"]
     end
 
-    subgraph S4["Chặng 4 & 5: Active Super-Fusion & HITL Routing"]
+    subgraph S4["Chặng 4 & 5: Active Super-Fusion & Quality-Gated HITL"]
         POOL --> MINING["C6 Super-Fusion Scoring Engine<br/>Bất định + Thâm hụt lớp C_w + Bán kính phủ Submodular"]
-        MINING --> ROUTER["Two-Tier Consensus HITL Router"]
-        ROUTER -->|Tier 1: Confidence > 0.75| AUTO_ANN["Pre-labeling Tự Động (Giảm 26.67% Công Sức)"]
-        ROUTER -->|Tier 2: Confidence <= 0.75| HUMAN_ANN["Định Tuyến Chuyên Gia Thẩm Định (CVAT / Label Studio)"]
-        AUTO_ANN & HUMAN_ANN --> BATCH_K["Batch Bổ Sung K = 250 - 556 ảnh"]
+        MINING --> ROUTER["Quality-Gated HITL Router<br/>(Class-level Precision & Confidence Gate)"]
+        ROUTER -->|Tier 1: Precision & Conf >= 0.75| PRE_BOX["Pre-populated Box Gợi Ý<br/>(Review & Click Accept $\to$ Giảm 26.67% AER)"]
+        ROUTER -->|Tier 2: Lớp điểm liệt hoặc Conf < 0.75| BLANK_BOX["Gated Blank (Khóa Box Rác)<br/>(Chuyên gia vẽ tay 100%)"]
+        PRE_BOX & BLANK_BOX --> HUMAN_VERIFY["100% Chuyên Gia Thẩm Định & Ký Duyệt<br/>(CVAT / Label Studio)"]
+        HUMAN_VERIFY --> BATCH_K["Batch Bổ Sung K = 250 - 556 ảnh<br/>(100% Nhãn Vàng - Zero Label Noise)"]
     end
 
     subgraph S6["Chặng 6: Continuous Retraining & 5-Tier Stopping"]
@@ -107,11 +108,12 @@ graph TD
     style POOL fill:#a5d8ff,stroke:#1971c2,stroke-width:2px
 ```
 
-### 2.4. Chặng 4: Two-Tier Consensus HITL Routing
+### 2.4. Chặng 4: Quality-Gated Pre-Labeling Policy & Human Verification
 - **Đầu vào**: Các bounding box dự đoán của mô hình hiện tại trên các ảnh được chọn từ Active Mining.
-- **Cơ chế phân luồng hai tầng**:
-  - **Tier 1 (High-Confidence Pre-labeling)**: Các bounding box có độ tin cậy $Confidence \ge 0.75$ được gán nhãn sơ bộ tự động (Pseudolabel), chỉ cần nhân viên gán nhãn bấm xác nhận (Accept) $\rightarrow$ Giảm **26.67% thời gian gán nhãn**.
-  - **Tier 2 (Uncertainty Expert Verification)**: Các bounding box có độ bất định cao ($Confidence < 0.75$) hoặc các ảnh thuộc lát cắt nguy hiểm được định tuyến đến chuyên gia kiểm định độc lập để vẽ lại nhãn chính xác.
+- **Cơ chế phân luồng hai tầng Quality-Gated (Class-Level Gate)**:
+  - **Tier 1 (High-Confidence Pre-labeling)**: Các bounding box thuộc lớp mô hình đã đạt chuẩn (như `car` đạt Precision > 75%) và $Confidence \ge 0.75$ được sinh sẵn hộp gợi ý trên giao diện gán nhãn, chuyên gia chỉ cần kiểm tra nhanh và bấm xác nhận (**Review & Click Accept**) $\rightarrow$ Giảm **26.67% thời gian thao tác (AER)**.
+  - **Tier 2 (Gated Manual Annotation)**: Các bounding box thuộc lớp điểm liệt hiểm hóc (`train`, `rider`, `motor`, `bike`) hoặc có $Confidence < 0.75$ bị **khóa box rác hoàn toàn (Blank)** nhằm tránh gây nhiễu cho annotator, bắt buộc chuyên gia phải vẽ tay thủ công 100%.
+- **Zero Label Noise Principle**: Toàn bộ nhãn trước khi đưa vào tập huấn luyện tiếp sức (`seed_vk`, `train_vk`) đều bắt buộc phải được con người thẩm định 100%, tuyệt đối không nạp pseudo-labels chưa kiểm duyệt vào dữ liệu train nhằm triệt tiêu Confirmation Bias và Error Drift.
 
 ### 2.5. Chặng 5: Động Cơ Khai Thác C6 Super-Fusion & Diversity Mining
 - **Hàm chấm điểm kết hợp đa yếu tố C6 Super-Fusion**:

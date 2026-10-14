@@ -123,11 +123,11 @@ python run_production_cli.py \
 flowchart TD
     A["Raw Images + Raw Labels<br/>(Nạp trực tiếp qua CLI/UI)"] --> B["Split Pipeline<br/>(20% Test, 10% Val, 10% Seed, 60% Unlabeled)"]
     B --> C["Huấn Luyện Model V0<br/>(Tập mầm Seed V0)"]
-    C --> D["Đánh Giá Trên Fixed Val<br/>(Kiểm tra 5 Rào Chắn Dừng)"]
-    D -->|Chưa thỏa mãn| E["Uncertainty & Diversity Mining<br/>(Chọn N ảnh khó nhất)"]
-    E --> F["Task Packager Xuất ZIP Ra outbox/<br/>(Option: Clean Images OR Pre-labels conf >= 0.7)"]
-    F --> G["Đội Ngũ Human Annotators<br/>(Kiểm tra, chỉnh sửa, gán nhãn)"]
-    G --> H["Thả file nhãn .zip vào inbox/"]
+    C --> D["Đánh Giá Trên Fixed Val & Frozen Test<br/>(Kiểm tra 5 Rào Chắn Dừng)"]
+    D -->|Chưa thỏa mãn| E["C6 Super-Fusion Mining<br/>(Chọn N ảnh thách thức nhất)"]
+    E --> F["Task Packager & Quality-Gated Policy<br/>(Option: Clean Images HOẶC Pre-labels Conf >= 0.70)"]
+    F --> G["Đội Ngũ Human Annotators Thẩm Định<br/>(Review & Click Accept / Vẽ tay lớp khó)"]
+    G --> H["Thả file nhãn .zip vào inbox/<br/>(100% Nhãn Vàng - Zero Label Noise)"]
     H --> I["Universal ZIP Ingestor<br/>(Unzip, Audit BBox/Seg/Pose, Map O(1))"]
     I --> J["Huấn Luyện Kế Thừa Model Vk+1<br/>(Kế thừa checkpoint vòng trước)"]
     J --> D

@@ -23,7 +23,7 @@ flowchart TD
     subgraph Solution["Lời Giải Data-Centric AI (Proposed Framework)"]
         F["Streaming FastDedup Tại Cạnh Biên (>360 FPS)"] --> G["Multi-Domain Hard-Slice Profiler (Không Cần Nhãn)"]
         G --> H["Active Super-Fusion & Diversity Mining (C6)"]
-        H --> I["Two-Tier HITL Routing (Gợi Ý Tự Động)"]
+        H --> I["Quality-Gated Pre-Labeling & Thẩm Định 100% Nhãn Vàng"]
         I --> J["Tiết Kiệm 40.1% Chi Phí — Vượt Trần 100% Target"]
     end
 
@@ -118,7 +118,7 @@ Trong hệ thống xe tự hành, lỗi nhận diện trên vật thể phổ bi
 
 Hệ sinh thái Active Learning Lab bảo đảm an toàn thông qua 3 trụ cột:
 1. **Không bỏ sót người đi bộ và xe máy ban đêm**: Nhờ thuật toán trích xuất không gian đặc trưng vật lý tự động phân loại ảnh đêm (đạt F1-score 97.12% không cần nhãn), tập huấn luyện chủ động nạp các ca ánh sáng yếu.
-2. **Cơ chế Two-Tier Consensus Oracle**: Phân luồng các mẫu có độ bất định cao về cho chuyên gia con người thẩm định, bảo đảm nhãn vàng đạt tỷ lệ chính xác tuyệt đối.
+2. **Cơ chế Quality-Gated Pre-Labeling & Thẩm Định Nhãn Vàng 100% (Zero Label Noise)**: Khóa box rác ở các lớp điểm liệt, chỉ mở box gợi ý cho lớp đạt chuẩn (giảm 26.67% AER) và bắt buộc con người thẩm định 100% trước khi đưa vào tập huấn luyện tiếp sức.
 3. **Rào chắn dừng tự động 5 tầng (5-Tier Stopping Gates)**: Hệ thống tự động phát hiện khi nào mô hình chạm ngưỡng tri thức bão hòa (Knowledge Saturation) để dừng việc nạp dữ liệu, ngăn ngừa tình trạng trôi dạt tham số (catastrophic forgetting).
 
 ---
@@ -134,10 +134,10 @@ timeline
     Giai Đoạn 4 : Cloud MLOps & HITL Studio : Tích hợp CVAT / LabelStudio : Auto-Retraining CI/CD
 ```
 
-1. **Giai đoạn 1 (Hiện tại - Đã hoàn thành 100%)**: Đối chuẩn khoa học độc lập trên BDD10K, chứng minh hiệu quả thuật toán, thiết lập bộ kiểm toán 72 tests tự động.
+1. **Giai đoạn 1 (Hiện tại - Đã hoàn thành 100%)**: Đối chuẩn khoa học độc lập trên BDD10K, chứng minh hiệu quả thuật toán, thiết lập bộ kiểm toán 79 tests tự động.
 2. **Giai đoạn 2 (Edge Engine Optimization)**: Tối ưu hóa bộ lọc FastDedup bằng C++/Rust và tập lệnh SIMD (NEON/AVX-512) để chạy trên CPU nhúng của camera hành trình với tốc độ >1.000 FPS.
 3. **Giai đoạn 3 (Fleet-to-Cloud Integration)**: Đồng bộ đệm bất định (Uncertainty Buffer) trên xe qua mạng 5G / Wi-Fi Depot về Object Storage (MinIO / AWS S3).
-4. **Giai đoạn 4 (Full Autonomous MLOps)**: Khép kín vòng lặp: Xe gửi ảnh khó $\rightarrow$ Two-Tier Router gợi ý nhãn $\rightarrow$ Chuyên gia kiểm duyệt $\rightarrow$ Model tự động fine-tune và deploy OTA (Over-The-Air) ngược lại đội xe.
+4. **Giai đoạn 4 (Full Autonomous MLOps)**: Khép kín vòng lặp: Xe gửi ảnh khó $\rightarrow$ Quality-Gated Pre-labeling gợi ý nhãn $\rightarrow$ Chuyên gia kiểm duyệt $\rightarrow$ Model tự động fine-tune và deploy OTA (Over-The-Air) ngược lại đội xe.
 
 ---
 

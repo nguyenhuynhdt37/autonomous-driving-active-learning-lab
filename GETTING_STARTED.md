@@ -26,7 +26,7 @@ flowchart TD
     S1["Bước 1: Git Clone Repository"] --> S2["Bước 2: Tạo Môi Trường Ảo & Cài Dependencies"]
     S2 --> S3["Bước 3: Chuẩn Bị Kho Dữ Liệu BDD10K"]
     S3 --> S4["Bước 4: Đồng Bộ Hóa Symlinks Tự Động"]
-    S4 --> S5["Bước 5: Chạy Test Suite Xác Nhận Hệ Thống (72 Tests)"]
+    S4 --> S5["Bước 5: Chạy Test Suite Xác Nhận Hệ Thống (79 Tests)"]
     S5 --> READY["🎉 HỆ THỐNG SẴN SÀNG VẬN HÀNH 100%!"]
 ```
 
@@ -36,8 +36,8 @@ flowchart TD
 Mở terminal và thực hiện clone repo về thư mục làm việc của bạn:
 
 ```bash
-git clone https://github.com/nguyenhuynhdt37/bdd10k-active-learning-ai.git
-cd bdd10k-active-learning-ai
+git clone https://github.com/nguyenhuynhdt37/autonomous-driving-active-learning-lab.git
+cd autonomous-driving-active-learning-lab
 ```
 
 *(Nếu bạn đã clone trước đó, chỉ cần cập nhật code mới nhất):*
@@ -129,15 +129,15 @@ Lệnh này sẽ tự động:
 
 ### Bước 5: Kiểm Toán Tính Sẵn Sàng (Run Verification Test Suite)
 
-Chạy bộ kiểm thử tự động toàn diện gồm **72 Unit Tests**:
+Chạy bộ kiểm thử tự động toàn diện gồm **79 Unit & Integration Tests**:
 
 ```bash
-PYTHONPATH=. .venv/bin/pytest tests/
+PYTHONPATH=. .venv/bin/pytest tests/ -v
 ```
 
 **Kết quả mong đợi:**
 ```text
-============================= 72 passed in 21.xxs ==============================
+============================= 79 passed in 22.xxs ==============================
 ```
 Khi thấy dòng thông báo trên, xin chúc mừng! Máy tính của bạn đã được cấu hình hoàn hảo 100% và sẵn sàng cho mọi tác vụ nghiên cứu hay vận hành.
 

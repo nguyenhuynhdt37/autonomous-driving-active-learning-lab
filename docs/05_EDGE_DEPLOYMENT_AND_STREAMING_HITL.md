@@ -71,16 +71,16 @@ sequenceDiagram
 
     Cloud->>Router: Gửi danh sách Batch K ảnh được chọn bởi C6 Super-Fusion
     Router->>Router: Phân tích độ tin cậy từng Bounding Box
-    alt Tier 1: Box Confidence >= 0.75 (Tự tin cao)
-        Router->>API: Nạp ảnh + Điền sẵn Pre-label BBoxes (Pseudolabels)
-        API->>Annotator: Hiển thị task có sẵn box (Chỉ cần 1-click Approve)
+    alt Tier 1: Box Confidence >= 0.75 & Lớp Đạt Chuẩn (car >= 75%)
+        Router->>API: Nạp ảnh + Điền sẵn Pre-label BBoxes gợi ý
+        API->>Annotator: Hiển thị task có sẵn box (Chỉ cần Review & 1-click Approve)
         Annotator->>API: Xác nhận nhanh (Tiết kiệm 26.67% thời gian)
-    else Tier 2: Box Confidence < 0.75 HOẶC Ca hiểm
-        Router->>API: Nạp ảnh không box + Gắn thẻ cờ đỏ "High Priority Audit"
+    else Tier 2: Box Confidence < 0.75 HOẶC Lớp Điểm Liệt (train, rider, motor...)
+        Router->>API: Nạp ảnh sạch (Gated Blank - Khóa box rác) + Gắn thẻ "High Priority Audit"
         API->>Annotator: Yêu cầu chuyên gia vẽ mới toàn bộ tọa độ
-        Annotator->>API: Vẽ nhãn vàng chuẩn xác
+        Annotator->>API: Vẽ nhãn vàng chuẩn xác 100%
     end
-    API-->>Cloud: Xuất tệp nhãn BDD10K hoàn chỉnh (JSON / YOLO txt)
+    API-->>Cloud: Xuất tệp nhãn BDD10K hoàn chỉnh (100% Nhãn Vàng - Zero Label Noise)
 ```
 
 ### 2.1. Định Tuyến Hai Tầng (Two-Tier Consensus Policy)

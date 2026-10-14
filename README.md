@@ -3,18 +3,18 @@
 ![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![Ultralytics YOLO11n](https://img.shields.io/badge/Ultralytics-YOLO11n-00FFFF?style=for-the-badge&logo=yolo&logoColor=black)
-![Tests Passing](https://img.shields.io/badge/Tests-72%2F72%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)
+![Tests Passing](https://img.shields.io/badge/Tests-79%2F79%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)
 ![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-> **Một khung làm việc Data-Centric AI chuẩn Production**: Kết hợp lọc trùng Perceptual Hash tại cạnh biên (&gt;360 FPS), trích xuất hồ sơ vật lý đa miền không cần nhãn, khai thác tích cực C6 Super-Fusion và định tuyến Human-in-the-Loop hai tầng trên tập dữ liệu xe tự hành **Berkeley DeepDrive (BDD10K)**.
+> **Một khung làm việc Data-Centric AI chuẩn Production**: Kết hợp lọc trùng Perceptual Hash tại cạnh biên (>360 FPS), trích xuất hồ sơ vật lý đa miền không cần nhãn, khai thác tích cực C6 Super-Fusion và chính sách Human-in-the-Loop Quality-Gated Pre-Labeling trên tập dữ liệu xe tự hành **Berkeley DeepDrive (BDD10K)**.
 
 ---
 
-## 👨‍💻 Tác Giả &amp; Bản Quyền Nghiên Cứu
+## 👨‍💻 Tác Giả & Bản Quyền Nghiên Cứu
 
 - **Tác Giả**: Nguyễn Xuân Huỳnh
 - **GitHub**: [@nguyenhuynhdt37](https://github.com/nguyenhuynhdt37)
-- **Định Hướng**: Công bố bài báo khoa học (Scientific Publication) &amp; Khung đối chuẩn MLOps cho hệ thống xe tự hành thực tế.
+- **Định Hướng**: Công bố bài báo khoa học (Scientific Publication) & Khung đối chuẩn MLOps cho hệ thống xe tự hành thực tế.
 
 ---
 
@@ -36,7 +36,7 @@ graph LR
 ```
 
 
-| Tiêu Chí Đánh Giá Vĩ Mô                  | Mốc Đo Lường     | Ghi Chú Bản Án &amp; Giá Trị Khoa Học                               |
+| Tiêu Chí Đánh Giá Vĩ Mô                  | Mốc Đo Lường     | Ghi Chú Bản Án & Giá Trị Khoa Học                               |
 | :---------------------------------------- | :----------------: | :------------------------------------------------------------------- |
 | **Model Mầm V0 Baseline**                | **20.23%**       | Điểm xuất phát chung (500 ảnh mầm phân tầng Hybrid Mix 80/20)       |
 | **Random Baseline Final (V5)**           | **22.90%**       | Nhánh ngẫu nhiên tại cùng mốc 60% ngân sách dữ liệu                 |
@@ -44,7 +44,7 @@ graph LR
 | **Proposed Super-Fusion Final (V5)**     | **27.85%**       | Thành tích chung cuộc của phương pháp đề xuất                       |
 | **Cách biệt vượt trội vs Random V5**     | **+4.95%**       | Minh chứng giá trị vượt bậc của Active Super-Fusion                 |
 | **So sánh với Trần 100% Target**         | **+1.00%**       | Đánh bại trần 100% dữ liệu với ít hơn 2.229 ảnh                     |
-| **Tỷ lệ Tiết kiệm Ngân Sách Nhãn (ROI)** | **40.1%**        | Tiết kiệm trực tiếp ngân sách gán nhãn thực tế (\~$12.000 / chu kỳ) |
+| **Tỷ lệ Tiết kiệm Ngân Sách Nhãn (ROI)** | **40.1%**        | Tiết kiệm trực tiếp ngân sách gán nhãn thực tế (~$12.000 / chu kỳ) |
 | **Bộ rào chắn dừng 5 tầng**              | **ĐẠT (PASSED)** | Tự động niêm phong chiến thắng `VICTORY_CONFIRMED` tại Vòng 5       |
 
 
@@ -67,7 +67,6 @@ Hệ thống tài liệu chuyên sâu được module hóa toàn diện trong th
 | **07. Troubleshooting & Maintenance FAQ**     | Sổ tay xử lý sự cố (OOM, broken symlinks, staled cache), quy trình kiểm toán 100 ảnh ngẫu nhiên, FAQ.                       | [Xem Tài Liệu ➔](docs/07_TROUBLESHOOTING_AND_MAINTENANCE_FAQ.md)   |
 | 🔄 **08. Production Continuous Learning**    | **Vận hành liên tục: Trích xuất tập khó, xuất gói CVAT, nạp nhãn train V2 và 5 rào chắn dừng.**                           | [**Xem Tài Liệu ➔**](docs/08_PRODUCTION_CONTINUOUS_LEARNING_GUIDE.md) |
 
-
 ---
 
 ## 🏛️ Sơ Đồ Luồng Dữ Liệu Toàn Trình (End-to-End Pipeline Flow)
@@ -84,7 +83,7 @@ flowchart TB
     SPLIT --> POOL["Unlabeled Pool (4.394 ảnh)"]
 
     POOL --> C6["4. C6 Super-Fusion Mining Engine<br/>Bất định + Thâm hụt lớp C_w + Submodular 32D"]
-    C6 --> ROUTER["5. Two-Tier HITL Consensus Router<br/>Pre-labeling tự động (Giảm 26.67% công sức)"]
+    C6 --> ROUTER["5. Quality-Gated Pre-labeling & Human Verification<br/>Gợi ý box đạt chuẩn (Giảm 26.67% AER) + 100% Nhãn Vàng"]
     ROUTER --> RETRAIN["6. Continuous Retraining (YOLO11n Cfg-3)<br/>AdamW + Cosine LR + Focal Loss"]
     RETRAIN --> GATES{"Bộ Rào Chắn Dừng 5 Tầng"}
     GATES -->|Tiếp tục| POOL
@@ -111,9 +110,9 @@ flowchart TB
 ### Bước 1: Khởi tạo môi trường ảo và cài đặt thư viện
 
 ```bash
-# Clone dự án và truy cập thư mục gốc
-git clone https://github.com/nguyenhuynhdt37/bdd10k-active-learning-ai.git
-cd tang
+# Clone dự án từ GitHub cá nhân
+git clone https://github.com/nguyenhuynhdt37/autonomous-driving-active-learning-lab.git
+cd autonomous-driving-active-learning-lab
 
 # Khởi tạo virtual environment Python 3.11+
 python3 -m venv .venv
@@ -124,14 +123,14 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Bước 2: Chạy bộ kiểm thử tự động toàn diện (72/72 Tests)
+### Bước 2: Chạy bộ kiểm thử tự động toàn diện (79/79 Tests)
 
 ```bash
 # Xác nhận tính toàn vẹn của mã nguồn và thuật toán
-PYTHONPATH=. pytest tests/
+PYTHONPATH=. pytest tests/ -v
 ```
 
-*Tất cả 72 Unit &amp; Integration tests sẽ vượt qua thành công (`72 passed in ~56s`).*
+*Tất cả 79 Unit & Integration tests sẽ vượt qua thành công (`79 passed in ~22s`).*
 
 ### Bước 3: Chạy quy trình kiểm toán chất lượng dữ liệu $O(1)$
 
@@ -190,17 +189,27 @@ tang/
 │   ├── run_phase_06_model_v1_training.py      # CLI huấn luyện Model V1
 │   └── run_phase_07_autonomous_loop.py        # CLI vòng lặp tự trị toàn trình
 │
-├── tests/                                     # [Bộ kiểm thử tự động 72 Unit & Integration Tests]
+├── tests/                                     # [Bộ kiểm thử tự động 79 Unit & Integration Tests]
 │   ├── test_phase_02_weather_tournament.py
 │   ├── test_phase_03_splits.py
 │   ├── test_phase_04_training.py
 │   ├── test_phase_05_active_mining.py
 │   ├── test_phase_06_model_v1.py
-│   └── test_phase_07_autonomous_loop.py
+│   ├── test_phase_07_autonomous_loop.py
+│   └── test_phase_09_production_hitl.py
 │
 ├── models/                                    # Checkpoints mô hình đã niêm phong (SHA-256)
 ├── results/                                   # Báo cáo, biểu đồ 300 DPI và bảng dữ liệu đối chuẩn
-└── notebooks/                                 # Chuỗi 7 Jupyter Notebooks thực nghiệm trực quan
+└── notebooks/                                 # Chuỗi 9 Jupyter Notebooks thực nghiệm & Production
+    ├── 01_dual_stream_fastdedup_benchmark.ipynb
+    ├── 02_automated_data_profiling_benchmark.ipynb
+    ├── 03_shared_frozen_test_val_splits.ipynb
+    ├── 04_seed_v0_training_ablation.ipynb
+    ├── 05_active_mining_tournament_and_hitl.ipynb
+    ├── 06_model_v1_retraining_and_gold_benchmark.ipynb
+    ├── 07_end_to_end_autonomous_active_loop.ipynb
+    ├── 08_autonomous_pipeline_loop/           # Vòng lặp tự trị nghiên cứu
+    └── 09_production_hitl_pipeline/           # Module Production HITL thực chiến đa tác vụ
 ```
 
 ---
