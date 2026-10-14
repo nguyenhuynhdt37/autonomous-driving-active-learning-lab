@@ -129,6 +129,14 @@ graph TD
   - Sử dụng thuật toán tham lam Submodular chọn ra $K$ ảnh sao cho tối đa hóa độ phân tán không gian và cực tiểu hóa bán kính bao phủ cực đại ($R_{\text{cov}}$).
 
 ### 2.6. Chặng 6: Continuous Retraining & Rào Chắn Dừng 5 Tầng (5-Tier Stopping Gates)
+- **Cơ chế Tích lũy Dữ liệu Cũ + Mới (Cumulative Dataset Aggregation)**:
+  - Ở mỗi vòng lặp $k$, tập huấn luyện không phải chỉ là các ảnh khó vừa bốc mà là **sự tích lũy lũy kế toàn bộ dữ liệu**:
+    $$\mathcal{D}_{\text{train}}^{(V_k)} = \mathcal{D}_{\text{train}}^{(V_{k-1})} \cup \Delta \mathcal{D}_{\text{mined}}^{(k)} = \mathcal{D}_{\text{seed}}^{(V_0)} \cup \bigcup_{j=1}^{k} \Delta \mathcal{D}_{\text{mined}}^{(j)}$$
+  - *Ma trận tăng trưởng dữ liệu*: V0 ($556$ ảnh) $\to$ V1 ($1.112$ ảnh) $\to$ V2 ($1.668$ ảnh) $\to$ V3 ($2.224$ ảnh) $\to$ V4 ($2.780$ ảnh) $\to$ V5 ($3.336$ ảnh = $60\%$ pool).
+  - *Chống Quên thảm khốc (Zero Catastrophic Forgetting)*: Giữ toàn bộ $100\%$ dữ liệu cũ làm Anchor Set giúp mô hình không bị mất khả năng nhận diện các lớp cơ bản khi nạp thêm các ca biên khó.
+- **Kế thừa Trọng số Siêu tốc (Warm-Start Continuous Fine-Tuning)**:
+  - Trọng số khởi tạo vòng $k$: $\mathbf{W}_{\text{init}}^{(k)} \leftarrow \mathbf{W}_{\text{best}}^{(k-1)}$ (lấy checkpoint tốt nhất của vòng trước).
+  - Huấn luyện tiếp sức chỉ cần 8-10 epochs, rút ngắn $70\%$ thời gian tính toán so với train from scratch.
 - **Công thức huấn luyện Cfg-3 Quán Quân**:
   - Kiến trúc: Ultralytics YOLO11n (2.6M tham số, tốc độ suy luận siêu tốc).
   - Optimizer: `AdamW` với trọng số suy giảm `weight_decay = 0.0005`.

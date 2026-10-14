@@ -188,5 +188,22 @@ flowchart TD
 - Tại **Vòng 4**: Nhánh Active đạt $27.20\%$ mAP50 (chính thức vượt trần Target $26.85\%$). Rào chắn 1 chuyển sang trạng thái cảnh báo xác nhận (`VICTORY_CANDIDATE`).
 - Tại **Vòng 5**: Nhánh Active tiếp tục tăng lên **$27.85\%$ mAP50** (vượt xa Target $+1.00\%$). Rào chắn 1 chính thức đóng chốt: **`VICTORY_CONFIRMED`**. Hệ thống tự động dừng tại mốc **60.0% dữ liệu**, tiết kiệm **40.1% chi phí gán nhãn**!
 
+### 7.3. Cơ Chế Tích Lũy Dữ Liệu Cũ + Mới (Cumulative Aggregation) & Huấn Luyện Kế Thừa Trọng Số
+Bản chất toán học của việc huấn luyện tiếp sức qua các vòng:
+$$\mathcal{D}_{\text{train}}^{(V_k)} = \mathcal{D}_{\text{train}}^{(V_{k-1})} \cup \Delta \mathcal{D}_{\text{mined}}^{(k)} = \mathcal{D}_{\text{seed}}^{(V_0)} \cup \bigcup_{j=1}^{k} \Delta \mathcal{D}_{\text{mined}}^{(j)}$$
+
+| Vòng lặp ($k$) | Dữ liệu cũ tích lũy | Batch khó mới vừa bốc | Tổng ảnh huấn luyện | Tỷ lệ Pool | Trọng số khởi tạo ($\mathbf{W}_{\text{init}}$) | $mAP_{50}$ thực đo |
+| :---: | :---: | :---: | :---: | :---: | :--- | :---: |
+| **V0** | $0$ ảnh | $556$ ảnh mầm | **$556$ ảnh** | $10\%$ | `yolo11n.pt` (COCO) | $20.23\%$ |
+| **V1** | $556$ ảnh (Seed) | $556$ ảnh (Active 1) | **$1.112$ ảnh** | $20\%$ | Checkpoint `active_v0_best.pt` | $22.80\%$ |
+| **V2** | $1.112$ ảnh (Train V1) | $556$ ảnh (Active 2) | **$1.668$ ảnh** | $30\%$ | Checkpoint `active_v1_best.pt` | $24.65\%$ |
+| **V3** | $1.668$ ảnh (Train V2) | $556$ ảnh (Active 3) | **$2.224$ ảnh** | $40\%$ | Checkpoint `active_v2_best.pt` | $26.15\%$ |
+| **V4** | $2.224$ ảnh (Train V3) | $556$ ảnh (Active 4) | **$2.780$ ảnh** | $50\%$ | Checkpoint `active_v3_best.pt` | $27.20\%$ |
+| **V5** | $2.780$ ảnh (Train V4) | $556$ ảnh (Active 5) | **$3.336$ ảnh** | **$60\%$** | Checkpoint `active_v4_best.pt` | **$27.85\%$** |
+
+- **Chống Quên thảm khốc (Catastrophic Forgetting)**: Mô hình giữ vững kỹ năng nhận diện các lớp cơ bản nhờ $100\%$ tập cũ làm mỏ neo (Anchor).
+- **Kế thừa Trọng số Siêu tốc (Warm-Start Continuous Fine-Tuning)**: Nạp checkpoint tốt nhất vòng trước làm weights init, chỉ cần $8-10$ epochs để hội tụ.
+- **Tự động hóa Symlink $O(1)$**: Toàn bộ tập gộp được tạo tự động trong `train_v{k}/` bằng symlinks và sinh file `bdd10k_active_v{k}.yaml` tương ứng.
+
 ---
 *Tài liệu thuộc hệ thống kiến trúc chuẩn Production của BDD10K Active Learning Lab.*

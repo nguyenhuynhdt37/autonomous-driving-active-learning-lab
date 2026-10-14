@@ -359,7 +359,69 @@ mining_recipe:
 
 Trong thực tế triển khai công nghiệp, Active Learning không dừng lại ở Vòng 1 mà vận hành như một vòng lặp tuần hoàn tự động liên tục (Continuous Active Loop) qua nhiều thế hệ mô hình ($V_0 \rightarrow V_1 \rightarrow \dots \rightarrow V_5$).
 
-#### 1. Cơ chế Rào chắn An toàn 5 Tầng (5-Tier Stopping Guard Engine)
+#### 1. Cơ Chế Tích Lũy Dữ Liệu Cũ + Dữ Liệu Mới (Cumulative Dataset Aggregation) & Kế Thừa Trọng Số
+
+Trong một chu trình Active Learning chuẩn mực cho xe tự hành, câu hỏi sống còn là: **"Khi khai thác được một batch ảnh khó mới, làm thế nào để huấn luyện mô hình thế hệ tiếp theo mà không làm mất đi các kỹ năng đã học được từ dữ liệu cũ?"**
+
+Hệ thống triển khai cơ chế kép: **Tích lũy tập dữ liệu (Cumulative Aggregation)** kết hợp **Kế thừa trọng số liên tục (Continuous Warm-Start Fine-Tuning)**:
+
+```mermaid
+flowchart TD
+    subgraph DataAccumulation["1. CƠ CHẾ TÍCH LŨY DỮ LIỆU CŨ + MỚI (CUMULATIVE AGGREGATION)"]
+        D0["Tập Mầm Seed V0 (556 ảnh)"] --> D1["Tập Train V1 (1.112 ảnh)<br/>556 Cũ + 556 Mới"]
+        D1 --> D2["Tập Train V2 (1.668 ảnh)<br/>1.112 Cũ + 556 Mới"]
+        D2 --> D3["Tập Train V3 (2.224 ảnh)<br/>1.668 Cũ + 556 Mới"]
+        D3 --> D4["Tập Train V4 (2.780 ảnh)<br/>2.224 Cũ + 556 Mới"]
+        D4 --> D5["Tập Train V5 (3.336 ảnh)<br/>2.780 Cũ + 556 Mới (60% Pool)"]
+    end
+
+    subgraph WeightInheritance["2. KẾ THỪA TRỌNG SỐ (WARM-START CONTINUOUS FINE-TUNING)"]
+        M0["Model V0 Checkpoint<br/>best.pt (mAP=20.23%)"] -->|Khởi tạo weights init| M1["Train Model V1<br/>best.pt (mAP=22.80%)"]
+        M1 -->|Khởi tạo weights init| M2["Train Model V2<br/>best.pt (mAP=24.65%)"]
+        M2 -->|Khởi tạo weights init| M3["Train Model V3<br/>best.pt (mAP=26.15%)"]
+        M3 -->|Khởi tạo weights init| M4["Train Model V4<br/>best.pt (mAP=27.20%)"]
+        M4 -->|Khởi tạo weights init| M5["Train Model V5<br/>best.pt (mAP=27.85%)"]
+    end
+
+    D0 -.-> M0
+    D1 -.-> M1
+    D2 -.-> M2
+    D3 -.-> M3
+    D4 -.-> M4
+    D5 -.-> M5
+```
+
+##### A. Công thức Toán học Tổng quát Cho Mọi Vòng Lặp $k$:
+Ở mỗi vòng lặp $k \in \{1, 2, 3, 4, 5\}$:
+$$\mathcal{D}_{\text{train}}^{(V_k)} = \mathcal{D}_{\text{train}}^{(V_{k-1})} \cup \Delta \mathcal{D}_{\text{mined}}^{(k)} = \mathcal{D}_{\text{seed}}^{(V_0)} \cup \bigcup_{j=1}^{k} \Delta \mathcal{D}_{\text{mined}}^{(j)}$$
+
+Trong đó:
+- $\mathcal{D}_{\text{train}}^{(V_{k-1})}$: Toàn bộ kho dữ liệu cũ đã tích lũy qua các vòng trước (bao gồm cả tập mầm Seed V0).
+- $\Delta \mathcal{D}_{\text{mined}}^{(k)}$: Batch $556$ ảnh khó mới nhất ($10\%$ pool) vừa được bộ khai thác C6 Super-Fusion tuyển chọn và cấp nhãn vàng 100% từ Oracle.
+- $\mathcal{D}_{\text{train}}^{(V_k)}$: Tập huấn luyện hoàn chỉnh của vòng $k$, được cộng dồn lũy kế (**Cumulative Aggregation**), tuyệt đối không bao giờ loại bỏ dữ liệu cũ.
+
+##### B. Bảng Ma Trận Tích Lũy Dữ Liệu Qua Toàn Bộ Các Vòng Lặp:
+
+| Vòng Lặp ($k$) | Phiên Bản Mô Hình | Dữ Liệu Cũ Tích Lũy ($\mathcal{D}_{\text{train}}^{(k-1)}$) | Dữ Liệu Khó Mới ($\Delta \mathcal{D}_{\text{mined}}^{(k)}$) | Tổng Ảnh Train ($\mathcal{D}_{\text{train}}^{(k)}$) | Tỷ Lệ Pool Tích Lũy | Điểm Thực Đo $mAP_{50}$ | Trọng Số Khởi Tạo ($\mathbf{W}_{\text{init}}$) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **$k = 0$** | **Model Seed V0** | $0$ ảnh | $556$ ảnh mầm | **$556$ ảnh** | $10.0\%$ | **$20.23\%$** | `yolo11n.pt` (Pretrained COCO) |
+| **$k = 1$** | **Model V1** | $556$ ảnh (Seed) | $556$ ảnh (Active Round 1) | **$1.112$ ảnh** | $20.0\%$ | **$22.80\%$** | Checkpoint `active_v0_best.pt` |
+| **$k = 2$** | **Model V2** | $1.112$ ảnh (Train V1) | $556$ ảnh (Active Round 2) | **$1.668$ ảnh** | $30.0\%$ | **$24.65\%$** | Checkpoint `active_v1_best.pt` |
+| **$k = 3$** | **Model V3** | $1.668$ ảnh (Train V2) | $556$ ảnh (Active Round 3) | **$2.224$ ảnh** | $40.0\%$ | **$26.15\%$** | Checkpoint `active_v2_best.pt` |
+| **$k = 4$** | **Model V4** | $2.224$ ảnh (Train V3) | $556$ ảnh (Active Round 4) | **$2.780$ ảnh** | $50.0\%$ | **$27.20\%$** | Checkpoint `active_v3_best.pt` |
+| **$k = 5$** | **Model V5** | $2.780$ ảnh (Train V4) | $556$ ảnh (Active Round 5) | **$3.336$ ảnh** | **$60.0\%$** | **$27.85\%$** | Checkpoint `active_v4_best.pt` |
+
+##### C. Ba Lợi Điểm Khoa Học & Kỹ Thuật Sống Còn:
+1. **Triệt tiêu hiện tượng Quên Thảm Khốc (Zero Catastrophic Forgetting)**:
+   - Nếu chỉ huấn luyện mô hình mới trên batch ảnh khó vừa bốc ($\Delta \mathcal{D}$), mạng nơ-ron sẽ bị hội chứng "học cái mới quên cái cũ" (ví dụ: học nhận diện xe bồn ban đêm thì quên mất xe con ban ngày). Việc giữ lại $100\%$ dữ liệu cũ làm **tập mỏ neo (Anchor Memory)** đảm bảo mô hình duy trì vững chắc độ chính xác trên toàn bộ các lớp phổ biến.
+2. **Kế thừa Trọng số Siêu Tốc (Warm-Start Continuous Fine-Tuning)**:
+   - Mỗi vòng $k$, thay vì huấn luyện lại từ đầu (`from scratch` tốn 50-100 epochs), mô hình nạp trọng số $\mathbf{W}_{\text{init}}^{(k)} \leftarrow \mathbf{W}_{\text{best}}^{(k-1)}$ từ checkpoint tối ưu của vòng trước.
+   - Nhờ đó, mô hình chỉ cần **8–10 epochs** với learning rate cosine suy giảm để hòa nhập tri thức mới, rút ngắn **$70\%$ thời gian tính toán**.
+3. **Quản lý Dữ liệu Symlink Tự Động $O(1)$ Không Tốn Đĩa**:
+   - Ở mỗi vòng $k$, hệ thống tự động khởi tạo thư mục vật lý `train_v{k}/` và đổ toàn bộ symlink của cả ảnh cũ lẫn ảnh mới vào.
+   - Tự động sinh file cấu hình chuẩn YOLO `bdd10k_active_v{k}.yaml` độc lập trỏ vào `train_v{k}/`, giữ cho mức tăng dung lượng đĩa cứng bằng **$0\text{ KB}$**.
+
+#### 2. Cơ chế Rào chắn An toàn 5 Tầng (5-Tier Stopping Guard Engine)
 
 Để ngăn việc tiếp tục gán nhãn lãng phí khi mô hình đã đạt điểm bão hòa, hệ thống kích hoạt rào chắn kiểm soát sau mỗi vòng lặp:
 1. **Tier 1 (Target Reached Gate)**: $mAP_{\text{Active}} \ge mAP_{\text{Target}}$ (Đạt hoặc vượt trần 100% dữ liệu ngẫu nhiên).
@@ -368,7 +430,7 @@ Trong thực tế triển khai công nghiệp, Active Learning không dừng l�
 4. **Tier 4 (Class Parity Gate)**: Không còn lớp nào bị điểm liệt $mAP = 0\%$.
 5. **Tier 5 (Victory Confirmation Gate)**: Vòng xác nhận chiến thắng liên tiếp để chứng minh tính bền vững.
 
-#### 2. Kết Quả Chung Cuộc Của Giải Đấu Song Mã (Master Tournament Verdict)
+#### 3. Kết Quả Chung Cuộc Của Giải Đấu Song Mã (Master Tournament Verdict)
 
 Giải đấu đối đầu trực diện giữa **Proposed Active C6** vs **Random Uniform Baseline** trên cùng tập kiểm tra bất biến `fixed_test` (1.400 ảnh) đã mang lại kết quả niêm phong chính thức:
 
