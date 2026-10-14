@@ -118,7 +118,7 @@ flowchart TD
   2. **Lát cắt rung lắc / mờ (`is_blur`)**: Edge-gated Tenengrad + Laplacian Variance $< 120$ + 2D-FFT Power Ratio.
   3. **Lát cắt thời tiết suy giảm (`is_weather_degraded`)**: **C5 Multi-Domain Ensemble Quán quân** kết hợp Dark Channel Prior, Bản đồ truyền dẫn khí quyển $t(x)$, Gradient vệt mưa dốc đứng $75^\circ-90^\circ$ và **Lá chắn Clear Day Guard** (đã triệt tiêu 1.543 ca báo sai trời quang).
   4. **Lát cắt hình học & mật độ (`is_small`, `is_dense`, `is_occlusion`)**: Shannon Scale Entropy, Mật độ không gian, và Đồ thị hướng che khuất Topology Graph $IOA \ge 0.20$.
-- Toàn bộ kết quả được niêm phong vào file: [`data_profiling_manifest.json`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/notebooks/autonomous_pipeline_loop/data/profiling/data_profiling_manifest.json).
+- Toàn bộ kết quả được niêm phong vào file: [`data_profiling_manifest.json`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/data/profiling/data_profiling_manifest.json).
 
 ---
 
@@ -184,4 +184,4 @@ $$S^{(k)}(x_i) = U_i \times \left( \sum_{o \in x_i} C_w^{(k)}(\text{class}_o) \t
   - `figure_07a_active_learning_curve.png`: Đường cong học tập đối đầu Active vs Random vs Target.
   - `figure_07b_dynamic_class_deficit_evolution.png`: Quỹ đạo tăng/giảm của trọng số $C_w$ qua từng vòng.
   - `figure_07c_per_class_gain_breakdown.png`: Mức tăng trưởng mAP chi tiết của 10 lớp BDD10K.
-- Thực thi in-place Notebook [`07_end_to_end_autonomous_active_loop.ipynb`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/notebooks/autonomous_pipeline_loop/07_end_to_end_autonomous_active_loop.ipynb) hiển thị sẵn toàn bộ kết quả.
+- Thực thi in-place Notebook [`07_end_to_end_autonomous_active_loop.ipynb`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/notebooks/08_autonomous_pipeline_loop/07_end_to_end_autonomous_active_loop.ipynb) hiển thị sẵn toàn bộ kết quả.
