@@ -85,11 +85,14 @@ flowchart TB
     SPLIT --> POOL["Unlabeled Pool (4.394 ảnh)"]
 
     POOL --> C6["4. C6 Super-Fusion Mining Engine<br/>Bất định + Thâm hụt lớp C_w + Submodular 32D"]
-    C6 --> ROUTER["5. Quality-Gated Pre-labeling & Human Verification<br/>Gợi ý box đạt chuẩn (Giảm 26.67% AER) + 100% Nhãn Vàng"]
-    ROUTER --> RETRAIN["6. Continuous Retraining (YOLO11n Cfg-3)<br/>AdamW + Cosine LR + Focal Loss"]
+    C6 --> QUEUE["5. Hàng Đợi Ảnh Mới Chuẩn Bị Đưa Vào (Batch k: 556 ảnh)<br/>Oracle cấp 100% Nhãn Vàng (Zero Label Noise)"]
+    OLD_TRAIN["Kho Dữ Liệu Cũ Đã Huấn Luyện D_train(k-1)<br/>(Seed V0 + Toàn bộ các batch Active cũ)"]
+    
+    QUEUE & OLD_TRAIN ==> MERGE["6. Gộp Tích Lũy: D_train(k) = D_train(k-1) ∪ Batch(k)<br/>active_train_accum.extend(act_batch)"]
+    MERGE --> RETRAIN["7. Continuous Retraining (YOLO11n Cfg-3)<br/>Kế thừa checkpoint vòng trước: active_v(k-1)_best.pt (8 epochs)"]
     RETRAIN --> GATES{"Bộ Rào Chắn Dừng 5 Tầng"}
-    GATES -->|Tiếp tục| POOL
-    GATES -->|Dừng tại Vòng 5: mAP 27.85%| VICTORY["7. Niêm Phong Xuất Xưởng (ONNX / TensorRT / OpenVINO INT8)"]
+    GATES -->|Tiếp tục vòng mới: Cập nhật C_w| POOL
+    GATES -->|Dừng tại Vòng 5: mAP 27.85% > Target| VICTORY["8. Niêm Phong Xuất Xưởng (ONNX / OpenVINO INT8 1.6 MB)"]
 
     style RAW fill:#f8f9fa,stroke:#495057,stroke-width:1px
     style FAST fill:#e9ecef,stroke:#495057,stroke-width:1px

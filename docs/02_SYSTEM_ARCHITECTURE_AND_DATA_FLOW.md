@@ -40,13 +40,16 @@ flowchart TB
         HUMAN_VERIFY --> BATCH_K["Batch Bổ Sung K = 250 - 556 ảnh<br/>(100% Nhãn Vàng - Zero Label Noise)"]
     end
 
-    subgraph S6["Chặng 6: Continuous Retraining & 5-Tier Stopping"]
-        BATCH_K --> RETRAIN["Retraining Engine (YOLO11n Cfg-3)<br/>AdamW + Cosine LR + Mosaic + Fl-gamma=1.5"]
-        SEED --> RETRAIN
+    subgraph S6["Chặng 6: Hội Tụ Tích Lũy Dữ Liệu Cũ + Mới & Continuous Retraining"]
+        BATCH_K --> QUEUE["📥 Hàng Đợi Ảnh Mới Chuẩn Bị Đưa Vào (Batch k)<br/>556 ảnh khó nhãn vàng sạch 100%"]
+        OLD_TRAIN["📦 Kho Lưu Trữ Dữ Liệu Cũ Đã Huấn Luyện D_train(k-1)<br/>(Seed V0 + Toàn bộ các batch Active cũ)"]
+        
+        QUEUE & OLD_TRAIN ==> MERGE["🔀 Gộp Tích Lũy: D_train(k) = D_train(k-1) ∪ Batch(k)<br/>active_train_accum.extend(act_batch)"]
+        MERGE --> RETRAIN["Retraining Engine (YOLO11n Cfg-3)<br/>Kế thừa weights vòng trước: active_v(k-1)_best.pt (8 epochs)"]
         RETRAIN --> EVAL["Kiểm Định Độc Lập Trên Fixed Val & Frozen Test"]
         EVAL --> GATES{"Bộ Rào Chắn Dừng 5 Tầng (5-Tier Stopping Gates)"}
-        GATES -->|Chưa thỏa mãn điều kiện dừng| POOL
-        GATES -->|Thỏa mãn Victory / Saturation| DEPLOY["Niêm Phong Checkpoint Xuất Xưởng (ONNX / TensorRT)"]
+        GATES -->|Chưa thỏa mãn: Cập nhật C_w tiếp tục vòng mới| POOL
+        GATES -->|Vòng 5: VICTORY_CONFIRMED (mAP 27.85% > Target)| DEPLOY["Niêm Phong Checkpoint Xuất Xưởng (ONNX / OpenVINO INT8)"]
     end
 
     style S1 fill:#f8f9fa,stroke:#495057,stroke-width:1px

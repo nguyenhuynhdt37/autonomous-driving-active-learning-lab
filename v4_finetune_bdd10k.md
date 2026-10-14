@@ -367,28 +367,23 @@ Hệ thống triển khai cơ chế kép: **Tích lũy tập dữ liệu (Cumula
 
 ```mermaid
 flowchart TD
-    subgraph DataAccumulation["1. CƠ CHẾ TÍCH LŨY DỮ LIỆU CŨ + MỚI (CUMULATIVE AGGREGATION)"]
-        D0["Tập Mầm Seed V0 (556 ảnh)"] --> D1["Tập Train V1 (1.112 ảnh)<br/>556 Cũ + 556 Mới"]
-        D1 --> D2["Tập Train V2 (1.668 ảnh)<br/>1.112 Cũ + 556 Mới"]
-        D2 --> D3["Tập Train V3 (2.224 ảnh)<br/>1.668 Cũ + 556 Mới"]
-        D3 --> D4["Tập Train V4 (2.780 ảnh)<br/>2.224 Cũ + 556 Mới"]
-        D4 --> D5["Tập Train V5 (3.336 ảnh)<br/>2.780 Cũ + 556 Mới (60% Pool)"]
-    end
+    subgraph ActiveLoopCycle ["QUY TRÌNH HỘI TỤ DỮ LIỆU TẠI VÒNG LẶP THỨ k (k = 1 -> 5)"]
+        direction TB
+        
+        subgraph TwoStores ["HAI NGUỒN DỮ LIỆU HỘI TỤ VÀO VÒNG k"]
+            OLD_STORE["📦 KHO LƯU TRỮ ẢNH CŨ ĐÃ HUẤN LUYỆN (train_v_{k-1})<br/>• Vòng 1: 556 ảnh mầm (Seed V0)<br/>• Vòng 2: 1.112 ảnh (train_v1)<br/>• Vòng 3: 1.668 ảnh (train_v2)<br/>• Vòng 4: 2.224 ảnh (train_v3)<br/>• Vòng 5: 2.780 ảnh (train_v4)"]
+            
+            NEW_QUEUE["📥 HÀNG ĐỢI ẢNH MỚI CHUẨN BỊ ĐƯA VÀO (act_batch)<br/>• Đúng 556 ảnh khó nhất vừa bốc từ Unlabeled Pool<br/>• Tuyển chọn bởi C6 Super-Fusion + Facility Location<br/>• Đã nạp đủ 100% nhãn vàng sạch từ Oracle (Zero Noise)"]
+        end
 
-    subgraph WeightInheritance["2. KẾ THỪA TRỌNG SỐ (WARM-START CONTINUOUS FINE-TUNING)"]
-        M0["Model V0 Checkpoint<br/>best.pt (mAP=20.23%)"] -->|Khởi tạo weights init| M1["Train Model V1<br/>best.pt (mAP=22.80%)"]
-        M1 -->|Khởi tạo weights init| M2["Train Model V2<br/>best.pt (mAP=24.65%)"]
-        M2 -->|Khởi tạo weights init| M3["Train Model V3<br/>best.pt (mAP=26.15%)"]
-        M3 -->|Khởi tạo weights init| M4["Train Model V4<br/>best.pt (mAP=27.20%)"]
-        M4 -->|Khởi tạo weights init| M5["Train Model V5<br/>best.pt (mAP=27.85%)"]
+        OLD_STORE & NEW_QUEUE ==> MERGE["🔀 ĐIỂM HỘI TỤ TÍCH LŨY (Cumulative Merge)<br/>active_train_accum.extend(act_batch)<br/>Tập Train Vòng k: train_v{k} = train_v{k-1} ∪ act_batch<br/>• V1: 1.112 | V2: 1.668 | V3: 2.224 | V4: 2.780 | V5: 3.336 ảnh"]
+        
+        MERGE --> SYMLINK["Vật Chất Hóa Symlinks 0 KB đĩa vào active_branch/train_v{k}/<br/>Tự động sinh file cấu hình bdd10k_active_v{k}.yaml"]
+        
+        PREV_CKPT["Checkpoint Tối Ưu Vòng Trước:<br/>active_v(k-1)_best.pt"] --> TRAIN["Huấn Luyện Fine-Tune Kế Thừa Cfg-3 (8 epochs)"]
+        SYMLINK --> TRAIN
+        TRAIN --> NEW_CKPT["Checkpoint Mới Đạt Chuẩn:<br/>active_v(k)_best.pt"]
     end
-
-    D0 -.-> M0
-    D1 -.-> M1
-    D2 -.-> M2
-    D3 -.-> M3
-    D4 -.-> M4
-    D5 -.-> M5
 ```
 
 ##### A. Công thức Toán học Tổng quát Cho Mọi Vòng Lặp $k$:
