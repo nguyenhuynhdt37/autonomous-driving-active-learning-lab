@@ -1,4 +1,4 @@
 # SHA-256 DATASET CHECKSUM SEAL — BDD10K ACTIVE LEARNING LAB PHASE 03
-# Generated: 2026-10-12 02:09:48 UTC
+# Generated: 2026-10-14 15:05:01 UTC
 # Target Splits: fixed_test (1,400), fixed_val (700), seed_v0 (500), unlabeled_pool (4,394)
-98a5b7f7c81bf8724c9f10bfdd309c0f80e5a65686f0c739e7bd4eb4ccd6f3ae  splits_manifest.json
+7e207d51f61846e4092bf37386a2584df78a2189e4d5f5197b6f41109e1640c4  splits_manifest.json

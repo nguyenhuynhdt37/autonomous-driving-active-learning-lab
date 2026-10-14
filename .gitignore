@@ -69,6 +69,7 @@ Thumbs.db
 *.tar
 *.gz
 *.7z
+bdd10k_seeds_and_reports/
 
 # Toàn bộ kho dữ liệu lớn BDD10K (ảnh, json nặng, nhãn)
 data/bdd10k/images/

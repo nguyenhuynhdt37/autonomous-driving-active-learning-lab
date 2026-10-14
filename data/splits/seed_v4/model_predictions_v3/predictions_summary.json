@@ -1,0 +1,55 @@
+{
+  "model_evaluator": "v3",
+  "seed_name": "seed_v4",
+  "num_images": 556,
+  "total_boxes_detected": 4286,
+  "avg_confidence": 0.503,
+  "per_class_detected": {
+    "person": 650,
+    "rider": 412,
+    "car": 727,
+    "truck": 650,
+    "bus": 629,
+    "train": 67,
+    "motor": 329,
+    "bike": 178,
+    "traffic light": 191,
+    "traffic sign": 453
+  },
+  "per_class_tp": {
+    "person": 0,
+    "rider": 0,
+    "car": 1,
+    "truck": 0,
+    "bus": 0,
+    "train": 0,
+    "motor": 0,
+    "bike": 0,
+    "traffic light": 0,
+    "traffic sign": 0
+  },
+  "per_class_fn": {
+    "person": 912,
+    "rider": 50,
+    "car": 5651,
+    "truck": 248,
+    "bus": 90,
+    "train": 2,
+    "motor": 15,
+    "bike": 69,
+    "traffic light": 1490,
+    "traffic sign": 1964
+  },
+  "per_class_fp": {
+    "person": 650,
+    "rider": 412,
+    "car": 726,
+    "truck": 650,
+    "bus": 629,
+    "train": 67,
+    "motor": 329,
+    "bike": 178,
+    "traffic light": 191,
+    "traffic sign": 453
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "seed_name": "seed_v3",
+  "iteration": 3,
+  "target_model": "v3",
+  "evaluated_by_model": "v2",
+  "num_images": 556,
+  "total_gt_boxes": 10714,
+  "total_pred_boxes": 4361,
+  "true_positives": 2,
+  "false_negatives": 10712,
+  "false_positives": 4359,
+  "confusion_pairs_count": 3,
+  "avg_confidence": 0.498,
+  "hard_slices": {
+    "is_night": 238,
+    "is_small_object_slice": 555,
+    "is_high_occlusion": 487,
+    "is_weather_degraded": 290,
+    "is_blur": 138,
+    "is_dense": 361
+  },
+  "top_confusions": [
+    {
+      "pair": "car -> person",
+      "count": 1
+    },
+    {
+      "pair": "car -> bus",
+      "count": 1
+    },
+    {
+      "pair": "car -> rider",
+      "count": 1
+    }
+  ]
+}

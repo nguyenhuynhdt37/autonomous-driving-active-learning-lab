@@ -1,0 +1,52 @@
+{
+  "seed_name": "seed_v4",
+  "iteration": 4,
+  "target_model": "v4",
+  "evaluated_by_model": "v3",
+  "num_images": 556,
+  "total_gt_boxes": 10492,
+  "total_pred_boxes": 4286,
+  "true_positives": 1,
+  "false_negatives": 10491,
+  "false_positives": 4285,
+  "confusion_pairs_count": 10,
+  "avg_confidence": 0.503,
+  "hard_slices": {
+    "is_night": 171,
+    "is_small_object_slice": 556,
+    "is_high_occlusion": 485,
+    "is_weather_degraded": 322,
+    "is_blur": 113,
+    "is_dense": 369
+  },
+  "top_confusions": [
+    {
+      "pair": "car -> rider",
+      "count": 2
+    },
+    {
+      "pair": "car -> truck",
+      "count": 2
+    },
+    {
+      "pair": "car -> motor",
+      "count": 2
+    },
+    {
+      "pair": "car -> bus",
+      "count": 1
+    },
+    {
+      "pair": "traffic sign -> bus",
+      "count": 1
+    },
+    {
+      "pair": "person -> rider",
+      "count": 1
+    },
+    {
+      "pair": "traffic sign -> truck",
+      "count": 1
+    }
+  ]
+}

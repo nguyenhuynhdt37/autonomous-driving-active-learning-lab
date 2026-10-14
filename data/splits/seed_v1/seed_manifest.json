@@ -1,0 +1,56 @@
+{
+  "seed_name": "seed_v1",
+  "iteration": 1,
+  "target_model": "v1",
+  "evaluated_by_model": "v0",
+  "num_images": 556,
+  "total_gt_boxes": 9964,
+  "total_pred_boxes": 4441,
+  "true_positives": 0,
+  "false_negatives": 9964,
+  "false_positives": 4441,
+  "confusion_pairs_count": 11,
+  "avg_confidence": 0.499,
+  "hard_slices": {
+    "is_night": 532,
+    "is_small_object_slice": 553,
+    "is_high_occlusion": 478,
+    "is_weather_degraded": 347,
+    "is_blur": 84,
+    "is_dense": 374
+  },
+  "top_confusions": [
+    {
+      "pair": "car -> bus",
+      "count": 2
+    },
+    {
+      "pair": "car -> traffic light",
+      "count": 2
+    },
+    {
+      "pair": "traffic light -> person",
+      "count": 1
+    },
+    {
+      "pair": "car -> rider",
+      "count": 1
+    },
+    {
+      "pair": "car -> bike",
+      "count": 1
+    },
+    {
+      "pair": "car -> truck",
+      "count": 1
+    },
+    {
+      "pair": "traffic light -> bus",
+      "count": 1
+    },
+    {
+      "pair": "car -> train",
+      "count": 1
+    }
+  ]
+}

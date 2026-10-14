@@ -36,7 +36,7 @@
   "sha256": "10501899d9fd4cd2b5051ed8645915e4e73ef93f83787afac83e17f4ff1827ae",
   "top_k_uncertainty": 0.44,
   "epochs_trained": 1,
-  "duration_sec": 0.01,
+  "duration_sec": 0.0,
   "macro_f1": 31.45,
   "per_class_map50_95": {
     "person": 23.03,

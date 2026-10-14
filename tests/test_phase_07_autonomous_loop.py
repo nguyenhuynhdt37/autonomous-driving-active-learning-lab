@@ -34,7 +34,10 @@ from src.autonomous_loop import (
     clean_bdd10k_caches,
     compute_dynamic_class_deficit_weights,
     compute_file_sha256,
+    SeedMaterializerAndAuditor,
+    _compute_box_iou,
 )
+
 from src.paths import (
     find_project_dir,
     get_bdd10k_dir,
@@ -595,8 +598,106 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
             if f_path.exists():
                 self.assertGreater(f_path.stat().st_size, 1000, f"Biểu đồ {f_name} có kích thước quá nhỏ (< 1KB)!")
 
+    def test_16_seed_materializer_structure_and_symlinks(self):
+        """Kiểm toán cấu trúc vật chất hóa 2 tầng nhãn trong từng seed (data/splits/seed_v{k})."""
+        splits_root = self.project_dir / "data" / "splits"
+        self.assertTrue(splits_root.exists(), "Thư mục data/splits/ phải tồn tại")
+
+        # Kiểm tra seed_v0
+        s0_dir = splits_root / "seed_v0"
+        if s0_dir.exists():
+            self.assertTrue((s0_dir / "images").exists(), "seed_v0/images phải tồn tại")
+            self.assertTrue((s0_dir / "labels").exists(), "seed_v0/labels phải tồn tại")
+            self.assertTrue((s0_dir / "seed_manifest.json").exists(), "seed_v0/seed_manifest.json phải tồn tại")
+            s0_imgs = list((s0_dir / "images").glob("*.jpg"))
+            self.assertIn(len(s0_imgs), [500, 556], f"seed_v0 phải chứa đúng 500 hoặc 556 ảnh, thực tế: {len(s0_imgs)}")
+
+        # Kiểm tra seed_v1 với cấu trúc 2 tầng nhãn
+        s1_dir = splits_root / "seed_v1"
+        if s1_dir.exists():
+            self.assertTrue((s1_dir / "images").exists(), "seed_v1/images phải tồn tại")
+            self.assertTrue((s1_dir / "labels").exists(), "seed_v1/labels phải tồn tại (Nhãn vàng Ground-Truth)")
+            # Tầng nhãn 2: Model Predictions của vòng trước
+            pred_v0_dir = s1_dir / "model_predictions_v0"
+            self.assertTrue(pred_v0_dir.exists(), "seed_v1/model_predictions_v0 phải tồn tại")
+            self.assertTrue((pred_v0_dir / "labels").exists(), "model_predictions_v0/labels phải tồn tại")
+            self.assertTrue((pred_v0_dir / "predictions_summary.json").exists(), "predictions_summary.json phải tồn tại")
+
+            # Đảm bảo nhãn vàng không bị trộn lẫn với nhãn model
+            gt_lbls = list((s1_dir / "labels").glob("*.txt"))
+            pred_lbls = list((pred_v0_dir / "labels").glob("*.txt"))
+            self.assertEqual(len(gt_lbls), 556, f"seed_v1/labels phải có 556 nhãn vàng, thực tế: {len(gt_lbls)}")
+            self.assertEqual(len(pred_lbls), 556, f"seed_v1 model_predictions phải có 556 nhãn detect, thực tế: {len(pred_lbls)}")
+
+    def test_17_iou_matching_and_confusion_matrix(self):
+        """Kiểm toán thuật toán so khớp IoU và phân loại TP, FN, FP, Confusion."""
+        # 1. Kiểm tra hàm _compute_box_iou
+        b1 = [100.0, 100.0, 200.0, 200.0]
+        b2 = [150.0, 150.0, 250.0, 250.0]  # overlap 50x50 = 2500, union = 10000 + 10000 - 2500 = 17500 -> iou = 2500/17500 = 0.1428
+        iou_val = _compute_box_iou(b1, b2)
+        self.assertAlmostEqual(iou_val, 2500.0 / 17500.0, places=3)
+
+        # 2. Kiểm tra so khớp IoU trong SeedMaterializerAndAuditor
+        workspace_mgr = DatasetWorkspaceManager(self.workspace_dir)
+        auditor = SeedMaterializerAndAuditor(workspace_mgr)
+
+        # Mock Ground-Truth: 2 boxes (1 car, 1 rider)
+        gt_boxes = [
+            {"category": "car", "class_id": 2, "xyxy": [100.0, 100.0, 200.0, 200.0]},
+            {"category": "rider", "class_id": 1, "xyxy": [300.0, 300.0, 350.0, 400.0]},
+        ]
+        # Mock Predictions:
+        # - Box 1: car trùng vị trí -> TP
+        # - Box 2: trùng vị trí rider nhưng đoán person -> Confusion (FN cho rider, FP cho person)
+        # - Box 3: ảo giác ngẫu nhiên (FP)
+        pred_boxes = [
+            {"category": "car", "class_id": 2, "confidence": 0.85, "xyxy": [102.0, 98.0, 198.0, 202.0]},
+            {"category": "person", "class_id": 0, "confidence": 0.52, "xyxy": [298.0, 302.0, 352.0, 398.0]},
+            {"category": "truck", "class_id": 3, "confidence": 0.35, "xyxy": [500.0, 500.0, 600.0, 600.0]},
+        ]
+
+        match_res = auditor._match_gt_and_preds(gt_boxes, pred_boxes, iou_thresh=0.45)
+        # TP = 1 (car)
+        self.assertEqual(match_res["per_class_tp"]["car"], 1)
+        # Confusion: rider -> person (1 cặp)
+        self.assertEqual(len(match_res["confusions"]), 1)
+        self.assertEqual(match_res["confusions"][0]["gt_class"], "rider")
+        self.assertEqual(match_res["confusions"][0]["pred_class"], "person")
+        # FN: rider = 1 (do bị nhầm)
+        self.assertEqual(match_res["per_class_fn"]["rider"], 1)
+        # FP: person = 1 (do đoán nhầm sang person), truck = 1 (ảo giác)
+        self.assertEqual(match_res["per_class_fp"]["person"], 1)
+        self.assertEqual(match_res["per_class_fp"]["truck"], 1)
+
+    def test_18_seed_diagnostic_reports_generation(self):
+        """Kiểm toán sự tồn tại và tính đầy đủ của các file báo cáo chẩn đoán tại reports/seeds/."""
+        reports_dir = self.project_dir / "reports" / "seeds"
+        self.assertTrue(reports_dir.exists(), "Thư mục reports/seeds/ phải tồn tại")
+
+        # Kiểm tra đầy đủ 7 báo cáo Markdown
+        expected_reports = [
+            "seed_v0_diagnostic_report.md",
+            "seed_v1_diagnostic_report.md",
+            "seed_v2_diagnostic_report.md",
+            "seed_v3_diagnostic_report.md",
+            "seed_v4_diagnostic_report.md",
+            "seed_v5_diagnostic_report.md",
+            "seeds_summary_and_weakness_evolution.md",
+        ]
+        for rep_name in expected_reports:
+            rep_path = reports_dir / rep_name
+            self.assertTrue(rep_path.exists(), f"Báo cáo {rep_name} phải tồn tại trong reports/seeds/")
+            self.assertGreater(rep_path.stat().st_size, 500, f"Báo cáo {rep_name} không được rỗng (< 500 bytes)")
+
+            with open(rep_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn("BÁO CÁO", content.upper())
+            self.assertIn("SEED", content.upper())
+
+
 
 if __name__ == "__main__":
     unittest.main()
+
 
 

@@ -156,7 +156,9 @@ from .autonomous_loop import (
     ActiveMiningSelector,
     AutonomousLoopOrchestrator,
     compute_dynamic_class_deficit_weights,
+    SeedMaterializerAndAuditor,
 )
+
 
 
 __all__ = [

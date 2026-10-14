@@ -1,0 +1,32 @@
+{
+  "seed_name": "seed_v2",
+  "iteration": 2,
+  "target_model": "v2",
+  "evaluated_by_model": "v1",
+  "num_images": 556,
+  "total_gt_boxes": 10262,
+  "total_pred_boxes": 4427,
+  "true_positives": 0,
+  "false_negatives": 10262,
+  "false_positives": 4427,
+  "confusion_pairs_count": 2,
+  "avg_confidence": 0.502,
+  "hard_slices": {
+    "is_night": 470,
+    "is_small_object_slice": 556,
+    "is_high_occlusion": 471,
+    "is_weather_degraded": 226,
+    "is_blur": 111,
+    "is_dense": 377
+  },
+  "top_confusions": [
+    {
+      "pair": "traffic sign -> bus",
+      "count": 1
+    },
+    {
+      "pair": "car -> truck",
+      "count": 1
+    }
+  ]
+}

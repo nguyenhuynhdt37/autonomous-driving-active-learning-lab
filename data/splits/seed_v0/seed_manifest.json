@@ -1,0 +1,29 @@
+{
+  "seed_name": "seed_v0",
+  "iteration": 0,
+  "role": "Initial Seed Batch for Model V0 Training",
+  "selection_strategy": "Hybrid Mix 80/20 + Group-Aware Video Isolation",
+  "num_images": 500,
+  "total_gt_boxes": 9887,
+  "avg_boxes_per_image": 19.77,
+  "class_distribution": {
+    "person": 771,
+    "rider": 48,
+    "car": 5385,
+    "truck": 220,
+    "bus": 86,
+    "train": 2,
+    "motor": 24,
+    "bike": 65,
+    "traffic light": 1439,
+    "traffic sign": 1847
+  },
+  "hard_slices": {
+    "is_night": 159,
+    "is_small_object_slice": 494,
+    "is_high_occlusion": 451,
+    "is_weather_degraded": 166,
+    "is_blur": 63,
+    "is_dense": 343
+  }
+}

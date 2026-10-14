@@ -37,7 +37,7 @@
       "traffic light": 4090,
       "traffic sign": 5114
     },
-    "elapsed_seconds": 0.294,
+    "elapsed_seconds": 0.292,
     "score_coverage_radius": 100.0,
     "score_facility_location": 99.1911796733977,
     "composite_benchmark_score": 93.59,
@@ -82,7 +82,7 @@
       "traffic light": 4054,
       "traffic sign": 5185
     },
-    "elapsed_seconds": 0.277,
+    "elapsed_seconds": 0.278,
     "score_coverage_radius": 100.0,
     "score_facility_location": 100.0,
     "composite_benchmark_score": 92.75,
@@ -127,7 +127,7 @@
       "traffic light": 4035,
       "traffic sign": 4806
     },
-    "elapsed_seconds": 0.288,
+    "elapsed_seconds": 0.299,
     "score_coverage_radius": 87.97101502004544,
     "score_facility_location": 95.22152286189257,
     "composite_benchmark_score": 89.51,
@@ -172,7 +172,7 @@
       "traffic light": 4294,
       "traffic sign": 5609
     },
-    "elapsed_seconds": 0.063,
+    "elapsed_seconds": 0.059,
     "score_coverage_radius": 92.72738645877507,
     "score_facility_location": 87.18985039046477,
     "composite_benchmark_score": 85.6,
@@ -217,7 +217,7 @@
       "traffic light": 3815,
       "traffic sign": 4669
     },
-    "elapsed_seconds": 0.006,
+    "elapsed_seconds": 0.007,
     "score_coverage_radius": 76.95782365521252,
     "score_facility_location": 65.0,
     "composite_benchmark_score": 79.89,
