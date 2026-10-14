@@ -10,19 +10,21 @@
 
 ```mermaid
 flowchart TD
-    M_PREV["1. Model Hiện Tại V(k-1)\n(models/yolo11n_v1_best.pt)"] --> INFER["2. Inference Quét Unlabeled Pool\n(Tính toán Uncertainty & Vector C_w)"]
-    INFER --> SELECT["3. Trích Xuất Batch Mẫu Khó (250 ảnh)\n(Lưu vào data/splits/seed_vk/images/)"]
+    M_PREV["1. Model Hiện Tại V(k-1)\n(models/yolo11n_v(k-1)_best.pt)"] --> INFER["2. Inference Quét Unlabeled Pool\n(Tính Margin Uncertainty U_i & Vector Thâm Hụt Lớp C_w)"]
+    INFER --> MINING["3. C6 Super-Fusion & Diversity Mining\n(Bốc Batch Mẫu Khó: 250 - 556 ảnh)"]
+    MINING --> PACKAGER["4. Task Packager & Quality-Gated Policy\n(Phân luồng hỗ trợ gán nhãn trên CVAT)"]
     
-    SELECT --> ROUTER{"4. Two-Tier HITL Router"}
-    ROUTER -- "Đồng thuận cao (~30%)" --> AUTO["Tier 1: Gán nhãn tự động\n(Pseudo-labels)"]
-    ROUTER -- "Bất định cao (~70%)" --> EXPORT["Tier 2: Xuất Gói Gán Nhãn\n(tasks_vk.json & labels_pre_yolo.zip)"]
+    PACKAGER --> GATED{"Quality Gate\nClass Precision & Conf >= 0.75?"}
     
-    EXPORT --> CVAT["5. Đội Ngũ Chuyên Gia Gán Nhãn\n(CVAT / Label Studio)"]
-    CVAT --> IMPORT["6. Nhận Nhãn Vàng Trả Về\n(Lưu vào data/splits/seed_vk/labels/)"]
-    AUTO --> IMPORT
+    GATED -- "Tier 1: Lớp đạt chuẩn & Conf >= 0.75\n(vd: car - Giảm 26.67% công sức)" --> PRE_LABEL["Pre-populated Box Gợi Ý\n(Annotator chỉ cần Review & Click Accept)"]
+    GATED -- "Tier 2: Lớp điểm liệt hoặc Conf < 0.75\n(train, rider, motor, bike...)" --> MANUAL["Gated Blank (Khóa Box Rác)\n(Chuyên gia bắt buộc vẽ tay 100%)"]
+    
+    PRE_LABEL & MANUAL --> CVAT["5. Đội Ngũ Chuyên Gia Gán Nhãn Thẩm Định\n(CVAT / Label Studio / Scale AI)"]
+    
+    CVAT --> IMPORT["6. Nhận 100% Nhãn Vàng Đã Duyệt (Zero Label Noise)\n(Lưu vào data/splits/seed_vk/labels/)"]
     
     IMPORT --> PACKAGE["7. Đóng Gói Tích Lũy Train V(k)\n(data/splits/train_vk/ = 500 + 250*k ảnh)\nSinh bdd10k_splits_vk.yaml"]
-    PACKAGE --> TRAIN["8. Huấn Luyện Fine-Tune Kế Thừa\n(weights=models/yolo11n_v(k-1)_best.pt)"]
+    PACKAGE --> TRAIN["8. Huấn Luyện Fine-Tune Kế Thừa Cfg-3\n(weights=models/yolo11n_v(k-1)_best.pt)"]
     
     TRAIN --> EVAL["9. Đánh Giá Trên Frozen Gold Test\n(1.400 ảnh cố định)"]
     EVAL --> GATE{"10. Bộ Rào Chắn Dừng 5 Tầng\n(Đã thỏa mãn điều kiện dừng?)"}
@@ -44,7 +46,7 @@ Khi hệ thống kích hoạt giải thuật **C6 Super-Fusion**, các ảnh đ�
 | **Thư mục ảnh chọn mới** | [`data/splits/seed_v{k}/images/`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/data/splits/) | Chứa các symlink trỏ tới đúng 250 ảnh thách thức nhất của vòng $k$. |
 | **Thư mục nhãn mới** | [`data/splits/seed_v{k}/labels/`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/data/splits/) | Nơi nạp các file `.txt` nhãn sau khi gán nhãn xong. |
 | **Manifest chi tiết vòng $k$** | [`data/splits/manifest_v{k}.yaml`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/data/splits/) | Liệt kê danh sách ảnh, điểm Uncertainty, tag lát cắt, SHA-256. |
-| **Báo cáo phân luồng HITL** | [`results/phase_05/hitl_routing_report.json`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_05/) | Thống kê số lượng Tier 1 (máy tự duyệt) và Tier 2 (gửi người). |
+| **Báo cáo phân luồng HITL** | [`results/phase_05/hitl_routing_report.json`](file:///Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_05/) | Thống kê số lượng Tier 1 (box gợi ý tự tin cao) và Tier 2 (khóa box, vẽ tay thủ công). |
 
 ---
 
@@ -72,9 +74,12 @@ File JSON đặc tả danh sách ảnh và mức độ ưu tiên để nạp và
 }
 ```
 
-### 3.2. File 2: Gói Pre-Annotations Gợi Ý Sẵn (`pre_annotations_v{k}.zip`)
+### 3.2. File 2: Gói Pre-Annotations Gợi Ý Sẵn Theo Chuẩn Quality-Gated Policy (`pre_annotations_v{k}.zip`)
 > [!TIP]
-> **Bí quyết tăng tốc độ gán nhãn gấp 3 đến 5 lần**: Không bắt người gán nhãn vẽ bounding box từ đầu! Hệ thống xuất sẵn các file `.txt` (YOLO format) hoặc `annotations.json` (COCO format) chứa dự đoán sơ bộ của Model $V_{k-1}$. Người gán nhãn chỉ việc mở ra, kiểm tra và chỉnh sửa nhanh những box bị lệch.
+> **Chính sách Pre-labeling Quality-Gated chuẩn công nghiệp**: 
+> - **Chống sinh box rác**: Hệ thống KHÔNG xuất tràn lan dự đoán yếu làm phiền người gán nhãn. Các lớp mô hình chưa thành thạo (`train`, `rider`, `motor`, `bike`) bị **khóa hoàn toàn (Gated Blank)** để chuyên gia vẽ tay từ đầu.
+> - **Tiết kiệm 26.67% công sức (AER)**: Chỉ các lớp mô hình có độ chính xác cao (`car` Precision > 75%) và Confidence $\ge 0.75$ mới được vẽ sẵn hộp gợi ý để người dán nhãn mở ra trên CVAT chỉ việc **Review & Click Accept**.
+> - **Zero Label Noise**: 100% nhãn sau đó đều được con người xác nhận trước khi đưa vào tập huấn luyện tiếp sức, loại bỏ triệt để Confirmation Bias.
 
 ### 3.3. Lệnh CLI Xuất Gói Gán Nhãn:
 ```bash
