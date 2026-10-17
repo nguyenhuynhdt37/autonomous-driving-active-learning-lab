@@ -16,7 +16,7 @@ def update_notebook_05():
 
     cell_0_text = (
         "# 🎯 BDD10K Active Learning Lab — Phase 05: Active Selection Tournament & Quality-Gated Data Curation\n"
-        "> **Dự án**: End-to-End Human-in-the-Loop Active Learning Lab — BDD10K Autonomous Driving Benchmark (Paper V4.0)  \n"
+        "> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  \n"
         "> **Tác giả**: Nguyễn Xuân Huỳnh  \n"
         "> **Repository**: [BuildPhase/tang/paper_v4_10k](https://github.com/nguyenhuynhdt37/plant-disease-detection-ai)  \n"
         "> **Quy chuẩn kiến trúc**: Tuân thủ nghiêm ngặt `AGENTS.md` (Read-Only 100% `data/bdd10k/`, Symlink Materialization 0 KB đĩa, Tra cứu $O(1)$ qua `image_id`, Cấp 100% Nhãn Vàng BDD10K bảo đảm Zero Label Noise).\n\n"

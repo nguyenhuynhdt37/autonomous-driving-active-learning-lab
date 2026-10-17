@@ -64,7 +64,7 @@ def create_phase_06_notebook() -> Path:
     # CELL 1: Tiêu đề & Tổng quan (Markdown)
     # =========================================================================
     add_md("""# 🚀 BDD10K Active Learning Lab — Phase 06: Model-Centric Evolution V1 & Gold Test Benchmark
-> **Dự án**: End-to-End Human-in-the-Loop Active Learning Lab — BDD10K Autonomous Driving Benchmark (Paper V4.0)  
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nguyễn Xuân Huỳnh  
 > **Repository**: [BuildPhase/tang/paper_v4_10k](https://github.com/nguyenhuynhdt37/plant-disease-detection-ai)  
 > **Quy chuẩn kiến trúc**: Tuân thủ nghiêm ngặt `AGENTS.md` (Read-Only 100% `data/bdd10k/`, Đóng băng tuyệt đối 1.400 ảnh Gold Test, Lưu trữ Bảng 10 lớp per-class ra cả Markdown và JSON, Niêm phong mã băm SHA-256).

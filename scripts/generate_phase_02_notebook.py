@@ -66,7 +66,7 @@ def create_phase_02_notebook() -> Path:
     # CELL 1: Tiêu đề & Tổng quan
     # =========================================================================
     add_md("""# 🔬 BDD10K Active Learning Lab — Phase 02: Automated Data Profiling & Multi-Method Hard-Slice Benchmark
-> **Dự án**: End-to-End Human-in-the-Loop Active Learning Lab — BDD10K Autonomous Driving Benchmark  
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nguyễn Xuân Huỳnh  
 > **Kiến trúc tham chiếu**: `v4_finetune_bdd10k.md` (Bước 2 — Automated Data Profiling & Ground-Truth Verification)  
 > **Tuân thủ quy tắc**: `AGENTS.md` (Zero Storage Overhead qua Symlinks, O(1) Metadata Lookup, cấm thư mục thừa)

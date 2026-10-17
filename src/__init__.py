@@ -1,5 +1,5 @@
 """
-paper_v4_10k - Gói mã nguồn phục vụ nghiên cứu BDD10K Active Learning Lab
+paper_v4_10k - Gói mã nguồn phục vụ nghiên cứu BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)
 ========================================================================
 Tác giả: Nguyễn Xuân Huỳnh
 Repository mẫu: https://github.com/nguyenhuynhdt37/plant-disease-detection-ai

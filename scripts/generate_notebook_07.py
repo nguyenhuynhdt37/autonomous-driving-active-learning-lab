@@ -26,6 +26,7 @@ def build_notebook_07() -> dict:
             "# 🏛️ BDD10K V4.0 — PHASE 07: PIPELINE TỰ ĐỘNG HÓA TOÀN TRÌNH\n",
             "## (END-TO-END AUTONOMOUS ACTIVE LOOP TOURNAMENT WITH CONTINUOUS FINE-TUNING & 5-TIER STOPPING GUARD)\n",
             "\n",
+            "> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  \n",
             "> **Tác giả**: Nhóm Nghiên Cứu BDD10K Autonomous Driving Active Learning Lab (Paper V4.0)  \n",
             "> **Workspace Độc Lập**: `notebooks/08_autonomous_pipeline_loop/`  \n",
             "> **Thư Mục Splits Chuẩn Hóa**: `data/splits/autonomous_loop/` (Symlink Materialization 0 KB đĩa)  \n",

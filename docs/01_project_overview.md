@@ -1,7 +1,7 @@
 # Tổng Quan Dự Án: BDD10K Active Learning Lab
 
 > **Mã tài liệu**: `docs/01_project_overview.md`  
-> **Dự án**: BDD10K Active Learning Lab (Hệ Thống Tự Động Hóa Dữ Liệu Thị Giác Xe Tự Hành HITL)  
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Nguồn thực nghiệm gốc**: `/Users/huynh/orca/workspaces/BuildPhase/tang`  
 > **Đối tượng độc giả**: Nhà nghiên cứu, Kỹ sư Thị giác máy tính (CV) và Kiến trúc sư MLOps  
 > **Tác giả / Nhóm nghiên cứu**: T018  

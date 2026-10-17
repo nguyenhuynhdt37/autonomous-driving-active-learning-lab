@@ -58,7 +58,7 @@ def create_phase_03_notebook() -> Path:
     # SECTION 1: Research Objective (Markdown)
     # =========================================================================
     add_md("""# 🏛️ BDD10K Active Learning Lab — Phase 03: Shared Pre-Branching Frozen Test & Val Splits (Tournament Benchmark)
-> **Dự án**: End-to-End Autonomous Driving Active Learning Lab — BDD10K Benchmark (Paper V4.0)  
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nguyễn Xuân Huỳnh  
 > **Quy chuẩn kiến trúc**: Tuân thủ nghiêm ngặt `AGENTS.md` (Read-Only BDD10K, Symlink Materialization 0 KB dung lượng đĩa, $O(1)$ Metadata Lookup, Bắt buộc bảng Per-class 10 lớp)
 

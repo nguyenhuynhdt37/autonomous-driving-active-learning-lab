@@ -70,6 +70,7 @@ def create_phase_07_notebook() -> Path:
 # 🏛️ BDD10K V4.0 — PHASE 07: PIPELINE TỰ ĐỘNG HÓA TOÀN TRÌNH
 ## (END-TO-END AUTONOMOUS ACTIVE LOOP TOURNAMENT WITH CONTINUOUS FINE-TUNING & 5-TIER STOPPING GUARD)
 
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nhóm Nghiên Cứu BDD10K Autonomous Driving Active Learning Lab (Paper V4.0)  
 > **Workspace Độc Lập**: `paper_v4_10k/notebooks/autonomous_pipeline_loop/`  
 > **Bảo Tồn Dữ Liệu**: `data/bdd10k/` Read-Only 100%, bảo toàn nguyên vẹn `paper_v4_10k/data/` (các Phase 01-06).  

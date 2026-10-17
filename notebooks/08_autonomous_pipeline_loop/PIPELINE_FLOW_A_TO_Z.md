@@ -1,6 +1,6 @@
 # 🏛️ TÀI LIỆU KIẾN TRÚC &amp; SƠ ĐỒ LUỒNG TOÀN TRÌNH PHASE 07 (TỪ A ➔ Z)
 
-*(BDD10K Autonomous Driving Active Learning Lab — Paper V4.0)*
+*(BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop))*
 
 ---
 

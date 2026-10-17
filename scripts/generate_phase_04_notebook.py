@@ -68,7 +68,7 @@ def create_phase_04_notebook() -> Path:
     # CELL 1: Tiêu đề & Tổng quan (Markdown)
     # =========================================================================
     add_md("""# 🚗 BDD10K Active Learning Lab — Phase 04: Seed V0 Training & Ablation Tournament
-> **Dự án**: End-to-End Human-in-the-Loop Active Learning Lab — BDD10K Autonomous Driving Benchmark  
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nguyễn Xuân Huỳnh  
 > **Repository**: [BuildPhase/tang/paper_v4_10k](https://github.com/nguyenhuynhdt37/plant-disease-detection-ai)  
 > **Quy chuẩn kiến trúc**: Tuân thủ nghiêm ngặt `AGENTS.md` (Read-Only BDD10K, Zero Data Leakage qua `bdd10k_splits.yaml`, Lưu trữ models lineage chuẩn mực)

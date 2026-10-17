@@ -321,7 +321,7 @@ def run_experiment():
 
     discussion_text = f"""# BÁO CÁO THỰC NGHIỆM ĐỐI CHUẨN KHOA HỌC: PHASE 01 FASTDEDUP
 
-> **Dự án**: BDD10K Active Learning Lab — V4.0 Finetune  
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nguyễn Xuân Huỳnh  
 > **Ngày thực nghiệm**: {time.strftime('%d/%m/%Y %H:%M:%S')}  
 > **Tập dữ liệu**: Berkeley DeepDrive (BDD10K) 1280x720 (7.000 training images, 598 video sequences)  

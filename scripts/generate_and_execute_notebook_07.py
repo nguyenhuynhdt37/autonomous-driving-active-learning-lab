@@ -51,6 +51,7 @@ def build_notebook() -> nbformat.NotebookNode:
     c1 = """# 🏛️ BDD10K V4.0 — PHASE 07: PIPELINE TỰ ĐỘNG HÓA TOÀN TRÌNH
 ## (END-TO-END AUTONOMOUS ACTIVE LOOP TOURNAMENT WITH CONTINUOUS FINE-TUNING & 5-TIER STOPPING GUARD)
 
+> **Dự án**: BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)  
 > **Tác giả**: Nhóm Nghiên Cứu BDD10K Autonomous Driving Active Learning Lab (Paper V4.0)  
 > **Workspace Độc Lập**: `notebooks/08_autonomous_pipeline_loop/`  
 > **Thư Mục Kết Quả Chính Thức**: `results/phase_07/` (Đồng bộ song song với `notebooks/08_autonomous_pipeline_loop/results/`)  
