@@ -1,23 +1,235 @@
 {
-  "phase": "06_model_v1_evolution_and_benchmark",
+  "phase": "06_model_v1_retraining_and_gold_benchmark",
   "status": "COMPLETED_SUCCESS",
-  "elapsed_seconds": 73.22,
+  "evaluation_set": "fixed_test (1,400 images, 28,094 instances)",
   "models_evaluated": {
-    "v0_anchor_map50": 20.23,
-    "random_v1_map50": 3.24,
-    "proposed_v1_map50": 25.48,
-    "delta_map50_gain": 5.25
+    "v0_anchor": {
+      "model_name": "YOLO11n V0 (500 Seed)",
+      "num_train_images": 500,
+      "macro_map50": 19.37,
+      "macro_map90": 2.05,
+      "macro_map50_95": 9.71,
+      "macro_precision": 29.14,
+      "macro_recall": 21.5,
+      "per_class_map50": {
+        "person": 34.35,
+        "rider": 2.78,
+        "car": 57.42,
+        "truck": 17.45,
+        "bus": 17.83,
+        "train": 0.0,
+        "motor": 2.33,
+        "bike": 6.32,
+        "traffic light": 25.59,
+        "traffic sign": 29.58
+      },
+      "per_class_map90": {
+        "person": 0.63,
+        "rider": 0.0,
+        "car": 9.82,
+        "truck": 2.98,
+        "bus": 6.01,
+        "train": 0.0,
+        "motor": 0.0,
+        "bike": 0.0,
+        "traffic light": 0.09,
+        "traffic sign": 0.97
+      },
+      "per_class_precision": {
+        "person": 44.93,
+        "rider": 15.89,
+        "car": 55.66,
+        "truck": 35.4,
+        "bus": 29.28,
+        "train": 0.0,
+        "motor": 0.0,
+        "bike": 20.28,
+        "traffic light": 44.41,
+        "traffic sign": 45.52
+      },
+      "per_class_recall": {
+        "person": 36.6,
+        "rider": 3.53,
+        "car": 57.77,
+        "truck": 21.68,
+        "bus": 28.31,
+        "train": 0.0,
+        "motor": 0.0,
+        "bike": 7.84,
+        "traffic light": 28.63,
+        "traffic sign": 30.66
+      },
+      "per_class_f1": {
+        "person": 40.34,
+        "rider": 5.78,
+        "car": 56.7,
+        "truck": 26.89,
+        "bus": 28.79,
+        "train": 0.0,
+        "motor": 0.0,
+        "bike": 11.31,
+        "traffic light": 34.82,
+        "traffic sign": 36.64
+      },
+      "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v0_best.pt",
+      "sha256": "fe8f63276ad5cacffeecec12c04c59fdb7485e7d9fe94206efdf85db7be03959"
+    },
+    "v1_random": {
+      "model_name": "YOLO11n V1 Random (750 Random)",
+      "num_train_images": 750,
+      "macro_map50": 19.65,
+      "macro_map90": 1.68,
+      "macro_map50_95": 9.65,
+      "macro_precision": 32.48,
+      "macro_recall": 22.96,
+      "per_class_map50": {
+        "person": 33.41,
+        "rider": 4.42,
+        "car": 57.08,
+        "truck": 18.04,
+        "bus": 16.17,
+        "train": 0.0,
+        "motor": 3.37,
+        "bike": 8.06,
+        "traffic light": 26.18,
+        "traffic sign": 29.82
+      },
+      "per_class_map90": {
+        "person": 0.18,
+        "rider": 0.0,
+        "car": 8.7,
+        "truck": 2.36,
+        "bus": 3.8,
+        "train": 0.0,
+        "motor": 0.75,
+        "bike": 0.03,
+        "traffic light": 0.03,
+        "traffic sign": 0.96
+      },
+      "per_class_precision": {
+        "person": 43.1,
+        "rider": 29.05,
+        "car": 47.23,
+        "truck": 33.24,
+        "bus": 26.11,
+        "train": 0.0,
+        "motor": 39.16,
+        "bike": 27.58,
+        "traffic light": 37.75,
+        "traffic sign": 41.53
+      },
+      "per_class_recall": {
+        "person": 36.41,
+        "rider": 2.35,
+        "car": 61.3,
+        "truck": 24.02,
+        "bus": 28.77,
+        "train": 0.0,
+        "motor": 1.27,
+        "bike": 10.21,
+        "traffic light": 32.34,
+        "traffic sign": 32.89
+      },
+      "per_class_f1": {
+        "person": 39.47,
+        "rider": 4.35,
+        "car": 53.36,
+        "truck": 27.89,
+        "bus": 27.37,
+        "train": 0.0,
+        "motor": 2.45,
+        "bike": 14.9,
+        "traffic light": 34.84,
+        "traffic sign": 36.71
+      },
+      "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/runs/yolo11n_v1_random/weights/best.pt",
+      "sha256": "c338b0bbc94d2929365d06a3efb59c663e00a42d351c1433057c6715841b86ba"
+    },
+    "v1_proposed": {
+      "model_name": "YOLO11n V1 Proposed (750 Active)",
+      "num_train_images": 750,
+      "macro_map50": 19.71,
+      "macro_map90": 1.62,
+      "macro_map50_95": 9.59,
+      "macro_precision": 38.82,
+      "macro_recall": 23.54,
+      "per_class_map50": {
+        "person": 33.42,
+        "rider": 6.37,
+        "car": 56.65,
+        "truck": 18.49,
+        "bus": 15.51,
+        "train": 0.0,
+        "motor": 3.36,
+        "bike": 7.28,
+        "traffic light": 26.47,
+        "traffic sign": 29.57
+      },
+      "per_class_map90": {
+        "person": 0.12,
+        "rider": 0.0,
+        "car": 8.67,
+        "truck": 1.35,
+        "bus": 4.54,
+        "train": 0.0,
+        "motor": 0.0,
+        "bike": 0.17,
+        "traffic light": 0.5,
+        "traffic sign": 0.87
+      },
+      "per_class_precision": {
+        "person": 43.85,
+        "rider": 19.07,
+        "car": 50.9,
+        "truck": 33.4,
+        "bus": 22.59,
+        "train": 100.0,
+        "motor": 14.18,
+        "bike": 14.4,
+        "traffic light": 43.73,
+        "traffic sign": 46.09
+      },
+      "per_class_recall": {
+        "person": 35.69,
+        "rider": 7.06,
+        "car": 59.45,
+        "truck": 24.18,
+        "bus": 31.96,
+        "train": 0.0,
+        "motor": 1.27,
+        "bike": 14.38,
+        "traffic light": 30.93,
+        "traffic sign": 30.5
+      },
+      "per_class_f1": {
+        "person": 39.35,
+        "rider": 10.3,
+        "car": 54.84,
+        "truck": 28.05,
+        "bus": 26.47,
+        "train": 0.0,
+        "motor": 2.32,
+        "bike": 14.39,
+        "traffic light": 36.23,
+        "traffic sign": 36.71
+      },
+      "checkpoint_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v1_best.pt",
+      "sha256": "218418b822a11904dbfd89c988a3b87cca5fc0390ca9e57bbcf2ae3465969425"
+    },
+    "delta_map50_vs_random": 0.06,
+    "delta_map50_vs_v0": 0.34,
+    "roi_gain_ratio": 1.21
   },
   "figures": [
-    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_01_active_learning_curve.png",
-    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_02_per_class_map_gain.png",
-    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_03_training_loss_convergence.png",
-    "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/figures/fig_phase06_04_data_efficiency_roi.png"
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/figures/fig_phase06_01_active_learning_curve.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/figures/fig_phase06_02_per_class_map_gain.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/figures/fig_phase06_03_training_loss_convergence.png",
+    "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/figures/fig_phase06_04_data_efficiency_roi.png"
   ],
   "tables": {
-    "markdown": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/tables/per_class_model_v1_comparison.md",
-    "json": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/results/phase_06/tables/per_class_model_v1_comparison.json"
-  },
-  "checkpoint": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/yolo11n_v1_best.pt",
-  "lineage": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/models/models_lineage.json"
+    "macro_markdown": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/tables/macro_comparison_table.md",
+    "macro_json": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/tables/macro_comparison_table.json",
+    "per_class_markdown": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/tables/per_class_model_v1_comparison.md",
+    "per_class_json": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/phase_06/tables/per_class_model_v1_comparison.json"
+  }
 }

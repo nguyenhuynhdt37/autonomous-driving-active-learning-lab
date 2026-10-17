@@ -1,0 +1,1 @@
+/Users/huynh/orca/workspaces/BuildPhase/tang/data/bdd10k/labels/train/015fe6c9-e880c0d7.txt

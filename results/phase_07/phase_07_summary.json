@@ -1,0 +1,43 @@
+{
+  "phase": "07_end_to_end_autonomous_active_loop",
+  "status": "COMPLETED_VERIFIED",
+  "evaluation_protocol": "Frozen Gold Test (1,400 images, 28,094 instances, Zero Video Overlap)",
+  "unique_pool_size": 6994,
+  "splits_distribution": {
+    "fixed_test": 1400,
+    "fixed_val": 700,
+    "initial_unlabeled_bank": 4894,
+    "seed_v0": 979,
+    "unlabeled_pool": 3915,
+    "batch_size_k": 250
+  },
+  "metrics_evaluated": [
+    "mAP@50",
+    "mAP@50:95",
+    "Precision",
+    "Recall",
+    "F1-Score",
+    "CF-Score"
+  ],
+  "stopping_guard_protocol": {
+    "all_front_victory_criteria": "Active v\u01b0\u1ee3t Random tr\u00ean to\u00e0n b\u1ed9 6/6 metrics",
+    "confirmation_round": "Ch\u1ea1y th\u00eam k+1 v\u00f2ng \u0111\u1ec3 ki\u1ec3m tra \u0111\u00e0 t\u0103ng tr\u01b0\u1edfng",
+    "plateau_saturation_stop": "D\u1eebng ngay l\u1eadp t\u1ee9c khi Delta Gain <= Epsilon"
+  },
+  "v0_anchor_model": {
+    "model_name": "YOLO11n V0 Baseline (979 Seed)",
+    "num_train_images": 979,
+    "macro_map50": 20.23,
+    "macro_map50_95": 9.87,
+    "macro_precision": 53.09,
+    "macro_recall": 22.14,
+    "macro_f1": 31.27,
+    "macro_cfscore": 0.177
+  },
+  "publication_figures": [
+    "figure_07a_active_learning_curve.png",
+    "figure_07b_per_class_radar_and_gain.png",
+    "figure_07c_hard_slices_quota_evolution.png",
+    "figure_07d_stopping_guard_delta_dynamics.png"
+  ]
+}

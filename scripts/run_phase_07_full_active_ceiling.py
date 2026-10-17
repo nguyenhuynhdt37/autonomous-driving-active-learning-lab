@@ -46,6 +46,7 @@ except ImportError:
 from src.autonomous_loop import (
     BDD10K_CLASS_NAMES,
     clean_all_caches,
+    compute_cf_score,
     compute_file_sha256,
 )
 from src.paths import get_phase07_workspace_dir
@@ -364,6 +365,12 @@ names:
     full_active_md = tables_dir / "per_class_full_active_100pct.md"
     full_active_json = tables_dir / "per_class_full_active_100pct.json"
 
+    macro_cfscore = compute_cf_score(macro_map50, macro_map50_95, macro_rec)
+    per_class_cfscore = {
+        c: compute_cf_score(per_class_map50.get(c, 0.0), per_class_map50_95.get(c, 0.0), per_class_recall.get(c, 0.0))
+        for c in BDD10K_CLASS_NAMES
+    }
+
     # Lưu JSON
     full_active_dict = {
         "model": "full_active_100pct_best",
@@ -374,12 +381,14 @@ names:
         "macro_precision": macro_prec,
         "macro_recall": macro_rec,
         "macro_f1": macro_f1,
+        "macro_cfscore": macro_cfscore,
         "sha256": sha256,
         "per_class_map50": per_class_map50,
         "per_class_map50_95": per_class_map50_95,
         "per_class_precision": per_class_precision,
         "per_class_recall": per_class_recall,
         "per_class_f1": per_class_f1,
+        "per_class_cfscore": per_class_cfscore,
     }
     with open(full_active_json, "w", encoding="utf-8") as f:
         json.dump(full_active_dict, f, indent=2)
@@ -394,18 +403,19 @@ names:
         f"- **Macro Precision**: {macro_prec:.2f}%",
         f"- **Macro Recall**: {macro_rec:.2f}%",
         f"- **Macro F1-Score**: **{macro_f1:.2f}%**",
+        f"- **Macro CF-Score**: **{macro_cfscore:.2f}**",
         f"- **Checkpoint SHA-256**: `{sha256}`",
         "",
-        "| Class Index | Class | mAP@50 (%) | mAP@50-95 (%) | Precision (%) | Recall (%) | F1-Score (%) |",
-        "|:---:|:---|:---:|:---:|:---:|:---:|:---:|",
+        "| Class Index | Class | mAP@50 (%) | mAP@50-95 (%) | Precision (%) | Recall (%) | F1-Score (%) | CF-Score |",
+        "|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|",
     ]
     for idx, cname in enumerate(BDD10K_CLASS_NAMES):
         md_lines.append(
             f"| {idx} | **{cname}** | {per_class_map50[cname]:.2f}% | {per_class_map50_95[cname]:.2f}% | "
-            f"{per_class_precision[cname]:.2f}% | {per_class_recall[cname]:.2f}% | **{per_class_f1[cname]:.2f}%** |"
+            f"{per_class_precision[cname]:.2f}% | {per_class_recall[cname]:.2f}% | **{per_class_f1[cname]:.2f}%** | **{per_class_cfscore[cname]:.2f}** |"
         )
     md_lines.extend([
-        f"| - | **MACRO AVERAGE** | **{macro_map50:.2f}%** | **{macro_map50_95:.2f}%** | **{macro_prec:.2f}%** | **{macro_rec:.2f}%** | **{macro_f1:.2f}%** |",
+        f"| - | **MACRO AVERAGE** | **{macro_map50:.2f}%** | **{macro_map50_95:.2f}%** | **{macro_prec:.2f}%** | **{macro_rec:.2f}%** | **{macro_f1:.2f}%** | **{macro_cfscore:.2f}** |",
         "",
     ])
     with open(full_active_md, "w", encoding="utf-8") as f:

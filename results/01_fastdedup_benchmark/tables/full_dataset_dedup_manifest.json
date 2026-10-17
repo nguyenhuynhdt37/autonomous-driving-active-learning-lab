@@ -4,19 +4,19 @@
   "unique_count": 6994,
   "duplicate_count": 6,
   "duplicate_ratio_percent": 0.09,
-  "elapsed_seconds": 11.161,
-  "throughput_fps": 627.21,
+  "elapsed_seconds": 11.233,
+  "throughput_fps": 623.15,
   "ablation_retention": {
     "Keep-Most-Vehicles (Proposed)": {
       "total_vehicles": 81,
       "small_vehicles": 55,
       "occluded_vehicles": 69,
       "by_class": {
-        "bike": 1,
-        "motor": 0,
-        "truck": 2,
         "car": 78,
-        "bus": 0
+        "bus": 0,
+        "bike": 1,
+        "truck": 2,
+        "motor": 0
       },
       "num_kept_images": 6
     },
@@ -25,11 +25,11 @@
       "small_vehicles": 47,
       "occluded_vehicles": 61,
       "by_class": {
-        "bike": 1,
-        "motor": 0,
-        "truck": 2,
         "car": 68,
-        "bus": 1
+        "bus": 1,
+        "bike": 1,
+        "truck": 2,
+        "motor": 0
       },
       "num_kept_images": 6
     },
@@ -38,11 +38,11 @@
       "small_vehicles": 48,
       "occluded_vehicles": 63,
       "by_class": {
-        "bike": 1,
-        "motor": 0,
-        "truck": 2,
         "car": 70,
-        "bus": 1
+        "bus": 1,
+        "bike": 1,
+        "truck": 2,
+        "motor": 0
       },
       "num_kept_images": 6
     }

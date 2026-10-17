@@ -1,0 +1,1008 @@
+{
+  "benchmark_name": "Autonomous Driving Optical Robustness Benchmark",
+  "total_pairs": 100,
+  "total_positives": 50,
+  "total_negatives": 50,
+  "pairs": [
+    {
+      "pair_id": "pos_1",
+      "img1_name": "00202076-7a95b4e3.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00202076-7a95b4e3.jpg",
+      "img2_name": "00202076-7a95b4e3_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00202076-7a95b4e3_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_2",
+      "img1_name": "000f157f-dab3a407.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-dab3a407.jpg",
+      "img2_name": "000f157f-dab3a407_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/000f157f-dab3a407_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_3",
+      "img1_name": "0010bf16-a457685b.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0010bf16-a457685b.jpg",
+      "img2_name": "0010bf16-a457685b_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0010bf16-a457685b_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_4",
+      "img1_name": "0000f77c-6257be58.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-6257be58.jpg",
+      "img2_name": "0000f77c-6257be58_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0000f77c-6257be58_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_5",
+      "img1_name": "002cd38e-ebe888e1.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002cd38e-ebe888e1.jpg",
+      "img2_name": "002cd38e-ebe888e1_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002cd38e-ebe888e1_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_6",
+      "img1_name": "002b485a-3f6603f2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-3f6603f2.jpg",
+      "img2_name": "002b485a-3f6603f2_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002b485a-3f6603f2_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_7",
+      "img1_name": "000e0252-8523a4a9.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000e0252-8523a4a9.jpg",
+      "img2_name": "000e0252-8523a4a9_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/000e0252-8523a4a9_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_8",
+      "img1_name": "0028cbbf-92f30408.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0028cbbf-92f30408.jpg",
+      "img2_name": "0028cbbf-92f30408_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0028cbbf-92f30408_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_9",
+      "img1_name": "00268999-9f6d5823.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-9f6d5823.jpg",
+      "img2_name": "00268999-9f6d5823_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00268999-9f6d5823_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_10",
+      "img1_name": "000f157f-37797ff9.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-37797ff9.jpg",
+      "img2_name": "000f157f-37797ff9_pert_motion_blur.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/000f157f-37797ff9_pert_motion_blur.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "motion_blur"
+    },
+    {
+      "pair_id": "pos_11",
+      "img1_name": "002ab96a-a96704f9.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002ab96a-a96704f9.jpg",
+      "img2_name": "002ab96a-a96704f9_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002ab96a-a96704f9_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_12",
+      "img1_name": "002cd38e-c7defded.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002cd38e-c7defded.jpg",
+      "img2_name": "002cd38e-c7defded_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002cd38e-c7defded_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_13",
+      "img1_name": "00091078-59817bb0.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-59817bb0.jpg",
+      "img2_name": "00091078-59817bb0_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-59817bb0_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_14",
+      "img1_name": "002ab96a-ea678692.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002ab96a-ea678692.jpg",
+      "img2_name": "002ab96a-ea678692_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002ab96a-ea678692_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_15",
+      "img1_name": "00091078-f32de4d2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-f32de4d2.jpg",
+      "img2_name": "00091078-f32de4d2_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-f32de4d2_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_16",
+      "img1_name": "00067cfb-e535423e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-e535423e.jpg",
+      "img2_name": "00067cfb-e535423e_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00067cfb-e535423e_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_17",
+      "img1_name": "00091078-7cff8ea6.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-7cff8ea6.jpg",
+      "img2_name": "00091078-7cff8ea6_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-7cff8ea6_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_18",
+      "img1_name": "002827ad-8748e2fb.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002827ad-8748e2fb.jpg",
+      "img2_name": "002827ad-8748e2fb_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002827ad-8748e2fb_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_19",
+      "img1_name": "0001542f-5ce3cf52.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0001542f-5ce3cf52.jpg",
+      "img2_name": "0001542f-5ce3cf52_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0001542f-5ce3cf52_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_20",
+      "img1_name": "000f157f-30b30f5e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-30b30f5e.jpg",
+      "img2_name": "000f157f-30b30f5e_pert_exposure_shift.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/000f157f-30b30f5e_pert_exposure_shift.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "exposure_shift"
+    },
+    {
+      "pair_id": "pos_21",
+      "img1_name": "00232de3-19eca24a.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00232de3-19eca24a.jpg",
+      "img2_name": "00232de3-19eca24a_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00232de3-19eca24a_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_22",
+      "img1_name": "00202076-9eaa8e42.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00202076-9eaa8e42.jpg",
+      "img2_name": "00202076-9eaa8e42_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00202076-9eaa8e42_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_23",
+      "img1_name": "00268999-cb063914.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-cb063914.jpg",
+      "img2_name": "00268999-cb063914_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00268999-cb063914_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_24",
+      "img1_name": "00067cfb-f1b91e3c.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-f1b91e3c.jpg",
+      "img2_name": "00067cfb-f1b91e3c_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00067cfb-f1b91e3c_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_25",
+      "img1_name": "0024b742-83709bd4.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0024b742-83709bd4.jpg",
+      "img2_name": "0024b742-83709bd4_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0024b742-83709bd4_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_26",
+      "img1_name": "002b562f-e0ac84fe.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b562f-e0ac84fe.jpg",
+      "img2_name": "002b562f-e0ac84fe_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002b562f-e0ac84fe_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_27",
+      "img1_name": "0004974f-05e1c285.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0004974f-05e1c285.jpg",
+      "img2_name": "0004974f-05e1c285_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0004974f-05e1c285_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_28",
+      "img1_name": "00225f53-67614580.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-67614580.jpg",
+      "img2_name": "00225f53-67614580_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00225f53-67614580_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_29",
+      "img1_name": "0008a165-c48f4b3e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0008a165-c48f4b3e.jpg",
+      "img2_name": "0008a165-c48f4b3e_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0008a165-c48f4b3e_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_30",
+      "img1_name": "001c5339-08faca55.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-08faca55.jpg",
+      "img2_name": "001c5339-08faca55_pert_jpeg_compression.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/001c5339-08faca55_pert_jpeg_compression.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "jpeg_compression"
+    },
+    {
+      "pair_id": "pos_31",
+      "img1_name": "00268999-a4b8e39d.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-a4b8e39d.jpg",
+      "img2_name": "00268999-a4b8e39d_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00268999-a4b8e39d_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_32",
+      "img1_name": "00067cfb-5443fe39.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-5443fe39.jpg",
+      "img2_name": "00067cfb-5443fe39_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00067cfb-5443fe39_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_33",
+      "img1_name": "00091078-84635cf2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-84635cf2.jpg",
+      "img2_name": "00091078-84635cf2_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-84635cf2_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_34",
+      "img1_name": "00211b17-ad3e206b.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00211b17-ad3e206b.jpg",
+      "img2_name": "00211b17-ad3e206b_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00211b17-ad3e206b_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_35",
+      "img1_name": "000d35d3-41990aa4.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000d35d3-41990aa4.jpg",
+      "img2_name": "000d35d3-41990aa4_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/000d35d3-41990aa4_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_36",
+      "img1_name": "00091078-875c1f73.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-875c1f73.jpg",
+      "img2_name": "00091078-875c1f73_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-875c1f73_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_37",
+      "img1_name": "0000f77c-cb820c98.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-cb820c98.jpg",
+      "img2_name": "0000f77c-cb820c98_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0000f77c-cb820c98_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_38",
+      "img1_name": "00091078-c1d32eea.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-c1d32eea.jpg",
+      "img2_name": "00091078-c1d32eea_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-c1d32eea_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_39",
+      "img1_name": "00207869-902288d1.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00207869-902288d1.jpg",
+      "img2_name": "00207869-902288d1_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00207869-902288d1_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_40",
+      "img1_name": "002685b6-856c17f7.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002685b6-856c17f7.jpg",
+      "img2_name": "002685b6-856c17f7_pert_sensor_noise.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/002685b6-856c17f7_pert_sensor_noise.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "sensor_noise"
+    },
+    {
+      "pair_id": "pos_41",
+      "img1_name": "00207869-046fa443.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00207869-046fa443.jpg",
+      "img2_name": "00207869-046fa443_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00207869-046fa443_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_42",
+      "img1_name": "00225f53-4200bde2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-4200bde2.jpg",
+      "img2_name": "00225f53-4200bde2_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00225f53-4200bde2_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_43",
+      "img1_name": "0000f77c-62c2a288.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-62c2a288.jpg",
+      "img2_name": "0000f77c-62c2a288_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/0000f77c-62c2a288_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_44",
+      "img1_name": "001c5339-13a07470.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-13a07470.jpg",
+      "img2_name": "001c5339-13a07470_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/001c5339-13a07470_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_45",
+      "img1_name": "00067cfb-5adfaaa7.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-5adfaaa7.jpg",
+      "img2_name": "00067cfb-5adfaaa7_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00067cfb-5adfaaa7_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_46",
+      "img1_name": "001bad4e-2fa8f3b6.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001bad4e-2fa8f3b6.jpg",
+      "img2_name": "001bad4e-2fa8f3b6_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/001bad4e-2fa8f3b6_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_47",
+      "img1_name": "00134776-9123d227.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00134776-9123d227.jpg",
+      "img2_name": "00134776-9123d227_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00134776-9123d227_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_48",
+      "img1_name": "000f8d37-d4c09a0f.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f8d37-d4c09a0f.jpg",
+      "img2_name": "000f8d37-d4c09a0f_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/000f8d37-d4c09a0f_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_49",
+      "img1_name": "00091078-cedbfea7.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-cedbfea7.jpg",
+      "img2_name": "00091078-cedbfea7_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00091078-cedbfea7_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "pos_50",
+      "img1_name": "00268999-0b20ef00.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-0b20ef00.jpg",
+      "img2_name": "00268999-0b20ef00_pert_mild_crop.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/results/01_fastdedup_benchmark/tables/perturbed_samples/00268999-0b20ef00_pert_mild_crop.jpg",
+      "label": 1,
+      "pair_type": "positive",
+      "perturbation": "mild_crop"
+    },
+    {
+      "pair_id": "neg_1",
+      "img1_name": "00067cfb-5443fe39.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-5443fe39.jpg",
+      "img2_name": "001c5339-08faca55.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-08faca55.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_2",
+      "img1_name": "0028cbbf-92f30408.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0028cbbf-92f30408.jpg",
+      "img2_name": "002b485a-d1301c7c.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-d1301c7c.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_3",
+      "img1_name": "0024b742-acbed4fb.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0024b742-acbed4fb.jpg",
+      "img2_name": "002cd38e-c7defded.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002cd38e-c7defded.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_4",
+      "img1_name": "00134776-9123d227.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00134776-9123d227.jpg",
+      "img2_name": "00091078-84635cf2.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-84635cf2.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_5",
+      "img1_name": "00225f53-4200bde2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-4200bde2.jpg",
+      "img2_name": "000f157f-37797ff9.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-37797ff9.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_6",
+      "img1_name": "0010bf16-a457685b.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0010bf16-a457685b.jpg",
+      "img2_name": "002685b6-856c17f7.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002685b6-856c17f7.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_7",
+      "img1_name": "000f157f-dab3a407.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-dab3a407.jpg",
+      "img2_name": "001c5339-13a07470.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-13a07470.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_8",
+      "img1_name": "00067cfb-caba8a02.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-caba8a02.jpg",
+      "img2_name": "000f157f-30b30f5e.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-30b30f5e.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_9",
+      "img1_name": "0024b742-acbed4fb.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0024b742-acbed4fb.jpg",
+      "img2_name": "000f8d37-d4c09a0f.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f8d37-d4c09a0f.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_10",
+      "img1_name": "001c5339-9a6cdd3e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-9a6cdd3e.jpg",
+      "img2_name": "00211b17-ad3e206b.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00211b17-ad3e206b.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_11",
+      "img1_name": "00268999-9f6d5823.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-9f6d5823.jpg",
+      "img2_name": "002b485a-3f6603f2.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-3f6603f2.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_12",
+      "img1_name": "0000f77c-6257be58.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-6257be58.jpg",
+      "img2_name": "0028cbbf-92f30408.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0028cbbf-92f30408.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_13",
+      "img1_name": "002b485a-3f6603f2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-3f6603f2.jpg",
+      "img2_name": "002b485a-d1301c7c.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-d1301c7c.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_14",
+      "img1_name": "00091078-84635cf2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-84635cf2.jpg",
+      "img2_name": "00091078-875c1f73.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-875c1f73.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_15",
+      "img1_name": "000f157f-30b30f5e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-30b30f5e.jpg",
+      "img2_name": "002b562f-e0ac84fe.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b562f-e0ac84fe.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_16",
+      "img1_name": "001bad4e-2fa8f3b6.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001bad4e-2fa8f3b6.jpg",
+      "img2_name": "00268999-a4b8e39d.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-a4b8e39d.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_17",
+      "img1_name": "001bad4e-2fa8f3b6.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001bad4e-2fa8f3b6.jpg",
+      "img2_name": "00268999-cb063914.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-cb063914.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_18",
+      "img1_name": "0010bf16-a457685b.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0010bf16-a457685b.jpg",
+      "img2_name": "00067cfb-5adfaaa7.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-5adfaaa7.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_19",
+      "img1_name": "002b562f-e0ac84fe.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b562f-e0ac84fe.jpg",
+      "img2_name": "002685b6-856c17f7.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002685b6-856c17f7.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_20",
+      "img1_name": "00268999-a4b8e39d.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-a4b8e39d.jpg",
+      "img2_name": "00134776-9123d227.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00134776-9123d227.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_21",
+      "img1_name": "00202076-9eaa8e42.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00202076-9eaa8e42.jpg",
+      "img2_name": "0010bf16-9ee17cd9.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0010bf16-9ee17cd9.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_22",
+      "img1_name": "0004974f-05e1c285.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0004974f-05e1c285.jpg",
+      "img2_name": "002ab96a-a96704f9.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002ab96a-a96704f9.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_23",
+      "img1_name": "00067cfb-5443fe39.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-5443fe39.jpg",
+      "img2_name": "00134776-9123d227.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00134776-9123d227.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_24",
+      "img1_name": "002ab96a-ea678692.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002ab96a-ea678692.jpg",
+      "img2_name": "00268999-9f6d5823.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-9f6d5823.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_25",
+      "img1_name": "0000f77c-62c2a288.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-62c2a288.jpg",
+      "img2_name": "000f157f-dab3a407.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-dab3a407.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_26",
+      "img1_name": "002b562f-e0ac84fe.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b562f-e0ac84fe.jpg",
+      "img2_name": "0004974f-05e1c285.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0004974f-05e1c285.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_27",
+      "img1_name": "000e0252-8523a4a9.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000e0252-8523a4a9.jpg",
+      "img2_name": "002b485a-d1301c7c.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-d1301c7c.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_28",
+      "img1_name": "000e0252-8523a4a9.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000e0252-8523a4a9.jpg",
+      "img2_name": "0000f77c-62c2a288.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-62c2a288.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_29",
+      "img1_name": "000d35d3-41990aa4.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000d35d3-41990aa4.jpg",
+      "img2_name": "00131ea7-624f538d.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00131ea7-624f538d.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_30",
+      "img1_name": "000f8d37-d4c09a0f.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f8d37-d4c09a0f.jpg",
+      "img2_name": "002b485a-d1301c7c.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002b485a-d1301c7c.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_31",
+      "img1_name": "00091078-cedbfea7.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-cedbfea7.jpg",
+      "img2_name": "00268999-a4b8e39d.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00268999-a4b8e39d.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_32",
+      "img1_name": "00091078-84635cf2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-84635cf2.jpg",
+      "img2_name": "0028cbbf-92f30408.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0028cbbf-92f30408.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_33",
+      "img1_name": "001c5339-9a6cdd3e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-9a6cdd3e.jpg",
+      "img2_name": "000e0252-8523a4a9.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000e0252-8523a4a9.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_34",
+      "img1_name": "0008a165-c48f4b3e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0008a165-c48f4b3e.jpg",
+      "img2_name": "00067cfb-f1b91e3c.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-f1b91e3c.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_35",
+      "img1_name": "00225f53-67614580.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-67614580.jpg",
+      "img2_name": "00225f53-4200bde2.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-4200bde2.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_36",
+      "img1_name": "000f8d37-d4c09a0f.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f8d37-d4c09a0f.jpg",
+      "img2_name": "000d35d3-41990aa4.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000d35d3-41990aa4.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_37",
+      "img1_name": "0000f77c-cb820c98.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-cb820c98.jpg",
+      "img2_name": "00091078-7cff8ea6.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-7cff8ea6.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_38",
+      "img1_name": "00225f53-4200bde2.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-4200bde2.jpg",
+      "img2_name": "00202076-9eaa8e42.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00202076-9eaa8e42.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_39",
+      "img1_name": "002cd38e-ebe888e1.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/002cd38e-ebe888e1.jpg",
+      "img2_name": "00091078-59817bb0.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-59817bb0.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_40",
+      "img1_name": "0000f77c-cb820c98.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-cb820c98.jpg",
+      "img2_name": "00091078-cedbfea7.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-cedbfea7.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_41",
+      "img1_name": "0000f77c-6257be58.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0000f77c-6257be58.jpg",
+      "img2_name": "001c5339-13a07470.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/001c5339-13a07470.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_42",
+      "img1_name": "00054602-3bf57337.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00054602-3bf57337.jpg",
+      "img2_name": "000f157f-30b30f5e.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-30b30f5e.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_43",
+      "img1_name": "00202076-7a95b4e3.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00202076-7a95b4e3.jpg",
+      "img2_name": "00207869-046fa443.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00207869-046fa443.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_44",
+      "img1_name": "0028cbbf-92f30408.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0028cbbf-92f30408.jpg",
+      "img2_name": "00232de3-19eca24a.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00232de3-19eca24a.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_45",
+      "img1_name": "00067cfb-f1b91e3c.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-f1b91e3c.jpg",
+      "img2_name": "00225f53-67614580.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-67614580.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_46",
+      "img1_name": "00207869-902288d1.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00207869-902288d1.jpg",
+      "img2_name": "00225f53-4200bde2.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-4200bde2.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_47",
+      "img1_name": "00067cfb-e535423e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00067cfb-e535423e.jpg",
+      "img2_name": "00225f53-4200bde2.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00225f53-4200bde2.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_48",
+      "img1_name": "00054602-3bf57337.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00054602-3bf57337.jpg",
+      "img2_name": "00202076-9eaa8e42.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00202076-9eaa8e42.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_49",
+      "img1_name": "0008a165-c48f4b3e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0008a165-c48f4b3e.jpg",
+      "img2_name": "00091078-7cff8ea6.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/00091078-7cff8ea6.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    },
+    {
+      "pair_id": "neg_50",
+      "img1_name": "000f157f-30b30f5e.jpg",
+      "img1_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/000f157f-30b30f5e.jpg",
+      "img2_name": "0024b742-acbed4fb.jpg",
+      "img2_path": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0024b742-acbed4fb.jpg",
+      "label": 0,
+      "pair_type": "negative",
+      "perturbation": "different_scene"
+    }
+  ]
+}

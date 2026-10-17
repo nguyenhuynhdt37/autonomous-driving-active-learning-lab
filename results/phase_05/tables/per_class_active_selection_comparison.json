@@ -1,0 +1,58 @@
+{
+  "C1_RandomSampling": {
+    "strategy": "C1_RandomSampling",
+    "num_selected": 250,
+    "truck": 91,
+    "bus": 39,
+    "motor": 9,
+    "bike": 30,
+    "rider": 21,
+    "train": 0,
+    "total_rare": 190,
+    "total_all": 4538,
+    "cps": 0.76,
+    "r_cov": 5.8557
+  },
+  "C2_TopK_PureUncertainty": {
+    "strategy": "C2_TopK_PureUncertainty",
+    "num_selected": 250,
+    "truck": 89,
+    "bus": 45,
+    "motor": 8,
+    "bike": 51,
+    "rider": 25,
+    "train": 2,
+    "total_rare": 220,
+    "total_all": 5717,
+    "cps": 0.88,
+    "r_cov": 7.4832
+  },
+  "C3_PureCoreSet_KCenter": {
+    "strategy": "C3_PureCoreSet_KCenter",
+    "num_selected": 250,
+    "truck": 113,
+    "bus": 35,
+    "motor": 24,
+    "bike": 70,
+    "rider": 47,
+    "train": 3,
+    "total_rare": 292,
+    "total_all": 5059,
+    "cps": 1.168,
+    "r_cov": 3.1574
+  },
+  "C4_Super_Fusion_Architecture": {
+    "strategy": "C4_Super_Fusion_Architecture",
+    "num_selected": 250,
+    "truck": 122,
+    "bus": 88,
+    "motor": 89,
+    "bike": 192,
+    "rider": 155,
+    "train": 9,
+    "total_rare": 655,
+    "total_all": 4409,
+    "cps": 2.62,
+    "r_cov": 6.4457
+  }
+}

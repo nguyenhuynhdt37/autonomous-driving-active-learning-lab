@@ -132,3 +132,51 @@ Mọi quy trình phân chia dữ liệu cho bài toán Active Learning trong d�
 ## 12. Kỷ Luật Dọn Dẹp Cache Tự Động (Zero Stale Cache Discipline)
 - Sau bất kỳ thao tác huấn luyện hoặc đánh giá nào của Ultralytics/PyTorch, lập tức quét và xóa sạch mọi file `*.cache` trong toàn bộ repo (`data/bdd10k/`, `paper_v4_10k/data/`).
 - Tuyệt đối không để rò rỉ bất kỳ file `.cache` nào vào thư mục gốc `data/bdd10k/` (bảo toàn nguyên tắc Read-Only 100%).
+
+---
+
+## 13. Bản Chất Phase 02: Công Xưởng Sinh Metadata & Giải Đấu Thuật Toán So Khớp Ground-Truth
+> [!IMPORTANT]
+> Phase 02 KHÔNG PHẢI là thống kê mô tả chung chung hay vẽ biểu đồ tĩnh, mà là **Công xưởng viết Metadata hồ sơ định lượng cho từng ảnh** (`data_profiling_manifest.json`):
+1. **Bản chất Sinh Metadata Từng Mẫu**: Mỗi ảnh trong Unique Pool (6.994 ảnh) phải được định danh và gán nhãn thuộc tính cụ thể (`is_night`, `is_blur`, `is_weather`, `is_high_occ`, `is_small_slice`, `is_dense`).
+2. **Đấu Trường Thực Nghiệm Đối Đầu (Algorithm Tournament)**:
+   - Với mỗi thuộc tính (Sub-Point), tuyệt đối không áp đặt một thuật toán chủ quan.
+   - Luôn thiết lập giải đấu đối đầu song song giữa các thuật toán đối chứng (Baselines) và phương pháp cải tiến (Proposed):
+     + *Point 2.1 (Ban đêm)*: RGB Mean vs Otsu Thresholding vs **Quán Quân YCbCr P50 (Median)** (F1 = 97.12%, triệt tiêu 100% lóa đèn pha xe đối diện).
+     + *Point 2.2 (Mờ & Rung xóc)*: Laplacian Variance vs Tenengrad Gradient vs **Quán Quân Tenengrad + 2D-FFT Radial Slope** (F1 = 100% trên tập Huỳnh Audit, bắt trọn rung xóc thân xe ID 11 & 12).
+     + *Point 2.3 (Khí quyển sương mù)*: Kênh Tối Cắt Bỏ vs He et al. Dark Channel Prior vs **Quán Quân DCP + Clear Day Guard** (F1 = 31.03%, triệt tiêu 971 cảnh báo giả trên đường nhựa tối màu ban ngày).
+     + *Point 2.4 (Che khuất cao)*: Naive 2D BBox IoU vs IoMin Ratio vs **Quán Quân Directed Overlap DAG y_bottom** (F1 = 93.80%, vượt +36.05% F1 trên 70.091 hộp nhãn gốc BDD10K).
+     + *Point 2.5 (Mật độ & Đa thang đo)*: Đếm hộp thô vs **Quán Quân Shannon Scale Entropy + Density Guard** (F1 = 95.40%, phân lập chính xác cảnh kẹt xe đô thị).
+3. **Hệ Thống So Khớp Ground-Truth Kép (Ground-Truth Cross-Verification)**:
+   - *Trục Khách quan BDD10K*: Đọc trực tiếp từ `data/bdd10k/bdd10k_metadata.json` (Read-Only $O(1)$) qua các trường `timeofday`, `weather`, và các bounding boxes có thuộc tính `occluded: true` để tính Precision, Recall, F1 và Quota Error thực.
+   - *Trục Mắt Người Độc Lập*: Tập kiểm toán độc lập 100 mẫu (Nguyễn Xuân Huỳnh Audit) để bắt các lỗi thị giác thực tế ngoài nhãn gốc (như rung xóc gờ giảm tốc).
+4. **Căn Cứ Khoa Học Bất Biến Cho Phase 03**:
+   - Toàn bộ kết quả thuật toán Quán Quân được đóng dấu và xuất bản vào `data_profiling_manifest.json`.
+   - File manifest này là **căn cứ khoa học duy nhất và bắt buộc** để Phase 03 bốc mẫu phân tầng 500 ảnh `seed_v0` (35% Đêm, 20% Nhỏ, 20% Che, 25% Ngày theo Rule 8) và bảo toàn tính cô lập tuyệt đối Zero Data Leakage cho `fixed_test` (1.400 ảnh) và `fixed_val` (700 ảnh).
+5. **Cơ Cấu Lưu Trữ & Tra Cứu Thư Viện 100 Mẫu Kiểm Toán Mắt Người**:
+   - Bảng manifest kiểm toán mờ độc lập (`results/phase_02/tables/human_blur_ground_truth_manifest.json`) lưu trữ 100 mẫu dưới cấu trúc chuẩn với key chính là `candidates` (gồm các trường `id`, `image_name`, `laplacian_var`, `tenengrad`, `fft_energy_slope`, `human_label`, `is_blur_ground_truth`, `notes`).
+   - Mọi script và frontend controller khi load dữ liệu bắt buộc phải trích xuất đúng key `candidates` để đảm bảo nạp và render đầy đủ 100/100 mẫu ảnh kiểm toán mắt người thực tế kèm bộ ba chỉ số quang học.
+
+---
+
+## 14. Kỷ Luật Thiết Kế UI & Video Simulator Kế Thừa Chuẩn GreenSM Nordic Editorial
+> [!TIP]
+> Tiêu chuẩn giao diện và trình mô phỏng trực quan hóa phục vụ bảo vệ đồ án và xuất bản báo cáo:
+1. **Thanh Lọc 100% Emoji Dạng AI (Zero AI Emoji Discipline)**:
+   - Nghiêm cấm hoàn toàn các biểu tượng emoji phong cách chatbot AI (`✨`, `🚀`, `🎯`, `💡`, `🔍`, `🔥`...) trên toàn bộ giao diện HTML, JS và Markdown báo cáo.
+   - Bắt buộc 100% sử dụng icon SVG nét mảnh chuẩn Lucide Icons (`stroke-width: 1.5 - 2px`).
+2. **Hệ Thống Màu & Bố Cục Chuẩn GreenSM Nordic Editorial**:
+   - Màu nền giấy ấm: `#F8F7F2` (Paper Warm), Thẻ nội dung: `#FFFFFF` (Surface White), Viền phân cách: `#E5E3DC` (Subtle Border).
+   - Màu nhận diện thương hiệu nghiên cứu: Xanh rừng sâu `#2D5A34` (Forest Green), Xanh bạc hà nhẹ `#E8F0EA` (Mint Light) và Viền bạc hà `#CDE0D1`.
+   - Typography: Font chữ hiện đại, trang nhã (Inter / Be Vietnam Pro / Editorial Sans) kết hợp JetBrains Mono / Courier New cho mã code và số liệu kỹ thuật.
+3. **Kiến Trúc Video Simulator Split View Đồng Bộ Thời Gian Thực**:
+   - Trình phát video chuẩn Master MP4 (1280x720 @ 30 FPS, H.264/AAC, bitrate tối ưu < 2MB).
+   - Bố cục Split View 2 cột: Cột trái phát Video trực quan hóa luồng dữ liệu (Dataflow Animation); Cột phải là Bảng Telemetry Live tự động cập nhật trạng thái chặng, thuật toán, FPS, và mã giả theo sự kiện `timeupdate` của video.
+   - Tích hợp 4 Stage Pills cho phép người xem click nhảy trực tiếp (`currentTime`) đến từng chặng trong video.
+4. **Chuẩn Giọng Đọc Thuyết Minh (Audio Voice Standard)**:
+   - Giọng thuyết minh video mô phỏng đồng bộ thống nhất xuyên suốt các Point: Bắt buộc sử dụng **Microsoft Edge TTS `vi-VN-HoaiMyNeural` (Natural Voice, tốc độ `rate=+5%`)**.
+   - Nội dung thuyết minh phải súc tích, mạch lạc, phát âm chuẩn thuật ngữ kỹ thuật, đồng bộ chính xác với timeline của từng chặng.
+5. **Kỷ Luật Viền Thẻ Card (Zero Clunky Directional Borders Discipline)**:
+   - **Tuyệt đối nghiêm cấm**: Sử dụng các class viền một cạnh dày 4px như `border-l-4`, `border-r-4`, `border-t-4`, `border-b-4` kết hợp màu đậm trên các thẻ card bo góc (`rounded-xl`, `rounded-2xl`). Cơ chế render CSS trên góc bo tròn sẽ làm lộ ra các vệt cong màu lem nhem, méo mó ở cạnh viền ngoài.
+   - **Bắt buộc 100%**: Sử dụng viền đồng nhất 1px nhẹ nhàng (`border border-[#E5E3DC]` hoặc `border border-[#ECEAE2]`) bao quanh toàn bộ thẻ card theo chuẩn GreenSM Nordic Editorial.
+   - **Phân định danh mục**: Sử dụng tag pill thanh lịch (`px-2 py-0.5 rounded-md text-[10px] font-mono`), màu sắc chữ tiêu đề hoặc icon SVG Lucide bên trong, tuyệt đối không dùng viền biên dày để làm điểm nhấn.

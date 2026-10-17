@@ -169,7 +169,20 @@ def get_models_dir() -> Path:
 
 def get_phase07_workspace_dir() -> Path:
     """Trả về đường dẫn tới workspace tự quản độc lập Phase 07 (notebooks/autonomous_pipeline_loop/)."""
-    d = find_project_dir() / "notebooks" / "autonomous_pipeline_loop"
+    project_dir = find_project_dir()
+    d = project_dir / "notebooks" / "autonomous_pipeline_loop"
+    if d.exists():
+        return d
+    cand = project_dir / "notebooks" / "08_autonomous_pipeline_loop"
+    if cand.exists():
+        return cand
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def get_autonomous_splits_dir() -> Path:
+    """Trả về đường dẫn thư mục splits chuẩn hóa cho Autonomous Active Loop (data/splits/autonomous_loop/)."""
+    d = get_splits_dir() / "autonomous_loop"
     d.mkdir(parents=True, exist_ok=True)
     return d
 

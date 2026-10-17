@@ -1,0 +1,778 @@
+{
+  "total_candidate_pairs": 34,
+  "candidates": [
+    {
+      "pair_id": 1,
+      "video_id": "012a9c41",
+      "img1": "012a9c41-69222e1b.jpg",
+      "img2": "012a9c41-edad898c.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/012a9c41-69222e1b.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/012a9c41-edad898c.jpg",
+      "distances": {
+        "pHash": 4.0,
+        "aHash": 0.0,
+        "dHash": 1.0,
+        "ResNet50": 0.0394
+      },
+      "flagged_by": [
+        "pHash",
+        "aHash",
+        "dHash",
+        "ResNet50"
+      ],
+      "initial_prediction": "Duplicate",
+      "human_label": "Near-duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "Xe dừng bãi đỗ, có thêm 1 người đi bộ bước vào khung hình (Ảnh A có 16 obj, Ảnh B có 15 obj). Giữ ảnh có người.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 2,
+      "video_id": "0573f031",
+      "img1": "0573f031-e8244dd0.jpg",
+      "img2": "0573f031-fe89a0d4.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0573f031-e8244dd0.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0573f031-fe89a0d4.jpg",
+      "distances": {
+        "pHash": 24.0,
+        "aHash": 3.0,
+        "dHash": 22.0,
+        "ResNet50": 0.3822
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Xe đang di chuyển, góc quay khác.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 3,
+      "video_id": "06ac7da9",
+      "img1": "06ac7da9-81ae9c1c.jpg",
+      "img2": "06ac7da9-b4b26aa1.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/06ac7da9-81ae9c1c.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/06ac7da9-b4b26aa1.jpg",
+      "distances": {
+        "pHash": 0.0,
+        "aHash": 0.0,
+        "dHash": 0.0,
+        "ResNet50": 0.0112
+      },
+      "flagged_by": [
+        "pHash",
+        "aHash",
+        "dHash",
+        "ResNet50"
+      ],
+      "initial_prediction": "Duplicate",
+      "human_label": "Duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "Dừng đèn đỏ ban ngày, bất biến 100% từng pixel (HD=0).",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 4,
+      "video_id": "08688b9f",
+      "img1": "08688b9f-4e2c11c8.jpg",
+      "img2": "08688b9f-cdfc0599.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08688b9f-4e2c11c8.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08688b9f-cdfc0599.jpg",
+      "distances": {
+        "pHash": 16.0,
+        "aHash": 3.0,
+        "dHash": 25.0,
+        "ResNet50": 0.2166
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Hai khung hình khác biệt hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 5,
+      "video_id": "08b02c82",
+      "img1": "08b02c82-0039a14a.jpg",
+      "img2": "08b02c82-5551b303.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08b02c82-0039a14a.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08b02c82-5551b303.jpg",
+      "distances": {
+        "pHash": 14.0,
+        "aHash": 3.0,
+        "dHash": 23.0,
+        "ResNet50": 0.262
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Xe đang di chuyển.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 6,
+      "video_id": "08ef9f76",
+      "img1": "08ef9f76-37ebfa18.jpg",
+      "img2": "08ef9f76-886d0493.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08ef9f76-37ebfa18.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08ef9f76-886d0493.jpg",
+      "distances": {
+        "pHash": 20.0,
+        "aHash": 4.0,
+        "dHash": 29.0,
+        "ResNet50": 0.399
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Hai khung hình khác biệt.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 7,
+      "video_id": "08ffb626",
+      "img1": "08ffb626-02eb6a44.jpg",
+      "img2": "08ffb626-1c25b2a4.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08ffb626-02eb6a44.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/08ffb626-1c25b2a4.jpg",
+      "distances": {
+        "pHash": 30.0,
+        "aHash": 4.0,
+        "dHash": 30.0,
+        "ResNet50": 0.2735
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Hai khung hình khác biệt.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 8,
+      "video_id": "09ac7416",
+      "img1": "09ac7416-34ea8581.jpg",
+      "img2": "09ac7416-74752083.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ac7416-34ea8581.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ac7416-74752083.jpg",
+      "distances": {
+        "pHash": 0.0,
+        "aHash": 0.0,
+        "dHash": 4.0,
+        "ResNet50": 0.0196
+      },
+      "flagged_by": [
+        "pHash",
+        "aHash",
+        "dHash",
+        "ResNet50"
+      ],
+      "initial_prediction": "Duplicate",
+      "human_label": "Near-duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "Xe dừng, xuất hiện thêm 1 người đi bộ thứ hai (từ 7 lên 8 obj). Giữ ảnh 8 obj.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 9,
+      "video_id": "09ac7416",
+      "img1": "09ac7416-76fb4b2c.jpg",
+      "img2": "09ac7416-e1082bec.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ac7416-76fb4b2c.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ac7416-e1082bec.jpg",
+      "distances": {
+        "pHash": 4.0,
+        "aHash": 3.0,
+        "dHash": 6.0,
+        "ResNet50": 0.0523
+      },
+      "flagged_by": [
+        "pHash",
+        "aHash"
+      ],
+      "initial_prediction": "Duplicate",
+      "human_label": "Near-duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "Xe dừng, xe phía trước nhích nhẹ 1 chút xíu.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 10,
+      "video_id": "09ae119b",
+      "img1": "09ae119b-eb13907f.jpg",
+      "img2": "09ae119b-f7f6ef39.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ae119b-eb13907f.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ae119b-f7f6ef39.jpg",
+      "distances": {
+        "pHash": 24.0,
+        "aHash": 4.0,
+        "dHash": 29.0,
+        "ResNet50": 0.2561
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 11,
+      "video_id": "09ae119b",
+      "img1": "09ae119b-f7f6ef39.jpg",
+      "img2": "09ae119b-f8e3d19d.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ae119b-f7f6ef39.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/09ae119b-f8e3d19d.jpg",
+      "distances": {
+        "pHash": 22.0,
+        "aHash": 3.0,
+        "dHash": 28.0,
+        "ResNet50": 0.5313
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 12,
+      "video_id": "0a19489c",
+      "img1": "0a19489c-120e718b.jpg",
+      "img2": "0a19489c-498fdc3f.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0a19489c-120e718b.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0a19489c-498fdc3f.jpg",
+      "distances": {
+        "pHash": 14.0,
+        "aHash": 3.0,
+        "dHash": 13.0,
+        "ResNet50": 0.1485
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 13,
+      "video_id": "0a7cbfc6",
+      "img1": "0a7cbfc6-469c9037.jpg",
+      "img2": "0a7cbfc6-c83c2cde.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0a7cbfc6-469c9037.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0a7cbfc6-c83c2cde.jpg",
+      "distances": {
+        "pHash": 22.0,
+        "aHash": 4.0,
+        "dHash": 27.0,
+        "ResNet50": 0.3437
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 14,
+      "video_id": "0b8b0111",
+      "img1": "0b8b0111-01aac1a5.jpg",
+      "img2": "0b8b0111-a5a06f63.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0b8b0111-01aac1a5.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0b8b0111-a5a06f63.jpg",
+      "distances": {
+        "pHash": 22.0,
+        "aHash": 4.0,
+        "dHash": 30.0,
+        "ResNet50": 0.2567
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 15,
+      "video_id": "0ce5101a",
+      "img1": "0ce5101a-08b03d25.jpg",
+      "img2": "0ce5101a-39704188.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0ce5101a-08b03d25.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0ce5101a-39704188.jpg",
+      "distances": {
+        "pHash": 0.0,
+        "aHash": 0.0,
+        "dHash": 2.0,
+        "ResNet50": 0.0065
+      },
+      "flagged_by": [
+        "pHash",
+        "aHash",
+        "dHash",
+        "ResNet50"
+      ],
+      "initial_prediction": "Duplicate",
+      "human_label": "Duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "Xe dừng trước vạch giao lộ ban ngày, trùng tuyệt đối HD=0.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 16,
+      "video_id": "0d13ae3d",
+      "img1": "0d13ae3d-208a0cdb.jpg",
+      "img2": "0d13ae3d-f033a349.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0d13ae3d-208a0cdb.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0d13ae3d-f033a349.jpg",
+      "distances": {
+        "pHash": 24.0,
+        "aHash": 4.0,
+        "dHash": 33.0,
+        "ResNet50": 0.3102
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 17,
+      "video_id": "0d65d38e",
+      "img1": "0d65d38e-35d14713.jpg",
+      "img2": "0d65d38e-866f8386.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0d65d38e-35d14713.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0d65d38e-866f8386.jpg",
+      "distances": {
+        "pHash": 28.0,
+        "aHash": 13.0,
+        "dHash": 15.0,
+        "ResNet50": 0.045
+      },
+      "flagged_by": [
+        "ResNet50"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "ResNet50 báo nhầm: Tương đồng ngữ nghĩa nhưng xe đã chạy sang đoạn đường mới.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 18,
+      "video_id": "0dffa115",
+      "img1": "0dffa115-191d4e50.jpg",
+      "img2": "0dffa115-8a64b65d.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0dffa115-191d4e50.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/0dffa115-8a64b65d.jpg",
+      "distances": {
+        "pHash": 18.0,
+        "aHash": 3.0,
+        "dHash": 26.0,
+        "ResNet50": 0.3204
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Khác nhau hoàn toàn.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 19,
+      "video_id": "11502c6d",
+      "img1": "11502c6d-b66f8ffa.jpg",
+      "img2": "11502c6d-f4834c96.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11502c6d-b66f8ffa.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11502c6d-f4834c96.jpg",
+      "distances": {
+        "pHash": 12.0,
+        "aHash": 12.0,
+        "dHash": 8.0,
+        "ResNet50": 0.0499
+      },
+      "flagged_by": [
+        "ResNet50"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "ResNet50 báo nhầm: Xe đã rẽ qua giao lộ khác.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 20,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-0a765996.jpg",
+      "img2": "11dc1774-3e573074.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-0a765996.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-3e573074.jpg",
+      "distances": {
+        "pHash": 16.0,
+        "aHash": 4.0,
+        "dHash": 26.0,
+        "ResNet50": 0.4257
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 21,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-0a765996.jpg",
+      "img2": "11dc1774-6942564c.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-0a765996.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-6942564c.jpg",
+      "distances": {
+        "pHash": 10.0,
+        "aHash": 1.0,
+        "dHash": 19.0,
+        "ResNet50": 0.1528
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 22,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-0a765996.jpg",
+      "img2": "11dc1774-98ab1ef4.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-0a765996.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-98ab1ef4.jpg",
+      "distances": {
+        "pHash": 14.0,
+        "aHash": 4.0,
+        "dHash": 25.0,
+        "ResNet50": 0.4238
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 23,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-0a765996.jpg",
+      "img2": "11dc1774-bf4763bf.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-0a765996.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-bf4763bf.jpg",
+      "distances": {
+        "pHash": 16.0,
+        "aHash": 3.0,
+        "dHash": 32.0,
+        "ResNet50": 0.3213
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 24,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-3e573074.jpg",
+      "img2": "11dc1774-812e76a9.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-3e573074.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-812e76a9.jpg",
+      "distances": {
+        "pHash": 18.0,
+        "aHash": 3.0,
+        "dHash": 26.0,
+        "ResNet50": 0.4687
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 25,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-3e573074.jpg",
+      "img2": "11dc1774-98ab1ef4.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-3e573074.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-98ab1ef4.jpg",
+      "distances": {
+        "pHash": 2.0,
+        "aHash": 0.0,
+        "dHash": 9.0,
+        "ResNet50": 0.0155
+      },
+      "flagged_by": [
+        "pHash",
+        "aHash",
+        "ResNet50"
+      ],
+      "initial_prediction": "Duplicate",
+      "human_label": "Duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "Xe dừng trong hầm, HD=2, góc nhìn gần như bất biến.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 26,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-3e573074.jpg",
+      "img2": "11dc1774-bf4763bf.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-3e573074.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-bf4763bf.jpg",
+      "distances": {
+        "pHash": 16.0,
+        "aHash": 1.0,
+        "dHash": 22.0,
+        "ResNet50": 0.4369
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 27,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-3e573074.jpg",
+      "img2": "11dc1774-e4217b25.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-3e573074.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-e4217b25.jpg",
+      "distances": {
+        "pHash": 24.0,
+        "aHash": 2.0,
+        "dHash": 33.0,
+        "ResNet50": 0.4028
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 28,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-6942564c.jpg",
+      "img2": "11dc1774-bf4763bf.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-6942564c.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-bf4763bf.jpg",
+      "distances": {
+        "pHash": 18.0,
+        "aHash": 4.0,
+        "dHash": 33.0,
+        "ResNet50": 0.32
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 29,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-6eb9c063.jpg",
+      "img2": "11dc1774-9647e9b0.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-6eb9c063.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-9647e9b0.jpg",
+      "distances": {
+        "pHash": 22.0,
+        "aHash": 4.0,
+        "dHash": 21.0,
+        "ResNet50": 0.6231
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 30,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-812e76a9.jpg",
+      "img2": "11dc1774-98ab1ef4.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-812e76a9.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-98ab1ef4.jpg",
+      "distances": {
+        "pHash": 20.0,
+        "aHash": 3.0,
+        "dHash": 27.0,
+        "ResNet50": 0.4808
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 31,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-812e76a9.jpg",
+      "img2": "11dc1774-bf4763bf.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-812e76a9.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-bf4763bf.jpg",
+      "distances": {
+        "pHash": 20.0,
+        "aHash": 2.0,
+        "dHash": 30.0,
+        "ResNet50": 0.3003
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 32,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-98ab1ef4.jpg",
+      "img2": "11dc1774-bf4763bf.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-98ab1ef4.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-bf4763bf.jpg",
+      "distances": {
+        "pHash": 14.0,
+        "aHash": 1.0,
+        "dHash": 27.0,
+        "ResNet50": 0.4461
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 33,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-98ab1ef4.jpg",
+      "img2": "11dc1774-e4217b25.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-98ab1ef4.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-e4217b25.jpg",
+      "distances": {
+        "pHash": 24.0,
+        "aHash": 2.0,
+        "dHash": 34.0,
+        "ResNet50": 0.4066
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    },
+    {
+      "pair_id": 34,
+      "video_id": "11dc1774",
+      "img1": "11dc1774-bf4763bf.jpg",
+      "img2": "11dc1774-e4217b25.jpg",
+      "path_img1": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-bf4763bf.jpg",
+      "path_img2": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/bdd10k/images/train/11dc1774-e4217b25.jpg",
+      "distances": {
+        "pHash": 26.0,
+        "aHash": 3.0,
+        "dHash": 29.0,
+        "ResNet50": 0.2787
+      },
+      "flagged_by": [
+        "aHash"
+      ],
+      "initial_prediction": "Suspected",
+      "human_label": "Not duplicate",
+      "verification_status": "verified_by_human",
+      "notes": "aHash báo nhầm: Đường hầm tối, khung hình khác nhau.",
+      "verified_by": "Human Expert (Nguyen Xuan Huynh)"
+    }
+  ],
+  "metadata": {
+    "total_candidate_pairs": 34,
+    "audit_status": "COMPLETED_100%_BY_HUMAN",
+    "verified_by": "Human Expert (Nguyen Xuan Huynh)",
+    "breakdown": {
+      "Duplicate": 3,
+      "Near-duplicate": 3,
+      "Not duplicate": 28
+    }
+  }
+}

@@ -1,0 +1,7 @@
+Phương Pháp,Yêu Cầu Phần Cứng,Thông Lượng (FPS),Độ Trễ (ms/ảnh),Human Precision (%),Human Recall (%),Human F1 (%),Robust AUC-ROC,Bảo Toàn BBox
+No-Dedup (Raw Baseline),CPU Only,93520.5,0.01,0.0,0.0,0.0,0.5,Thụ Động (Keep-First)
+aHash (HD < 5),CPU Only,405.0,2.47,18.75,100.0,31.58,0.95,Thụ Động (Keep-First)
+dHash (HD < 5),CPU Only,440.4,2.27,100.0,66.67,80.0,0.9,Thụ Động (Keep-First)
+Standard pHash (HD < 5),CPU Only,415.3,2.41,100.0,100.0,100.0,0.87,Thụ Động (Keep-First)
+ResNet50 Embedding (Cosine Sim > 0.95),GPU/PyTorch,29.2,34.24,71.43,83.33,76.92,0.94,Thụ Động (Keep-First)
+Proposed: pHash + Keep-Most-Vehicles (HD < 5),CPU Only,397.3,2.52,100.0,100.0,100.0,0.87,Tối Đa (Keep-Most)

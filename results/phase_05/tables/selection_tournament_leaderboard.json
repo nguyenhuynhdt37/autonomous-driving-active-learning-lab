@@ -6,26 +6,28 @@
       "r_cov_pca32d": 6.4457,
       "mean_cov_pca32d": 2.8236,
       "total_rare_objects": 655,
+      "total_all_objects": 4409,
       "rare_object_breakdown": {
         "truck": 122,
         "motor": 89,
-        "bike": 192,
+        "bus": 88,
         "rider": 155,
-        "train": 9,
-        "bus": 88
+        "bike": 192,
+        "train": 9
       },
       "rare_class_cps": 2.62,
       "night_ratio": 40.8,
       "day_ratio": 59.2,
       "quota_alignment_error": 0.4,
-      "proxy_delta_map50": 5.23,
-      "proxy_rare_recall_gain": 32.0,
-      "duration_sec": 0.0382,
+      "mean_margin_uncertainty": 0.6792,
+      "mean_qbc_disagreement": 0.7435,
+      "mining_uncertainty_signal": 0.7114,
+      "duration_sec": 0.0366,
       "coverage_score": 47.38,
       "rare_penetration_score": 100.0,
       "quota_alignment_score": 100.0,
-      "proxy_retrain_score": 92.72,
-      "composite_selection_score_css": 84.66
+      "uncertainty_score": 100.0,
+      "composite_selection_score_css": 84.21
     },
     {
       "strategy_name": "C5_LongTail_WeakSlice_Hybrid",
@@ -33,26 +35,28 @@
       "r_cov_pca32d": 3.5046,
       "mean_cov_pca32d": 2.3949,
       "total_rare_objects": 486,
+      "total_all_objects": 5617,
       "rare_object_breakdown": {
         "truck": 122,
         "motor": 66,
-        "bike": 118,
+        "bus": 42,
         "rider": 129,
-        "train": 9,
-        "bus": 42
+        "bike": 118,
+        "train": 9
       },
       "rare_class_cps": 1.944,
       "night_ratio": 32.0,
       "day_ratio": 68.0,
       "quota_alignment_error": 0.46,
-      "proxy_delta_map50": 5.46,
-      "proxy_rare_recall_gain": 31.33,
-      "duration_sec": 0.0218,
+      "mean_margin_uncertainty": 0.6648,
+      "mean_qbc_disagreement": 0.5834,
+      "mining_uncertainty_signal": 0.6241,
+      "duration_sec": 0.0186,
       "coverage_score": 94.44,
       "rare_penetration_score": 70.04,
       "quota_alignment_score": 0.0,
-      "proxy_retrain_score": 100.0,
-      "composite_selection_score_css": 71.12
+      "uncertainty_score": 14.91,
+      "composite_selection_score_css": 52.33
     },
     {
       "strategy_name": "C4_PureCoreSet_KCenter",
@@ -60,26 +64,28 @@
       "r_cov_pca32d": 3.1574,
       "mean_cov_pca32d": 2.2509,
       "total_rare_objects": 292,
+      "total_all_objects": 5059,
       "rare_object_breakdown": {
         "truck": 113,
         "motor": 24,
-        "bike": 70,
+        "bus": 35,
         "rider": 47,
-        "train": 3,
-        "bus": 35
+        "bike": 70,
+        "train": 3
       },
       "rare_class_cps": 1.168,
       "night_ratio": 32.8,
       "day_ratio": 67.2,
       "quota_alignment_error": 0.444,
-      "proxy_delta_map50": 4.69,
-      "proxy_rare_recall_gain": 22.02,
-      "duration_sec": 0.0229,
+      "mean_margin_uncertainty": 0.6226,
+      "mean_qbc_disagreement": 0.5951,
+      "mining_uncertainty_signal": 0.6088,
+      "duration_sec": 0.0193,
       "coverage_score": 100.0,
       "rare_penetration_score": 35.64,
       "quota_alignment_score": 26.67,
-      "proxy_retrain_score": 75.63,
-      "composite_selection_score_css": 61.93
+      "uncertainty_score": 0.0,
+      "composite_selection_score_css": 46.02
     },
     {
       "strategy_name": "C1_RandomSampling",
@@ -87,26 +93,28 @@
       "r_cov_pca32d": 5.8557,
       "mean_cov_pca32d": 1.8787,
       "total_rare_objects": 190,
+      "total_all_objects": 4538,
       "rare_object_breakdown": {
         "truck": 91,
         "motor": 9,
-        "bike": 30,
+        "bus": 39,
         "rider": 21,
-        "train": 0,
-        "bus": 39
+        "bike": 30,
+        "train": 0
       },
       "rare_class_cps": 0.76,
       "night_ratio": 43.6,
       "day_ratio": 56.4,
       "quota_alignment_error": 0.4,
-      "proxy_delta_map50": 3.41,
-      "proxy_rare_recall_gain": 17.12,
+      "mean_margin_uncertainty": 0.6803,
+      "mean_qbc_disagreement": 0.5542,
+      "mining_uncertainty_signal": 0.6172,
       "duration_sec": 0.0008,
       "coverage_score": 56.82,
       "rare_penetration_score": 17.55,
       "quota_alignment_score": 100.0,
-      "proxy_retrain_score": 35.13,
-      "composite_selection_score_css": 49.13
+      "uncertainty_score": 8.19,
+      "composite_selection_score_css": 43.95
     },
     {
       "strategy_name": "C2_TopK_PureUncertainty",
@@ -114,26 +122,28 @@
       "r_cov_pca32d": 7.4832,
       "mean_cov_pca32d": 2.1179,
       "total_rare_objects": 220,
+      "total_all_objects": 5717,
       "rare_object_breakdown": {
         "truck": 89,
         "motor": 8,
-        "bike": 51,
+        "bus": 45,
         "rider": 25,
-        "train": 2,
-        "bus": 45
+        "bike": 51,
+        "train": 2
       },
       "rare_class_cps": 0.88,
       "night_ratio": 53.6,
       "day_ratio": 46.4,
       "quota_alignment_error": 0.4,
-      "proxy_delta_map50": 3.64,
-      "proxy_rare_recall_gain": 18.56,
-      "duration_sec": 0.0018,
+      "mean_margin_uncertainty": 0.7439,
+      "mean_qbc_disagreement": 0.5336,
+      "mining_uncertainty_signal": 0.6387,
+      "duration_sec": 0.0015,
       "coverage_score": 30.78,
       "rare_penetration_score": 22.87,
       "quota_alignment_score": 100.0,
-      "proxy_retrain_score": 42.41,
-      "composite_selection_score_css": 46.13
+      "uncertainty_score": 29.14,
+      "composite_selection_score_css": 41.92
     },
     {
       "strategy_name": "C3_WeakSlice_CostAware",
@@ -141,29 +151,31 @@
       "r_cov_pca32d": 9.4063,
       "mean_cov_pca32d": 2.6825,
       "total_rare_objects": 91,
+      "total_all_objects": 2551,
       "rare_object_breakdown": {
         "truck": 52,
         "motor": 4,
-        "bike": 6,
+        "bus": 21,
         "rider": 6,
-        "train": 2,
-        "bus": 21
+        "bike": 6,
+        "train": 2
       },
       "rare_class_cps": 0.364,
       "night_ratio": 59.2,
       "day_ratio": 40.8,
       "quota_alignment_error": 0.4,
-      "proxy_delta_map50": 2.3,
-      "proxy_rare_recall_gain": 12.37,
+      "mean_margin_uncertainty": 0.6861,
+      "mean_qbc_disagreement": 0.6634,
+      "mining_uncertainty_signal": 0.6747,
       "duration_sec": 0.001,
       "coverage_score": 0.0,
       "rare_penetration_score": 0.0,
       "quota_alignment_score": 100.0,
-      "proxy_retrain_score": 0.0,
-      "composite_selection_score_css": 20.0
+      "uncertainty_score": 64.23,
+      "composite_selection_score_css": 32.85
     }
   ],
   "winner_strategy": "C6_Super_Fusion_Architecture",
-  "winner_css": 84.66,
+  "winner_css": 84.21,
   "total_candidates": 6
 }

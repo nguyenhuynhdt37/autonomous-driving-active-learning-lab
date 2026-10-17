@@ -1,0 +1,6 @@
+Phương Pháp,Accuracy (%),Precision (%),Recall (%),F1-Score (%),TP,FP,TN,FN
+aHash (HD < 5),95.0,100.0,90.0,94.74,45,0,50,5
+dHash (HD < 5),90.0,100.0,80.0,88.89,40,0,50,10
+Standard pHash (HD < 5),87.0,100.0,74.0,85.06,37,0,50,13
+ResNet50 Embedding (Cosine Sim > 0.95),94.0,100.0,88.0,93.62,44,0,50,6
+Proposed: pHash + Keep-Most-Vehicles (HD < 5),87.0,100.0,74.0,85.06,37,0,50,13

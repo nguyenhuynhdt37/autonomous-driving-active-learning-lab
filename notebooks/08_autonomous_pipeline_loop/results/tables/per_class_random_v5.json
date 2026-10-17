@@ -108,6 +108,7 @@
       "precision": 50.0,
       "recall": 36.5,
       "f1_score": 42.2,
+      "cfscore": 33.05,
       "dynamic_weight": 1.0
     },
     {
@@ -119,6 +120,7 @@
       "precision": 9.8,
       "recall": 4.8,
       "f1_score": 6.44,
+      "cfscore": 3.68,
       "dynamic_weight": 1.0
     },
     {
@@ -130,6 +132,7 @@
       "precision": 75.8,
       "recall": 66.8,
       "f1_score": 71.02,
+      "cfscore": 55.51,
       "dynamic_weight": 1.0
     },
     {
@@ -141,6 +144,7 @@
       "precision": 32.8,
       "recall": 23.8,
       "f1_score": 27.58,
+      "cfscore": 20.51,
       "dynamic_weight": 1.0
     },
     {
@@ -152,6 +156,7 @@
       "precision": 26.5,
       "recall": 18.2,
       "f1_score": 21.58,
+      "cfscore": 16.31,
       "dynamic_weight": 1.0
     },
     {
@@ -163,6 +168,7 @@
       "precision": 9.0,
       "recall": 3.8,
       "f1_score": 5.34,
+      "cfscore": 2.92,
       "dynamic_weight": 1.0
     },
     {
@@ -174,6 +180,7 @@
       "precision": 10.2,
       "recall": 5.0,
       "f1_score": 6.71,
+      "cfscore": 3.91,
       "dynamic_weight": 1.0
     },
     {
@@ -185,6 +192,7 @@
       "precision": 12.5,
       "recall": 6.2,
       "f1_score": 8.29,
+      "cfscore": 4.73,
       "dynamic_weight": 1.0
     },
     {
@@ -196,6 +204,7 @@
       "precision": 40.0,
       "recall": 32.8,
       "f1_score": 36.04,
+      "cfscore": 26.94,
       "dynamic_weight": 1.0
     },
     {
@@ -207,7 +216,21 @@
       "precision": 43.2,
       "recall": 36.5,
       "f1_score": 39.57,
+      "cfscore": 29.72,
       "dynamic_weight": 1.0
     }
-  ]
+  ],
+  "macro_cfscore": 20.22,
+  "per_class_cfscore": {
+    "person": 33.05,
+    "rider": 3.68,
+    "car": 55.51,
+    "truck": 20.51,
+    "bus": 16.31,
+    "train": 2.92,
+    "motor": 3.91,
+    "bike": 4.73,
+    "traffic light": 26.94,
+    "traffic sign": 29.72
+  }
 }

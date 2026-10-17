@@ -1532,6 +1532,7 @@ class SymlinkSplitMaterializer:
             raise RuntimeError(f"Phát hiện {broken_symlinks_count} symlinks bị gãy đường dẫn!")
 
         return {
+            "total_symlinks": created_symlinks_count,
             "total_symlinks_created": created_symlinks_count,
             "broken_symlinks": broken_symlinks_count,
             "elapsed_seconds": round(elapsed, 3),
@@ -1577,6 +1578,22 @@ class SHA256ChecksumSealer:
 
         print(f"🔒 Đã niêm phong SHA-256 Seal tại: {output_file}")
         return output_file
+
+    def seal(
+        self,
+        manifest_input: Union[Dict[str, Any], str, Path],
+        output_file: Optional[Union[str, Path]] = None
+    ) -> Path:
+        """
+        Niêm phong dữ liệu từ manifest dict hoặc file path.
+        Hỗ trợ cả dict lẫn đường dẫn file json.
+        """
+        if isinstance(manifest_input, (str, Path)):
+            with open(manifest_input, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = manifest_input
+        return self.seal_dataset(data, output_file=output_file)
 
 
 def generate_yolo_splits_config(

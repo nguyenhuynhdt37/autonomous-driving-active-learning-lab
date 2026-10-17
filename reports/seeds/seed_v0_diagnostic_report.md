@@ -1,6 +1,6 @@
 # 🔬 BÁO CÁO CHẨN ĐOÁN HẠT GIỐNG DỮ LIỆU KHỞI NGUYÊN: SEED_V0
 > **Tập mầm nền móng 500 ảnh tuyển chọn bởi Quán quân Hybrid Mix 80/20**
-> Thư mục lưu trữ: `data/splits/seed_v0/` | Thời gian tạo: 2026-10-14 22:10:24
+> Thư mục lưu trữ: `data/splits/seed_v0/` | Thời gian tạo: 2026-10-17 11:08:09
 
 ---
 

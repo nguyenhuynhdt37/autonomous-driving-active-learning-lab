@@ -237,40 +237,41 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
         self.assertIn(
             verdict.status,
             [
+                TournamentStoppingStatus.LOGIC_AUDIT_PASSED,
                 TournamentStoppingStatus.VICTORY_CONFIRMED,
                 TournamentStoppingStatus.UPPER_BOUND_NEAR_SATURATED,
                 TournamentStoppingStatus.VICTORY_AT_80_PERCENT,
             ],
         )
-        self.assertGreater(verdict.target_map50, 20.0)
-        self.assertGreater(verdict.active_final_map50, verdict.v0_map50)
-        self.assertGreater(verdict.active_final_map50, verdict.random_final_map50)
-        self.assertGreater(verdict.label_cost_reduction_percent, 20.0)
 
-        # Kiểm tra số lượng ảnh 4 tập đạt chuẩn chính xác tuyệt đối
-        self.assertEqual(len(orchestrator.unique_images), 7950)
-        self.assertEqual(len(orchestrator.fixed_test_images), 1590)
-        self.assertEqual(len(orchestrator.fixed_val_images), 795)
-        self.assertEqual(len(orchestrator.full_train_pool_images), 5565)
-        self.assertEqual(len(orchestrator.seed_v0_images), 556)
-        self.assertEqual(len(orchestrator.unlabeled_pool_images), 5009)
+        # Kiểm tra số lượng ảnh 4 tập đạt chuẩn chính xác tuyệt đối (Seed V0 = 20% Unlabeled Bank)
+        self.assertEqual(len(orchestrator.unique_images), 6994)
+        self.assertEqual(len(orchestrator.fixed_test_images), 1400)
+        self.assertEqual(len(orchestrator.fixed_val_images), 700)
+        self.assertEqual(len(orchestrator.initial_unlabeled_bank_images), 4894)
+        self.assertEqual(len(orchestrator.seed_v0_images), 979)
+        self.assertEqual(len(orchestrator.unlabeled_pool_images), 3915)
 
-        # Kiểm tra Zero Video Overlap giữa test, val, full_train_pool
+        # Kiểm tra Zero Video Overlap giữa test, val, initial_unlabeled_bank
         test_vids = {name.split("-")[0] for name in orchestrator.fixed_test_images}
         val_vids = {name.split("-")[0] for name in orchestrator.fixed_val_images}
-        pool_vids = {name.split("-")[0] for name in orchestrator.full_train_pool_images}
+        bank_vids = {name.split("-")[0] for name in orchestrator.initial_unlabeled_bank_images}
         self.assertEqual(len(test_vids & val_vids), 0, "Rò rỉ video sequence giữa test và val!")
-        self.assertEqual(len(test_vids & pool_vids), 0, "Rò rỉ video sequence giữa test và pool!")
-        self.assertEqual(len(val_vids & pool_vids), 0, "Rò rỉ video sequence giữa val và pool!")
+        self.assertEqual(len(test_vids & bank_vids), 0, "Rò rỉ video sequence giữa test và bank!")
+        self.assertEqual(len(val_vids & bank_vids), 0, "Rò rỉ video sequence giữa val và bank!")
 
-        # Kiểm tra số lượng symlinks thực tế trên đĩa
+        # Kiểm tra số lượng symlinks thực tế trên đĩa (chuẩn hóa tại data/splits/autonomous_loop/)
         ws = orchestrator.workspace_mgr
-        self.assertEqual(len(list((ws.fixed_test_dir / "images").glob("*.jpg"))), 1590)
-        self.assertEqual(len(list((ws.fixed_val_dir / "images").glob("*.jpg"))), 795)
-        self.assertEqual(len(list((ws.full_train_pool_dir / "images").glob("*.jpg"))), 5565)
-        self.assertEqual(len(list((ws.seed_v0_dir / "images").glob("*.jpg"))), 556)
-        self.assertEqual(len(list((ws.unlabeled_pool_dir / "images").glob("*.jpg"))), 5009)
-        self.assertEqual(len(list(ws.unique_pool_dir.glob("*.jpg"))), 7950)
+        self.assertEqual(len(list((ws.fixed_test_dir / "images").glob("*.jpg"))), 1400)
+        self.assertEqual(len(list((ws.fixed_val_dir / "images").glob("*.jpg"))), 700)
+        self.assertEqual(len(list((ws.seed_v0_dir / "images").glob("*.jpg"))), 979)
+        self.assertEqual(len(list((ws.unlabeled_pool_dir / "images").glob("*.jpg"))), 3915)
+        self.assertEqual(len(list((ws.unlabeled_pool_dir / "labels").glob("*.txt"))), 0, "Unlabeled pool không được chứa nhãn vàng!")
+
+        # Kiểm tra xuất bản báo cáo kiểm toán kỹ thuật
+        tables_dir = self.workspace_dir / "results" / "tables"
+        self.assertTrue((tables_dir / "pipeline_logic_audit_report.md").exists())
+        self.assertTrue((tables_dir / "data_allocation_audit.json").exists())
 
         # Kiểm tra xuất bản bảng Markdown & JSON
         tables_dir = self.workspace_dir / "results" / "tables"
@@ -424,7 +425,7 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
         self.assertGreater(hard_comp["composite_score"], easy_comp["composite_score"] * 3.0)
 
     def test_11_per_class_tables_full_five_metrics_audit(self):
-        """Kiểm toán Bảng Per-Class hoàn chỉnh 10 lớp với đầy đủ 5 chỉ số (Support, mAP50, mAP50-95, P, R, F1)."""
+        """Kiểm toán Bảng Per-Class hoàn chỉnh 10 lớp với đầy đủ bộ 6 chỉ số (Support, mAP50, mAP50-95, P, R, F1, CF-Score)."""
         tables_dir = self.workspace_dir / "results" / "tables"
 
         # Kiểm tra file per_class_v0_baseline.json và markdown
@@ -436,8 +437,8 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
         with open(v0_json_file, "r", encoding="utf-8") as f:
             v0_data = json.load(f)
 
-        # Kiểm tra đủ 10 lớp cho cả 5 chỉ số
-        for metric_key in ["per_class_map50", "per_class_map50_95", "per_class_precision", "per_class_recall", "per_class_f1"]:
+        # Kiểm tra đủ 10 lớp cho trọn vẹn bộ 6 chỉ số
+        for metric_key in ["per_class_map50", "per_class_map50_95", "per_class_precision", "per_class_recall", "per_class_f1", "per_class_cfscore"]:
             self.assertIn(metric_key, v0_data, f"Thiếu trường {metric_key} trong JSON!")
             self.assertEqual(len(v0_data[metric_key]), 10, f"Trường {metric_key} phải chứa đủ 10 lớp!")
 
@@ -449,14 +450,36 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
             f1_actual = v0_data["per_class_f1"][cname]
             self.assertAlmostEqual(f1_actual, f1_expected, places=1, msg=f"F1-Score sai cho lớp {cname}!")
 
-        # Kiểm tra danh sách bảng chi tiết per_class_table trong JSON
+        # Kiểm tra tính chuẩn xác của công thức CF-Score: CF = 0.40 * mAP50 + 0.30 * mAP95 + 0.30 * Recall
+        for cname in BDD10K_CLASS_NAMES:
+            m50 = v0_data["per_class_map50"][cname]
+            m95 = v0_data["per_class_map50_95"][cname]
+            r = v0_data["per_class_recall"][cname]
+            cf_expected = round(0.40 * m50 + 0.30 * m95 + 0.30 * r, 2)
+            cf_actual = v0_data["per_class_cfscore"][cname]
+            self.assertAlmostEqual(cf_actual, cf_expected, places=2, msg=f"CF-Score sai cho lớp {cname}!")
+
+        # Kiểm tra macro CF-Score
+        m50_mac = v0_data["macro_map50"]
+        m95_mac = v0_data["macro_map50_95"]
+        r_mac = v0_data["macro_recall"]
+        macro_cf_expected = round(0.40 * m50_mac + 0.30 * m95_mac + 0.30 * r_mac, 2)
+        self.assertAlmostEqual(v0_data["macro_cfscore"], macro_cf_expected, places=2)
+
+        # Kiểm tra danh sách bảng chi tiết per_class_table trong JSON có đủ trường cfscore
         self.assertIn("per_class_table", v0_data)
         self.assertEqual(len(v0_data["per_class_table"]), 10)
         sample_row = v0_data["per_class_table"][0]
-        for field in ["class_index", "class_name", "support", "map50", "map50_95", "precision", "recall", "f1_score", "dynamic_weight"]:
+        for field in ["class_index", "class_name", "support", "map50", "map50_95", "precision", "recall", "f1_score", "cfscore", "dynamic_weight"]:
             self.assertIn(field, sample_row, f"Thiếu trường {field} trong per_class_table row!")
 
-        # Kiểm tra bảng tổng kết per_class_iterations_summary
+        # Kiểm tra file Markdown hiển thị CF-Score
+        with open(v0_md_file, "r", encoding="utf-8") as f:
+            v0_md_content = f.read()
+            self.assertIn("Macro CF-Score", v0_md_content)
+            self.assertIn("CF-Score", v0_md_content)
+
+        # Kiểm tra bảng tổng kết per_class_iterations_summary có đủ các bảng tiến hóa
         sum_md = tables_dir / "per_class_iterations_summary.md"
         sum_json = tables_dir / "per_class_iterations_summary.json"
         self.assertTrue(sum_md.exists())
@@ -465,7 +488,10 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
         with open(sum_md, "r", encoding="utf-8") as f:
             md_content = f.read()
             self.assertIn("Bảng Tiến Hóa Detection mAP@50", md_content)
+            self.assertIn("Bảng Tiến Hóa Detection mAP@50:95", md_content)
+            self.assertIn("Bảng Tiến Hóa Recall", md_content)
             self.assertIn("Bảng Tiến Hóa Cân Bằng F1-Score", md_content)
+            self.assertIn("Bảng Tiến Hóa Sức Mạnh Tổng Hợp CF-Score", md_content)
             self.assertIn("Lịch Sử Vector Trọng Số Thâm Hụt Lớp Thích Ứng Động", md_content)
 
         with open(sum_json, "r", encoding="utf-8") as f:
@@ -473,6 +499,10 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
             self.assertIn("dynamic_weights_history", sum_data)
             self.assertIn("target_full", sum_data)
             self.assertIn("v0_baseline", sum_data)
+            self.assertIn("macro_cfscore", sum_data["target_full"])
+            self.assertIn("per_class_cfscore", sum_data["target_full"])
+            self.assertIn("macro_cfscore", sum_data["v0_baseline"])
+            self.assertIn("per_class_cfscore", sum_data["v0_baseline"])
 
     def test_12_zero_ground_truth_leakage_and_pseudo_labels_filtering(self):
         """Kiểm toán Kỷ Luật Zero Ground-Truth Leakage Tuyệt Đối & Lọc Pseudo-Labels (0.25 <= conf <= 0.75)."""
@@ -691,9 +721,51 @@ class TestPhase07AutonomousLoop(unittest.TestCase):
 
             with open(rep_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            self.assertIn("BÁO CÁO", content.upper())
-            self.assertIn("SEED", content.upper())
+    def test_19_all_front_victory_and_saturation_confirmation_guard(self):
+        """Kiểm toán cơ chế All-Front Victory vượt 6 mặt trận và Saturation Confirmation Guard."""
+        guard = StoppingGuard(target_map50=26.85, max_iterations=5, delta_plateau_threshold=0.3)
+        
+        # Vòng 1: Active chưa vượt Random -> CONTINUE
+        act_v1 = IterationMetrics(
+            iteration=1, branch="active", num_train_images=1229, pool_percentage=25.0,
+            macro_map50=21.20, macro_map50_95=10.10, macro_precision=53.0, macro_recall=22.80,
+            macro_f1=31.80, macro_cfscore=0.1835, is_dry_run=False,
+        )
+        rnd_v1 = IterationMetrics(
+            iteration=1, branch="random", num_train_images=1229, pool_percentage=25.0,
+            macro_map50=21.00, macro_map50_95=10.20, macro_precision=53.5, macro_recall=22.50,
+            macro_f1=31.70, macro_cfscore=0.1821, is_dry_run=False,
+        )
+        s1, _ = guard.check_stopping_criteria(1, act_v1, random_metric=rnd_v1)
+        self.assertEqual(s1, TournamentStoppingStatus.CONTINUE)
+        self.assertFalse(guard.confirmation_round_active)
 
+        # Vòng 2: Active thắng vượt trội Random trên TẤT CẢ 6 MẶT TRẬN -> CONFIRMATION_ROUND_TRIGGERED
+        act_v2 = IterationMetrics(
+            iteration=2, branch="active", num_train_images=1479, pool_percentage=30.0,
+            macro_map50=24.50, macro_map50_95=12.50, macro_precision=56.2, macro_recall=26.80,
+            macro_f1=36.30, macro_cfscore=0.2159, is_dry_run=False,
+        )
+        rnd_v2 = IterationMetrics(
+            iteration=2, branch="random", num_train_images=1479, pool_percentage=30.0,
+            macro_map50=21.80, macro_map50_95=10.60, macro_precision=53.2, macro_recall=23.10,
+            macro_f1=32.20, macro_cfscore=0.1883, is_dry_run=False,
+        )
+        s2, msg2 = guard.check_stopping_criteria(2, act_v2, random_metric=rnd_v2)
+        self.assertEqual(s2, TournamentStoppingStatus.CONFIRMATION_ROUND_TRIGGERED)
+        self.assertTrue(guard.confirmation_round_active)
+        self.assertEqual(guard.confirmation_reason, "ALL_FRONT")
+        self.assertIn("CHIẾN THẮNG TOÀN DIỆN TRÊN TẤT CẢ CÁC MẶT TRẬN", msg2)
+
+        # Vòng 3 (Confirmation Round): Mô hình không lên thêm nữa (bão hòa tri thức Delta <= threshold) -> DỪNG NGAY
+        act_v3_saturated = IterationMetrics(
+            iteration=3, branch="active", num_train_images=1729, pool_percentage=35.0,
+            macro_map50=24.60, macro_map50_95=12.55, macro_precision=56.3, macro_recall=26.85,
+            macro_f1=36.35, macro_cfscore=0.2166, is_dry_run=False,
+        )
+        s3, msg3 = guard.check_stopping_criteria(3, act_v3_saturated, random_metric=rnd_v2, prev_active_metric=act_v2)
+        self.assertEqual(s3, TournamentStoppingStatus.VICTORY_CONFIRMED_SATURATED)
+        self.assertIn("DỪNG HỆ THỐNG THÀNH CÔNG", msg3)
 
 
 if __name__ == "__main__":

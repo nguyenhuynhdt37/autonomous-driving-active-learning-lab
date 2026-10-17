@@ -1,0 +1,19 @@
+{
+  "seed_name": "seed_v0",
+  "iteration": 0,
+  "num_images": 979,
+  "total_gt_boxes": 17981,
+  "per_class_gt": {
+    "person": 1194,
+    "rider": 51,
+    "car": 9966,
+    "truck": 432,
+    "bus": 161,
+    "train": 2,
+    "motor": 32,
+    "bike": 71,
+    "traffic light": 2612,
+    "traffic sign": 3460
+  },
+  "timestamp": "2026-10-17 12:08:06"
+}

@@ -1,9 +1,9 @@
 {
   "phase": "05_active_mining_tournament_and_hitl",
   "status": "COMPLETED_SUCCESS",
-  "total_runtime_seconds": 5.88,
+  "total_runtime_seconds": 5.44,
   "winner_strategy": "C6_Super_Fusion_Architecture",
-  "winner_css": 84.66,
+  "winner_css": 84.21,
   "dataset_v1": {
     "total_train_images": 750,
     "total_train_labels": 750,
@@ -12,10 +12,10 @@
     "removed_from_pool": 250,
     "created_symlinks": 1500,
     "written_labels": 250,
-    "yaml_config": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/splits/bdd10k_splits_v1.yaml",
-    "manifest_file": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/splits/manifest_v1.yaml",
-    "checksum_file": "/Users/huynh/orca/workspaces/BuildPhase/tang/paper_v4_10k/data/splits/dataset_checksum_v1.sha256",
-    "elapsed_seconds": 0.346
+    "yaml_config": "/Users/huynh/orca/workspaces/BuildPhase/tang/data/splits/bdd10k_splits_v1.yaml",
+    "manifest_file": "/Users/huynh/orca/workspaces/BuildPhase/tang/data/splits/manifest_v1.yaml",
+    "checksum_file": "/Users/huynh/orca/workspaces/BuildPhase/tang/data/splits/dataset_checksum_v1.sha256",
+    "elapsed_seconds": 0.5
   },
   "quality_gated_report": {
     "per_class_precision": {
@@ -24,8 +24,8 @@
       "car": 0.8286,
       "truck": 0.4407,
       "bus": 0.4783,
-      "train": 0.2,
-      "motor": 0.2,
+      "train": 0.0,
+      "motor": 0.0,
       "bike": 0.5,
       "traffic light": 0.6895,
       "traffic sign": 0.6185

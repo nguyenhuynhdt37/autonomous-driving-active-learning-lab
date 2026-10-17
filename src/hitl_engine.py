@@ -675,7 +675,7 @@ class QualityGatedAnalyzer:
             if total_p > 0:
                 prec = round(float(class_tp[c] / total_p), 4)
             else:
-                prec = 0.85 if c == "car" else (0.78 if c == "traffic sign" else 0.20)
+                prec = 0.0  # Không có dự đoán nào -> Precision thực tế bằng 0.0
             per_class_precision[c] = prec
 
         active_classes = [c for c, p in per_class_precision.items() if p >= self.quality_threshold]

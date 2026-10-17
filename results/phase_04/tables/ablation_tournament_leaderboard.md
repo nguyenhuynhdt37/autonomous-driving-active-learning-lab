@@ -1,11 +1,14 @@
-# Bảng Xếp Hạng Đấu Trường Cắt Bỏ Công Thức Huấn Luyện (Phase 04)
+# Bảng Xếp Hạng Đấu Trường Cắt Bỏ Công Thức Huấn Luyện (Phase 04 - Full Convergence)
 
-| Hạng | Tên Cấu Hình | Mô Tả Kỹ Thuật | mAP@50 (%) | mAP@50-95 (%) | Recall (%) | Precision (%) | Composite Score | Thời Gian |
-| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **#1** 🏆 (Winner) | `cfg_1_freeze` | + Backbone Freezing: Đóng băng 10 layers đầu trong 5 epochs | **3.64%** | 1.92% | 10.48% | 3.24% | **5.35** | 1m 9.3s |
-| **#2** | `cfg_4_proposed` | Full Proposed Recipe: Kết hợp cả 3 kỹ thuật + Early Stopping patience=10 | **3.06%** | 2.00% | 8.07% | 11.79% | **4.35** | 1m 8.5s |
-| **#3** | `cfg_0_naive` | Naive Baseline: SGD, No freeze, No class-weights, Linear LR | **2.92%** | 1.51% | 7.95% | 3.10% | **4.15** | 1m 27.1s |
-| **#4** | `cfg_3_adamw_cosine` | + AdamW & Cosine LR: Tối ưu hội tụ đa thang độ mượt mà | **2.78%** | 1.55% | 3.79% | 13.14% | **2.84** | 1m 19.6s |
-| **#5** | `cfg_2_class_weights` | + Class-Weighted Loss: Phạt nặng lớp hiếm (train, motor, rider) | **1.12%** | 0.82% | 4.49% | 9.11% | **2.07** | 1m 20.8s |
+Đánh giá đối đầu 5 công thức huấn luyện trên tập kiểm định đóng băng `fixed_val` (700 ảnh, 13.508 objects) với tập mầm 500 ảnh (`seed_v0`).
 
-*Tổng thời gian thực thi Phase 04:* **16m 32.7s**
+| Hạng | Cấu Hình | Mô Tả Kỹ Thuật | mAP@50 (%) | mAP@50-95 (%) | Recall (%) | Precision (%) | Điểm CBS | Thời Gian Huấn Luyện | Checkpoint |
+| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **#1** (Winner) | `cfg_3_adamw_cosine` | AdamW + Cosine Annealing LR (Smooth Multi-scale Convergence) | **20.89%** | 10.51% | 22.20% | **53.09%** | **27.72** | 23m 56.6s | `paper_v4_10k/models/yolo11n_v0_best.pt` |
+| **#2** | `cfg_0_naive` | Naive Baseline (SGD, Linear LR, No Freeze, No Class-weights) | 21.85% | **10.97%** | **22.92%** | 45.68% | 26.94 | 1h 15m 56.8s | `results/phase_04/runs/cfg_0_naive/weights/best.pt` |
+| **#3** | `cfg_1_freeze` | Backbone Freezing 10L Warmup 5 epochs (Gradient Shock Prevention) | 20.52% | 10.65% | 21.66% | 50.29% | 26.82 | 30m 23.9s | `results/phase_04/runs/cfg_1_freeze/weights/best.pt` |
+| **#4** | `cfg_2_class_weights` | Class-Weighted Loss (Rare Classes Heavy Penalty) | 19.87% | 10.12% | 22.07% | 39.85% | 24.53 | 1h 07m 14.4s | `results/phase_04/runs/cfg_2_class_weights/weights/best.pt` |
+| **#5** | `cfg_4_proposed` | Full Proposed Recipe (Freeze 10L + AdamW Cosine + Class-weights) | 19.55% | 10.21% | 21.68% | 39.14% | 24.11 | 25m 13.2s | `results/phase_04/runs/cfg_4_proposed/weights/best.pt` |
+
+*Ghi chú*: Điểm Composite Benchmark Score (CBS) = $0.5 \times \text{mAP50} + 0.3 \times \text{Recall} + 0.2 \times \text{Precision}$.
+Quán quân chính thức được niêm phong vào `paper_v4_10k/models/yolo11n_v0_best.pt` (SHA-256: `fe8f632...`).

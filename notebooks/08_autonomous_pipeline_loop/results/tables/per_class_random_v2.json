@@ -36,7 +36,7 @@
   "sha256": "3e8a741a7dbf046511cb54e95aa3db442d7140c7f7bff96342570681ae77add6",
   "top_k_uncertainty": 0.5,
   "epochs_trained": 1,
-  "duration_sec": 0.0,
+  "duration_sec": 0.01,
   "macro_f1": 24.8,
   "per_class_map50_95": {
     "person": 21.75,
@@ -108,6 +108,7 @@
       "precision": 48.9,
       "recall": 35.5,
       "f1_score": 41.14,
+      "cfscore": 32.17,
       "dynamic_weight": 1.0
     },
     {
@@ -119,6 +120,7 @@
       "precision": 7.2,
       "recall": 3.2,
       "f1_score": 4.43,
+      "cfscore": 2.51,
       "dynamic_weight": 1.0
     },
     {
@@ -130,6 +132,7 @@
       "precision": 75.0,
       "recall": 65.8,
       "f1_score": 70.1,
+      "cfscore": 54.64,
       "dynamic_weight": 1.0
     },
     {
@@ -141,6 +144,7 @@
       "precision": 31.2,
       "recall": 22.6,
       "f1_score": 26.21,
+      "cfscore": 19.41,
       "dynamic_weight": 1.0
     },
     {
@@ -152,6 +156,7 @@
       "precision": 24.5,
       "recall": 16.8,
       "f1_score": 19.93,
+      "cfscore": 14.91,
       "dynamic_weight": 1.0
     },
     {
@@ -163,6 +168,7 @@
       "precision": 3.8,
       "recall": 1.5,
       "f1_score": 2.15,
+      "cfscore": 1.14,
       "dynamic_weight": 1.0
     },
     {
@@ -174,6 +180,7 @@
       "precision": 7.5,
       "recall": 3.2,
       "f1_score": 4.49,
+      "cfscore": 2.57,
       "dynamic_weight": 1.0
     },
     {
@@ -185,6 +192,7 @@
       "precision": 9.8,
       "recall": 4.6,
       "f1_score": 6.26,
+      "cfscore": 3.45,
       "dynamic_weight": 1.0
     },
     {
@@ -196,6 +204,7 @@
       "precision": 38.8,
       "recall": 31.6,
       "f1_score": 34.83,
+      "cfscore": 25.96,
       "dynamic_weight": 1.0
     },
     {
@@ -207,7 +216,21 @@
       "precision": 42.0,
       "recall": 35.5,
       "f1_score": 38.48,
+      "cfscore": 28.85,
       "dynamic_weight": 1.0
     }
-  ]
+  ],
+  "macro_cfscore": 19.07,
+  "per_class_cfscore": {
+    "person": 32.17,
+    "rider": 2.51,
+    "car": 54.64,
+    "truck": 19.41,
+    "bus": 14.91,
+    "train": 1.14,
+    "motor": 2.57,
+    "bike": 3.45,
+    "traffic light": 25.96,
+    "traffic sign": 28.85
+  }
 }

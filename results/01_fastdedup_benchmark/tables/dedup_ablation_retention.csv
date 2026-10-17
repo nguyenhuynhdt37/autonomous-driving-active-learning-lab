@@ -1,4 +1,4 @@
 strategy,total_vehicles_retained,small_vehicles_retained,occluded_vehicles_retained,num_kept_images
 Keep-First,72,47,61,6
 Random-Drop,74,48,63,6
-Keep-Most-Vehicles (Proposed),76,50,64,6
+Keep-Most-Vehicles (Proposed),81,55,69,6

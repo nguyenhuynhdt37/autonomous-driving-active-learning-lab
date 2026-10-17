@@ -1,4 +1,4 @@
-# 📊 BẢNG FULL BENCHMARK 10 LỚP MODEL V0 (SEED 500) TRÊN FIXED_VAL (700 ẢNH)
+# Bảng Full Benchmark 10 Lớp Model V0 (Seed 500) Trên Fixed_Val (700 Ảnh)
 
 Đánh giá độc lập trên **Fixed Validation Set** (`fixed_val`, 700 ảnh, 13.508 ground-truth instances).
 

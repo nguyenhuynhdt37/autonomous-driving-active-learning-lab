@@ -1,6 +1,6 @@
 # 🔬 BÁO CÁO CHẨN ĐOÁN ĐIỂM YẾU HẠT GIỐNG DỮ LIỆU: SEED_V3
 > **Phân tích năng lực và khiếm khuyết của Mô hình V2 trên 556 ảnh mầm mới được tuyển chọn bởi Quán quân Super-Fusion Active Mining**
-> Thư mục dữ liệu: `data/splits/seed_v3/` | Thời gian xuất bản: 2026-10-14 22:10:28
+> Thư mục dữ liệu: `data/splits/seed_v3/` | Thời gian xuất bản: 2026-10-17 11:08:14
 
 ---
 

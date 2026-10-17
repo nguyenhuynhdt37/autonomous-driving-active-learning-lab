@@ -25,23 +25,20 @@
     "registered_at": "2026-10-12T12:47:32.633693+00:00"
   },
   "yolo11n_v1_best": {
-    "model_id": "yolo11n_v1_best",
-    "filename": "yolo11n_v1_best.pt",
-    "train_images": 750,
-    "seed_v0_images": 500,
-    "active_v1_images": 250,
-    "fixed_test_mAP50": 25.48,
-    "fixed_test_mAP50_95": 14.82,
-    "fixed_test_precision": 34.5,
-    "fixed_test_recall": 27.8,
-    "sha256": "35fa679aae7aa78cdb5e36e8d9b675c2c6ff6b0a7f50f393ff527e3d9e24cb7e",
-    "recipe": "cfg_3_adamw_cosine_active_learning_iter1",
-    "overfit_defense": [
-      "AdamW weight decay 0.01",
-      "Cosine Annealing",
-      "Mosaic Augmentation",
-      "Early Stopping patience=8"
-    ],
-    "registered_at": "2026-10-12T23:26:24Z"
+    "model_name": "YOLO11n V1 Proposed (750 Active Images)",
+    "architecture": "YOLO11n (2.6M params)",
+    "checkpoint": "models/yolo11n_v1_best.pt",
+    "sha256": "218418b822a11904dbfd89c988a3b87cca5fc0390ca9e57bbcf2ae3465969425",
+    "training_recipe": "AdamW + Cosine Annealing + Mosaic (10 epochs)",
+    "dataset": "bdd10k_splits_v1.yaml (500 seed + 250 active mined)",
+    "evaluation_metrics": {
+      "mAP50": 19.71,
+      "mAP90": 1.62,
+      "mAP50_95": 9.59,
+      "precision": 38.82,
+      "recall": 23.54
+    },
+    "gold_test_set": "fixed_test (1,400 images)",
+    "timestamp": "2026-10-17T03:54:50Z"
   }
 }

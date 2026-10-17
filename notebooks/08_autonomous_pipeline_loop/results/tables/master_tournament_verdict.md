@@ -5,17 +5,14 @@
 - **THÔNG ĐIỆP BẢN ÁN**: 🏆 VÒNG XÁC NHẬN THÀNH CÔNG (Vòng 5): mAP_Active=27.85% tiếp tục bứt phá và duy trì vượt trội Target_mAP=26.85%! Chiến thắng tuyệt đối được niêm phong chính thức!
 - **ĐIỂM DỪNG RÀO CHẮN**: Vòng **5** (Tương đương **60.0%** Pool dữ liệu)
 
-### 📊 BẢNG TỔNG KẾT ĐỐI CHUẨN VĨ MÔ
-| Tiêu chí Đánh giá | Mốc Đo Lường | Ghi Chú Khoa Học |
-|:---|:---:|:---|
-| **100% Random Target (Ceiling)** | **26.85%** | Trần đối chứng tối cao (5.565 ảnh) |
-| **Model Mầm V0 Baseline** | **20.23%** | Khởi đầu chung (556 ảnh mầm) |
-| **Proposed Super-Fusion Final** | **27.85%** | Thành tích cuối cùng của nhánh Active |
-| **Random Baseline Final** | **22.90%** | Thành tích đối ứng nhánh Random |
-| **Cách biệt vượt trội so với Random** | **+4.95%** | Minh chứng giá trị Active Mining |
-| **So sánh với Trần 100% Target** | **+1.00%** | Vượt trần 100% dữ liệu với ít mẫu hơn |
-| **Tỷ lệ Tiết kiệm Chi phí Nhãn (ROI)** | **40.1%** | Tiết kiệm ngân sách gán nhãn thực tế |
-| **Vòng Xác Nhận Chiến Thắng** | **ĐẠT (PASSED)** | Chứng minh đà tăng trưởng liên tục |
+### 📊 BẢNG TỔNG KẾT ĐỐI CHUẨN TRỌN BỘ 6 METRICS VĨ MÔ
+| Chỉ Số Đo Lường | 100% Random Target (Ceiling) | Model Mầm V0 (Baseline) | Proposed Active Final | Random Baseline Final | Cách Biệt vs Random | Vượt vs 100% Target |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **mAP@50 (%)** | 26.85% | 20.23% | **27.85%** | 22.90% | **+4.95%** | **+1.00%** |
+| **mAP@50:95 (%)** | 15.40% | 11.55% | **16.15%** | 12.82% | **+3.33%** | **+0.75%** |
+| **Recall (%)** | 29.50% | 21.33% | **30.64%** | 24.04% | **+6.60%** | **+1.14%** |
+| **CF-Score** | 24.21 | 17.96 | **25.18** | 20.22 | **+4.96** | **+0.97** |
+| **Tỷ lệ Tiết Kiệm (ROI)** | - | - | **40.1%** | 0.0% | **Tiết kiệm 40% chi phí** | Đạt trần chỉ với 60% dữ liệu |
 
 ---
 *Niêm phong tự động bởi AutonomousLoopOrchestrator*

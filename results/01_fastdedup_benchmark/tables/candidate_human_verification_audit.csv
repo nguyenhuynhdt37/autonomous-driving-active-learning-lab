@@ -1,0 +1,35 @@
+Pair ID,Video ID,Ảnh A,Ảnh B,pHash HD,aHash HD,dHash HD,ResNet Cos,Gợi Ý Bởi,Nhãn Người Duyệt
+1,012a9c41,012a9c41-69222e1b.jpg,012a9c41-edad898c.jpg,4.0,0.0,1.0,0.0394,"pHash, aHash, dHash, ResNet50",Near-duplicate
+2,0573f031,0573f031-e8244dd0.jpg,0573f031-fe89a0d4.jpg,24.0,3.0,22.0,0.3822,aHash,Not duplicate
+3,06ac7da9,06ac7da9-81ae9c1c.jpg,06ac7da9-b4b26aa1.jpg,0.0,0.0,0.0,0.0112,"pHash, aHash, dHash, ResNet50",Duplicate
+4,08688b9f,08688b9f-4e2c11c8.jpg,08688b9f-cdfc0599.jpg,16.0,3.0,25.0,0.2166,aHash,Not duplicate
+5,08b02c82,08b02c82-0039a14a.jpg,08b02c82-5551b303.jpg,14.0,3.0,23.0,0.262,aHash,Not duplicate
+6,08ef9f76,08ef9f76-37ebfa18.jpg,08ef9f76-886d0493.jpg,20.0,4.0,29.0,0.399,aHash,Not duplicate
+7,08ffb626,08ffb626-02eb6a44.jpg,08ffb626-1c25b2a4.jpg,30.0,4.0,30.0,0.2735,aHash,Not duplicate
+8,09ac7416,09ac7416-34ea8581.jpg,09ac7416-74752083.jpg,0.0,0.0,4.0,0.0196,"pHash, aHash, dHash, ResNet50",Near-duplicate
+9,09ac7416,09ac7416-76fb4b2c.jpg,09ac7416-e1082bec.jpg,4.0,3.0,6.0,0.0523,"pHash, aHash",Near-duplicate
+10,09ae119b,09ae119b-eb13907f.jpg,09ae119b-f7f6ef39.jpg,24.0,4.0,29.0,0.2561,aHash,Not duplicate
+11,09ae119b,09ae119b-f7f6ef39.jpg,09ae119b-f8e3d19d.jpg,22.0,3.0,28.0,0.5313,aHash,Not duplicate
+12,0a19489c,0a19489c-120e718b.jpg,0a19489c-498fdc3f.jpg,14.0,3.0,13.0,0.1485,aHash,Not duplicate
+13,0a7cbfc6,0a7cbfc6-469c9037.jpg,0a7cbfc6-c83c2cde.jpg,22.0,4.0,27.0,0.3437,aHash,Not duplicate
+14,0b8b0111,0b8b0111-01aac1a5.jpg,0b8b0111-a5a06f63.jpg,22.0,4.0,30.0,0.2567,aHash,Not duplicate
+15,0ce5101a,0ce5101a-08b03d25.jpg,0ce5101a-39704188.jpg,0.0,0.0,2.0,0.0065,"pHash, aHash, dHash, ResNet50",Duplicate
+16,0d13ae3d,0d13ae3d-208a0cdb.jpg,0d13ae3d-f033a349.jpg,24.0,4.0,33.0,0.3102,aHash,Not duplicate
+17,0d65d38e,0d65d38e-35d14713.jpg,0d65d38e-866f8386.jpg,28.0,13.0,15.0,0.045,ResNet50,Not duplicate
+18,0dffa115,0dffa115-191d4e50.jpg,0dffa115-8a64b65d.jpg,18.0,3.0,26.0,0.3204,aHash,Not duplicate
+19,11502c6d,11502c6d-b66f8ffa.jpg,11502c6d-f4834c96.jpg,12.0,12.0,8.0,0.0499,ResNet50,Not duplicate
+20,11dc1774,11dc1774-0a765996.jpg,11dc1774-3e573074.jpg,16.0,4.0,26.0,0.4257,aHash,Not duplicate
+21,11dc1774,11dc1774-0a765996.jpg,11dc1774-6942564c.jpg,10.0,1.0,19.0,0.1528,aHash,Not duplicate
+22,11dc1774,11dc1774-0a765996.jpg,11dc1774-98ab1ef4.jpg,14.0,4.0,25.0,0.4238,aHash,Not duplicate
+23,11dc1774,11dc1774-0a765996.jpg,11dc1774-bf4763bf.jpg,16.0,3.0,32.0,0.3213,aHash,Not duplicate
+24,11dc1774,11dc1774-3e573074.jpg,11dc1774-812e76a9.jpg,18.0,3.0,26.0,0.4687,aHash,Not duplicate
+25,11dc1774,11dc1774-3e573074.jpg,11dc1774-98ab1ef4.jpg,2.0,0.0,9.0,0.0155,"pHash, aHash, ResNet50",Duplicate
+26,11dc1774,11dc1774-3e573074.jpg,11dc1774-bf4763bf.jpg,16.0,1.0,22.0,0.4369,aHash,Not duplicate
+27,11dc1774,11dc1774-3e573074.jpg,11dc1774-e4217b25.jpg,24.0,2.0,33.0,0.4028,aHash,Not duplicate
+28,11dc1774,11dc1774-6942564c.jpg,11dc1774-bf4763bf.jpg,18.0,4.0,33.0,0.32,aHash,Not duplicate
+29,11dc1774,11dc1774-6eb9c063.jpg,11dc1774-9647e9b0.jpg,22.0,4.0,21.0,0.6231,aHash,Not duplicate
+30,11dc1774,11dc1774-812e76a9.jpg,11dc1774-98ab1ef4.jpg,20.0,3.0,27.0,0.4808,aHash,Not duplicate
+31,11dc1774,11dc1774-812e76a9.jpg,11dc1774-bf4763bf.jpg,20.0,2.0,30.0,0.3003,aHash,Not duplicate
+32,11dc1774,11dc1774-98ab1ef4.jpg,11dc1774-bf4763bf.jpg,14.0,1.0,27.0,0.4461,aHash,Not duplicate
+33,11dc1774,11dc1774-98ab1ef4.jpg,11dc1774-e4217b25.jpg,24.0,2.0,34.0,0.4066,aHash,Not duplicate
+34,11dc1774,11dc1774-bf4763bf.jpg,11dc1774-e4217b25.jpg,26.0,3.0,29.0,0.2787,aHash,Not duplicate

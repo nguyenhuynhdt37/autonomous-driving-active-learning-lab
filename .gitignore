@@ -133,3 +133,4 @@ runs/
 
 # Đảm bảo tuyệt đối không commit pycache dù ở bất kỳ thư mục nào
 **/__pycache__/**
+*_backup.*

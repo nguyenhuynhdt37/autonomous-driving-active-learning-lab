@@ -1,0 +1,12 @@
+{
+  "pipeline_name": "Phase 07 - End-to-End Autonomous Active Loop",
+  "status": "LOGIC_AUDIT_PASSED",
+  "dry_run": true,
+  "unique_pool_size": 6994,
+  "fixed_test_size": 1400,
+  "fixed_val_size": 700,
+  "seed_v0_size": 979,
+  "unlabeled_pool_size": 3915,
+  "batch_k_size": 250,
+  "timestamp": "2026-10-17T05:07:28Z"
+}

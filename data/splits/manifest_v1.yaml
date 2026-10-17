@@ -1,6 +1,6 @@
 # Manifest Khai Sinh Dataset V1 - Phase 05 Active Learning
 version: "1.0.0"
-created_at: "2026-10-12T16:10:27Z"
+created_at: "2026-10-17T01:59:10Z"
 dataset_structure:
   seed_v0_images: 500
   seed_v1_images: 250

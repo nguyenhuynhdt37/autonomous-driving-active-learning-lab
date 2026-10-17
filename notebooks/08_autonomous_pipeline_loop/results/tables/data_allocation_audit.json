@@ -1,0 +1,26 @@
+{
+  "dry_run": true,
+  "zero_leakage_passed": true,
+  "symlinks_valid": true,
+  "oracle_lookup_rate": 100.0,
+  "selection_passed": true,
+  "selected_batch_k": 250,
+  "top_k_uncertainty_mean": 0.98,
+  "hard_slices_in_selection": {
+    "is_night": 205,
+    "is_blur": 85,
+    "is_high_occlusion": 250,
+    "is_small_object_slice": 250,
+    "is_dense": 209
+  },
+  "stopping_guard_functional": true,
+  "data_allocation": {
+    "unique_pool": 6994,
+    "fixed_test": 1400,
+    "fixed_val": 700,
+    "initial_unlabeled_bank": 4894,
+    "seed_v0": 979,
+    "unlabeled_pool": 3915,
+    "batch_size_k": 250
+  }
+}

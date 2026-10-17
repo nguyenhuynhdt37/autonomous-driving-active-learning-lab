@@ -3,8 +3,8 @@
   "cleaned_count": 6994,
   "dropped_duplicates_count": 6,
   "deduplication_ratio_percent": 0.09,
-  "throughput_fps": 627.21,
-  "elapsed_seconds": 11.161,
+  "throughput_fps": 623.15,
+  "elapsed_seconds": 11.233,
   "cleaned_images": [
     "0000f77c-6257be58.jpg",
     "0000f77c-62c2a288.jpg",

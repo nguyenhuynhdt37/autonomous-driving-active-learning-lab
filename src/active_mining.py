@@ -851,19 +851,19 @@ class ActiveTournamentEvaluator:
                     rare_object_counts[cat] += 1
                     total_rare_objects += 1
 
-        # Tỷ lệ bắt trúng lớp hiếm (số vật thể hiếm / tổng ảnh)
+        # Tỷ lệ bắt trúng lớp hiếm (số vật thể hiếm BDD10K / tổng ảnh)
         cps = round(total_rare_objects / max(1, k), 4)
 
         # 3. Quota Alignment Error (QAE)
-        # Mục tiêu chuẩn: 35% Đêm, 25% Ngày
+        # Mục tiêu chuẩn: 35% Đêm, 25% Ngày theo Rule 8 AGENTS.md
         night_ratio = night_count / max(1, k)
         day_ratio = day_count / max(1, k)
         qae = float(abs(night_ratio - 0.35) + abs(day_ratio - 0.25))
 
-        # 4. Proxy Model Utility Score (Xấp xỉ delta mAP50 trên fixed_val)
-        # Tương quan thuận với CPS, độ đa dạng và nghịch đảo R_cov
-        proxy_delta_map50 = round(1.2 + 2.5 * min(1.5, cps) + 1.8 * (1.0 / max(0.5, r_cov)), 2)
-        proxy_rare_recall = round(8.0 + 12.0 * min(2.0, cps), 2)
+        # 4. Tín hiệu Khai phá Mô hình Thực Đo (Mining Uncertainty & QBC Disagreement)
+        mean_margin_u = float(np.mean([self.records[img].margin_uncertainty for img in result.selected_images]))
+        mean_qbc_dis = float(np.mean([self.records[img].qbc_disagreement for img in result.selected_images]))
+        mining_uncertainty_signal = round(0.5 * mean_margin_u + 0.5 * mean_qbc_dis, 4)
 
         return {
             "strategy_name": result.strategy_name,
@@ -871,19 +871,23 @@ class ActiveTournamentEvaluator:
             "r_cov_pca32d": round(r_cov, 4),
             "mean_cov_pca32d": round(mean_cov, 4),
             "total_rare_objects": total_rare_objects,
+            "total_all_objects": total_all_objects,
             "rare_object_breakdown": rare_object_counts,
             "rare_class_cps": cps,
             "night_ratio": round(night_ratio * 100.0, 1),
             "day_ratio": round(day_ratio * 100.0, 1),
             "quota_alignment_error": round(qae, 4),
-            "proxy_delta_map50": proxy_delta_map50,
-            "proxy_rare_recall_gain": proxy_rare_recall,
+            "mean_margin_uncertainty": round(mean_margin_u, 4),
+            "mean_qbc_disagreement": round(mean_qbc_dis, 4),
+            "mining_uncertainty_signal": mining_uncertainty_signal,
             "duration_sec": result.duration_sec,
         }
 
     def compute_leaderboard(self, results: List[SelectionResult]) -> Dict[str, Any]:
         """
         Tổng hợp Leaderboard cho toàn bộ 6 ứng viên và xác định Quán quân đạt CSS cao nhất.
+        Bộ tiêu chuẩn CSS đo lường trực tiếp 100% từ dữ liệu thật (Ground-Truth BDD10K + Feature Space + Uncertainty),
+        tuyệt đối không sử dụng công thức giả lập proxy mAP.
         """
         evaluated = [self.evaluate_selection(r) for r in results]
 
@@ -891,34 +895,34 @@ class ActiveTournamentEvaluator:
         r_covs = [e["r_cov_pca32d"] for e in evaluated]
         cps_vals = [e["rare_class_cps"] for e in evaluated]
         qaes = [e["quota_alignment_error"] for e in evaluated]
-        proxy_maps = [e["proxy_delta_map50"] for e in evaluated]
+        unc_signals = [e["mining_uncertainty_signal"] for e in evaluated]
 
         min_rcov, max_rcov = min(r_covs), max(r_covs)
         min_cps, max_cps = min(cps_vals), max(cps_vals)
         min_qae, max_qae = min(qaes), max(qaes)
-        min_pmap, max_pmap = min(proxy_maps), max(proxy_maps)
+        min_unc, max_unc = min(unc_signals), max(unc_signals)
 
         leaderboard_rows: List[Dict[str, Any]] = []
 
         for e in evaluated:
-            # 1. Điểm phủ: R_cov càng nhỏ điểm càng cao
+            # 1. Điểm phủ: R_cov càng nhỏ điểm càng cao (cực tiểu hóa bán kính phủ)
             cov_score = 100.0 * (max_rcov - e["r_cov_pca32d"]) / max(1e-4, max_rcov - min_rcov) if max_rcov > min_rcov else 80.0
-            # 2. Điểm lớp hiếm: CPS càng cao điểm càng cao
+            # 2. Điểm lớp hiếm: CPS càng cao điểm càng cao (số vật thể hiếm BDD10K thật)
             rare_score = 100.0 * (e["rare_class_cps"] - min_cps) / max(1e-4, max_cps - min_cps) if max_cps > min_cps else 80.0
-            # 3. Điểm Quota: QAE càng nhỏ điểm càng cao
+            # 3. Điểm Quota: QAE càng nhỏ điểm càng cao (tuân thủ lát cắt khó Phase 02/03)
             quota_score = 100.0 * (max_qae - e["quota_alignment_error"]) / max(1e-4, max_qae - min_qae) if max_qae > min_qae else 80.0
-            # 4. Điểm Proxy Retrain Gain
-            proxy_score = 100.0 * (e["proxy_delta_map50"] - min_pmap) / max(1e-4, max_pmap - min_pmap) if max_pmap > min_pmap else 80.0
+            # 4. Điểm Bất định Mô hình: Mining Uncertainty Signal càng cao điểm càng cao
+            unc_score = 100.0 * (e["mining_uncertainty_signal"] - min_unc) / max(1e-4, max_unc - min_unc) if max_unc > min_unc else 80.0
 
-            # Composite Selection Score (CSS) = 25% Cov + 25% Rare + 20% Quota + 30% Proxy
-            css = round(0.25 * cov_score + 0.25 * rare_score + 0.20 * quota_score + 0.30 * proxy_score, 2)
+            # Composite Selection Score (CSS) = 30% Rare + 30% Cov + 20% Quota + 20% Uncertainty
+            css = round(0.30 * rare_score + 0.30 * cov_score + 0.20 * quota_score + 0.20 * unc_score, 2)
 
             row = {
                 **e,
                 "coverage_score": round(cov_score, 2),
                 "rare_penetration_score": round(rare_score, 2),
                 "quota_alignment_score": round(quota_score, 2),
-                "proxy_retrain_score": round(proxy_score, 2),
+                "uncertainty_score": round(unc_score, 2),
                 "composite_selection_score_css": css,
             }
             leaderboard_rows.append(row)
@@ -933,6 +937,63 @@ class ActiveTournamentEvaluator:
             "winner_strategy": winner["strategy_name"],
             "winner_css": winner["composite_selection_score_css"],
             "total_candidates": len(leaderboard_rows),
+        }
+
+    def evaluate_multi_seed_random(
+        self,
+        seeds: Optional[List[int]] = None,
+        k: int = 250,
+    ) -> Dict[str, Any]:
+        """
+        Đánh giá độ phân tán thực tế của Random Baseline qua 10 seeds độc lập.
+        Báo cáo Mean ± Std cho các chỉ số Ground-Truth thật của BDD10K.
+        """
+        if seeds is None:
+            seeds = [42, 100, 2024, 777, 999, 123, 456, 888, 314, 555]
+
+        run_metrics = []
+        for s in seeds:
+            strat = RandomSamplingStrategy(seed=s)
+            res = strat.select(self.records, k=k)
+            eval_dict = self.evaluate_selection(res)
+            run_metrics.append(eval_dict)
+
+        cps_list = [m["rare_class_cps"] for m in run_metrics]
+        rcov_list = [m["r_cov_pca32d"] for m in run_metrics]
+        rare_objs_list = [m["total_rare_objects"] for m in run_metrics]
+
+        class_stats = {}
+        for c in RARE_CLASSES:
+            counts = [m["rare_object_breakdown"].get(c, 0) for m in run_metrics]
+            class_stats[c] = {
+                "mean": round(float(np.mean(counts)), 2),
+                "std": round(float(np.std(counts)), 2),
+                "min": int(np.min(counts)),
+                "max": int(np.max(counts)),
+            }
+
+        return {
+            "num_runs": len(seeds),
+            "seeds": seeds,
+            "rare_class_cps": {
+                "mean": round(float(np.mean(cps_list)), 4),
+                "std": round(float(np.std(cps_list)), 4),
+                "min": round(float(np.min(cps_list)), 4),
+                "max": round(float(np.max(cps_list)), 4),
+            },
+            "r_cov_pca32d": {
+                "mean": round(float(np.mean(rcov_list)), 4),
+                "std": round(float(np.std(rcov_list)), 4),
+                "min": round(float(np.min(rcov_list)), 4),
+                "max": round(float(np.max(rcov_list)), 4),
+            },
+            "total_rare_objects": {
+                "mean": round(float(np.mean(rare_objs_list)), 2),
+                "std": round(float(np.std(rare_objs_list)), 2),
+                "min": int(np.min(rare_objs_list)),
+                "max": int(np.max(rare_objs_list)),
+            },
+            "per_class_breakdown": class_stats,
         }
 
 
@@ -1016,36 +1077,137 @@ class ActiveMiningTournamentRunner:
             json.dump(tournament_summary, f, indent=2, ensure_ascii=False)
         print(f"  ✓ Đã lưu Leaderboard JSON vào {json_path}")
 
-        # Tạo bảng Markdown
+        # Tạo bảng Markdown chuẩn mực dữ liệu thật
         md_path = tables_d / "selection_tournament_leaderboard.md"
         lines = [
-            "# 🏆 Bảng Xếp Hạng Đấu Trường Tuyển Chọn Dữ Liệu Phase 05 (Active Mining Tournament)",
+            "# Bảng Xếp Hạng Đấu Trường Tuyển Chọn Dữ Liệu Phase 05 (Active Mining Tournament)",
             "",
             f"Đấu trường thực nghiệm 6 chiến lược đối đầu trên kho **4.394 ảnh** chưa gán nhãn (`unlabeled_pool`), mỗi chiến lược tuyển chọn đúng **K = {self.k} ảnh**.",
+            "Tất cả chỉ số đánh giá được đối chuẩn trực tiếp 100% trên nhãn gốc BDD10K (Read-Only) và không gian đặc trưng PCA 32D.",
             "",
-            "| Hạng | Chiến Lược Tuyển Chọn | Bán Kính Phủ $R_{\\text{cov}}$ | Vật Thể Hiếm (CPS) | Quota Đêm/Ngày | Proxy $\\Delta\\text{mAP50}$ | CSS Score | Danh Hiệu |",
+            "| Hạng | Chiến Lược Tuyển Chọn | Bán Kính Phủ $R_{\\text{cov}}$ | Vật Thể Hiếm BDD10K (CPS) | Quota Đêm/Ngày | Tín Hiệu Bất Định ($U + D$) | CSS Score | Danh Hiệu |",
             "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: |",
         ]
 
-        medals = ["🥇", "🥈", "🥉", "4", "5", "6"]
-        for rank, row in enumerate(tournament_summary["leaderboard"], 1):
+        ranks = ["1", "2", "3", "4", "5", "6"]
+        for rank_idx, row in enumerate(tournament_summary["leaderboard"]):
             strat_name = row["strategy_name"]
-            medal = medals[rank - 1]
-            title = "**Quán Quân (Winner)**" if rank == 1 else "Ứng Viên"
+            rank_label = ranks[rank_idx]
+            title = "**Quán Quân (Winner)**" if rank_idx == 0 else "Ứng Viên"
+            unc_sig = row.get("mining_uncertainty_signal", 0.0)
             lines.append(
-                f"| {medal} | `{strat_name}` | {row['r_cov_pca32d']:.2f} | {row['rare_class_cps']:.2f} ({row['total_rare_objects']} objs) | {row['night_ratio']:.0f}% / {row['day_ratio']:.0f}% | +{row['proxy_delta_map50']:.2f}% | **{row['composite_selection_score_css']:.2f}** | {title} |"
+                f"| {rank_label} | `{strat_name}` | {row['r_cov_pca32d']:.2f} | {row['rare_class_cps']:.2f} ({row['total_rare_objects']} objs) | {row['night_ratio']:.0f}% / {row['day_ratio']:.0f}% | {unc_sig:.4f} | **{row['composite_selection_score_css']:.2f}** | {title} |"
             )
 
         lines.extend([
             "",
-            "### Diễn Giải Các Chỉ Số:",
-            "- **$R_{\\text{cov}}$ (Coverage Radius)**: Bán kính phủ cực đại trên PCA 32D (càng nhỏ càng dàn đều, triệt tiêu vùng trống).",
-            "- **CPS (Rare Class Penetration Score)**: Tỷ lệ săn lùng vật thể thuộc 6 lớp điểm liệt (`rider, motor, bike, train, bus, truck`).",
-            "- **Quota Đêm/Ngày**: Tỷ lệ ảnh Ban đêm và Ban ngày trong batch (chuẩn mục tiêu: 35% Đêm, 25% Ngày).",
-            "- **Proxy $\\Delta\\text{mAP50}$**: Mức tăng trưởng dự phóng trên `fixed_val` (700 ảnh).",
-            "- **CSS (Composite Selection Score)**: Điểm tổng hợp chuẩn hóa 4 trục (0 - 100 điểm).",
+            "### Diễn Giải Các Tiêu Chí Đo Lường Dữ Liệu Thật:",
+            "- **$R_{\\text{cov}}$ (Coverage Radius)**: Bán kính phủ cực đại trên không gian PCA 32D (càng nhỏ càng dàn đều, triệt tiêu vùng trống dữ liệu).",
+            "- **CPS (Rare Class Penetration Score)**: Tỷ lệ săn lùng vật thể thuộc 6 lớp điểm liệt BDD10K gốc (`rider, motor, bike, train, bus, truck`) qua tra cứu $O(1)$ vào `bdd10k_metadata.json`.",
+            "- **Quota Đêm/Ngày**: Tỷ lệ ảnh Ban đêm và Ban ngày trong batch 250 ảnh (chuẩn mục tiêu: 35% Đêm, 25% Ngày theo Rule 8 AGENTS.md).",
+            "- **Tín Hiệu Bất Định ($U + D$)**: Trung bình cộng giữa Margin Uncertainty $U_i$ (YOLO11n V0) và QBC Disagreement $D_i^{\\text{QBC}}$ (giữa YOLO11n và RT-DETR) của 250 ảnh được tuyển chọn.",
+            "- **CSS (Composite Selection Score)**: Điểm tổng hợp chuẩn hóa 4 trục dữ liệu thật (30% Rare CPS + 30% Coverage + 20% Quota + 20% Uncertainty).",
         ])
 
         with open(md_path, "w", encoding="utf-8") as f:
             f.write("\n".join(lines))
         print(f"  ✓ Đã lưu Leaderboard Markdown vào {md_path}")
+
+
+# ==============================================================================
+# 5. HÀM TIỆN ÍCH CHO GIẢI ĐẤU TINH GỌN 4 CHIẾN LƯỢC & BẢNG SO SÁNH PER-CLASS
+# ==============================================================================
+
+def get_4_core_strategies(seed: int = 42) -> List[BaseSelectionStrategy]:
+    """
+    Khởi tạo 4 chiến lược kinh điển đại diện cho 4 trường phái lớn:
+    1. C1_RandomSampling: Mốc sàn ngẫu nhiên (Floor Baseline)
+    2. C2_TopK_PureUncertainty: Trường phái bối rối (Uncertainty Sampling)
+    3. C3_PureCoreSet_KCenter: Trường phái hình học đa dạng (Geometric Diversity)
+    4. C4_Super_Fusion_Architecture: Phương pháp đề xuất (Super Fusion Multi-Objective)
+    """
+    strat1 = RandomSamplingStrategy(seed=seed)
+    strat1.name = "C1_RandomSampling"
+
+    strat2 = TopKPureUncertaintyStrategy()
+    strat2.name = "C2_TopK_PureUncertainty"
+
+    strat3 = PureCoreSetKCenterStrategy()
+    strat3.name = "C3_PureCoreSet_KCenter"
+
+    strat4 = SuperFusionProposedStrategy()
+    strat4.name = "C4_Super_Fusion_Architecture"
+
+    return [strat1, strat2, strat3, strat4]
+
+
+def generate_per_class_comparison_table(
+    results_map: Dict[str, SelectionResult],
+    evaluator: ActiveTournamentEvaluator,
+) -> Dict[str, Any]:
+    """
+    Sinh bảng đối chuẩn chi tiết per-class cho 6 lớp điểm liệt BDD10K giữa các chiến lược.
+    Truy xuất 100% từ Ground-Truth BDD10K gốc (Read-Only) để bảo đảm tính khách quan tuyệt đối.
+    """
+    ordered_classes = ["truck", "bus", "motor", "bike", "rider", "train"]
+    strategies_order = list(results_map.keys())
+
+    table_data = []
+    comparison_dict = {}
+
+    for strat_name, res in results_map.items():
+        eval_dict = evaluator.evaluate_selection(res)
+        breakdown = eval_dict["rare_object_breakdown"]
+        row = {
+            "strategy": strat_name,
+            "num_selected": res.num_selected,
+            "truck": breakdown.get("truck", 0),
+            "bus": breakdown.get("bus", 0),
+            "motor": breakdown.get("motor", 0),
+            "bike": breakdown.get("bike", 0),
+            "rider": breakdown.get("rider", 0),
+            "train": breakdown.get("train", 0),
+            "total_rare": eval_dict["total_rare_objects"],
+            "total_all": eval_dict["total_all_objects"],
+            "cps": eval_dict["rare_class_cps"],
+            "r_cov": eval_dict["r_cov_pca32d"],
+        }
+        table_data.append(row)
+        comparison_dict[strat_name] = row
+
+    # Tạo bảng Markdown
+    md_lines = [
+        "# Bảng Đối Chuẩn Chi Tiết Săn Lùng 6 Lớp Điểm Liệt BDD10K Giữa Các Chiến Lược",
+        "",
+        "Đánh giá trực tiếp trên nhãn gốc `bdd10k_metadata.json` (Read-Only) cho từng batch K = 250 ảnh.",
+        "",
+        "| Chiến Lược Tuyển Chọn | `truck` | `bus` | `motor` | `bike` | `rider` | `train` | **Tổng Vật Thể Hiếm** | CPS (Hiếm/Ảnh) | Bán Kính Phủ $R_{\\text{cov}}$ |",
+        "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |",
+    ]
+
+    for r in table_data:
+        highlight = "**" if "Super_Fusion" in r["strategy"] else ""
+        md_lines.append(
+            f"| `{r['strategy']}` | {r['truck']} | {r['bus']} | {r['motor']} | {r['bike']} | {r['rider']} | {r['train']} | {highlight}{r['total_rare']}{highlight} | {highlight}{r['cps']:.2f}{highlight} | {r['r_cov']:.2f} |"
+        )
+
+    md_content = "\n".join(md_lines)
+
+    # Lưu ra results/phase_05/tables/
+    tables_d = get_results_dir("phase_05") / "tables"
+    tables_d.mkdir(parents=True, exist_ok=True)
+    json_path = tables_d / "per_class_active_selection_comparison.json"
+    md_path = tables_d / "per_class_active_selection_comparison.md"
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(comparison_dict, f, indent=2, ensure_ascii=False)
+    with open(md_path, "w", encoding="utf-8") as f:
+        f.write(md_content)
+
+    return {
+        "table_data": table_data,
+        "markdown_table": md_content,
+        "json_path": str(json_path),
+        "md_path": str(md_path),
+    }
+

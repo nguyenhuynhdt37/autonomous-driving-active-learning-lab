@@ -1,0 +1,13 @@
+# BDD10K Dataset V1 Manifest - Phase 05 Handoff
+version: "1.0"
+dataset_name: "Dataset_V1_Active_Mined"
+created_date: "2026-10-17T09:31:08Z"
+total_images: 750
+seed_v0_count: 500
+active_mined_count: 250
+winner_strategy: "C4_Super_Fusion_Architecture"
+winner_css_score: 77.20
+ground_truth_rare_objects_mined: 655
+zero_label_noise: true
+storage_overhead: "0 KB (Symlink Materialization)"
+handoff_target: "Phase 06 — YOLO11n V1 Model Training"
