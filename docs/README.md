@@ -153,6 +153,11 @@ Các tài liệu ở tầng này cung cấp cái nhìn vĩ mô về toàn bộ d
    - *Chi tiết*: Vấn đề thiếu mẫu của lớp cực hiếm `train` trên tập Test, độ trễ và sự bất đồng thuận thực tế của annotator, ranh giới phần cứng edge computing và lộ trình mở rộng đa phương thức (LiDAR/Radar).
    - *Trạng thái*: `HOÀN THÀNH 100% / RESEARCH AUDIT`
 
+6. **[Kiến Trúc Vòng Lặp Human-in-the-Loop Active Learning](../reports/architecture/ARCHITECTURE_DIAGRAM_HITL_PRODUCTION.md)**
+   - *Phạm vi*: Sơ đồ kiến trúc Mermaid thể hiện vòng lặp $n$ chu kỳ tổng quát ($k = 1 \dots n$) và đối chuẩn duy nhất với mốc trần 100% Random.
+   - *Chi tiết*: Đặc tả luồng khai phá ảnh khó ➔ chuyên gia con người gán nhãn sạch 100% ➔ gộp tích lũy qua Symlinks 0 KB ➔ tái huấn luyện Warm-Start kế thừa model vòng trước ➔ đánh bại mốc trần 100% Random. Trình xem tương tác: [reports/architecture/architecture_diagram.html](../reports/architecture/architecture_diagram.html).
+   - *Trạng thái*: `HOÀN THÀNH 100% / PRODUCTION VERIFIED`
+
 ---
 
 ### Tầng 2: Báo Cáo Kỹ Thuật Chi Tiết Từng Giai Đoạn (Stage-by-Stage Experiments)

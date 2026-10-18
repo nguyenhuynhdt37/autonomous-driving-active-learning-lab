@@ -344,10 +344,10 @@ class PoolFeatureExtractor:
                     cur_w = slice_weights_map["occlusion"]
 
                 # Điểm thiếu hụt lớp hiếm Class Deficit Score C_w
-                # Kết hợp detected classes và ground-truth tags (nếu có trong metadata BDD10K Read-Only)
-                gt_item = gt_meta.get(stem, {})
-                gt_classes = [obj.get("category", "") for obj in gt_item.get("objects", [])]
-                all_involved_classes = set(detected_classes + gt_classes)
+                # Zero Label Leakage: Trong quá trình khai phá chủ động trên Unlabeled Pool,
+                # chỉ sử dụng detected_classes từ mô hình để ước lượng độ hiếm,
+                # tuyệt đối KHÔNG đọc ground-truth metadata BDD10K để bảo toàn tính độc lập khách quan.
+                all_involved_classes = set(detected_classes)
 
                 max_c_w = 1.0
                 for c in all_involved_classes:

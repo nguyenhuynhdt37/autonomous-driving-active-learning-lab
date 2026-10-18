@@ -1,0 +1,92 @@
+---
+title: "BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)"
+---
+flowchart TB
+    %% =========================================================================
+    %% KHỐI 1: KHỞI TẠO DỮ LIỆU & MỐC ĐỐI CHUẨN 100% RANDOM
+    %% =========================================================================
+    subgraph STAGE_INIT ["1. KHỞI TẠO DỮ LIỆU & KHÓA MỐC ĐỐI CHUẨN 100% RANDOM"]
+        direction TB
+        RAW["Dữ Liệu Thô BDD10K (Read-Only 100%)<br/>data/bdd10k/images/train/ (7.000 - 10.000 ảnh)"] --> FAST_DEDUP["FastDedup Engine (>360 FPS CPU)<br/>pHash DCT 64-bit (Khoảng cách Hamming < 5)"]
+        FAST_DEDUP --> DROP["Loại Bỏ 3.006 Khung Hình Trùng Lặp"]
+        FAST_DEDUP --> UNIQUE_POOL["Kho Ảnh Sạch Duy Nhất (6.994 ảnh)<br/>data/processed/unique_pool/"]
+        
+        UNIQUE_POOL --> PROFILER["Hồ Sơ Vật Lý 5D Không Cần Nhãn<br/>(Định danh 5 lát cắt: Đêm, Mờ, Che khuất, Sương mù, Mật độ)"]
+        
+        PROFILER --> SPLIT["Phân Chia 4 Tập (Group-Aware Video Isolation)"]
+        SPLIT --> TEST["Frozen Gold Test Set (fixed_test)<br/>1.400 ảnh (20.02%) Đóng Băng Vĩnh Viễn"]
+        SPLIT --> VAL["Fixed Validation Set (fixed_val)<br/>700 ảnh (10.01%) Dùng Chung Early Stopping"]
+        SPLIT --> SEED_V0["Tập Mầm Seed V0 (seed_v0)<br/>500 ảnh (Cân Bằng 4 Lát Cắt Khó)"]
+        SPLIT --> UNLABELED_POOL["Kho Mỏ Unlabeled Pool<br/>4.394 ảnh (Dành Riêng Cho Khai Phá)"]
+
+        SEED_V0 --> TRAIN_V0["Huấn Luyện Model Mầm V0 (YOLO11n Cfg-3)<br/>AdamW, Cosine Annealing, Focal Loss"]
+        TRAIN_V0 --> MODEL_V0["Model Mầm V0: yolo11n_v0_best.pt<br/>(Đo trên Test Set: mAP50 = 20.23%)"]
+
+        UNLABELED_POOL -.-> TRAIN_100_RANDOM["Huấn Luyện Baseline 100% Dữ Liệu Random (4.894 ảnh)"]
+        TRAIN_100_RANDOM -.-> TARGET_100["Khóa Mốc Đối Chuẩn Duy Nhất: 100% Random Target<br/>Target_mAP50 = 26.85%"]
+    end
+
+    %% =========================================================================
+    %% KHỐI 2: VÒNG LẶP ACTIVE LEARNING TỔNG QUÁT (CHU KỲ k = 1 -> n)
+    %% =========================================================================
+    subgraph ACTIVE_LOOP ["2. VÒNG LẶP ACTIVE LEARNING TỔNG QUÁT (CHU KỲ k = 1 ➔ n)"]
+        direction TB
+
+        START_LOOP["Bắt Đầu Vòng k (k = 1, 2, ..., n)<br/>• Tập huấn luyện cũ: D_train(k-1)<br/>• Trọng số khởi đầu: Model V(k-1)"]
+
+        START_LOOP --> MINING["Bước 1: Khai Phá Ảnh Khó Theo Công Thức Super-Fusion<br/>S(x_i) = U_margin * sum(C_w * G_w) * Ego_Lane * Optical_Hazard<br/>Submodular Facility Location (PCA 32D) tuyển chọn K ảnh khó nhất"]
+
+        MINING --> HUMAN_ORACLE["Bước 2: Con Người Gán Nhãn Sạch 100% (Human Annotation)<br/>• Loại bỏ hoàn toàn AI Pre-labeling để tránh ô nhiễm Confirmation Bias<br/>• Chuyên gia kiểm toán & vẽ nhãn chuẩn vàng (Zero Label Noise)"]
+
+        HUMAN_ORACLE --> NEW_BATCH["Lô K ảnh có nhãn sạch mới: Batch(k)"]
+
+        NEW_BATCH --> CUMULATIVE_MERGE["Bước 3: Gộp Tích Lũy Vào Tập Huấn Luyện Vòng Trước<br/>D_train(k) = D_train(k-1) ∪ Batch(k)<br/>(Vật chất hóa Symlinks 0 KB dung lượng đĩa)"]
+
+        CUMULATIVE_MERGE --> WARM_START_TRAIN["Bước 4: Tái Huấn Luyện Kế Thừa Model V(k-1) Trước Đó (Warm-Start)<br/>Huấn luyện trên D_train(k) với init_weights = model_v(k-1)_best.pt<br/>(Continuous Fine-Tuning 8 Epochs)"]
+
+        WARM_START_TRAIN --> MODEL_VK["Sinh Ra Checkpoint Model V(k): model_v(k)_best.pt"]
+
+        MODEL_VK --> EVAL_GOLD_TEST["Bước 5: Đánh Giá Trên Frozen Gold Test Set (1.400 ảnh)<br/>Đo Macro mAP50 của Model V(k)"]
+
+        EVAL_GOLD_TEST --> COMPARE_TARGET{"Bước 6: So Sánh Với Mốc Trần 100% Random (26.85%)"}
+
+        COMPARE_TARGET -- "Chưa vượt mốc trần & k < n" --> NEXT_ROUND["Tăng k ➔ k + 1<br/>Kế thừa Model V(k) làm xuất phát điểm"]
+        NEXT_ROUND ==>|Tiếp tục vòng lặp| START_LOOP
+    end
+
+    %% =========================================================================
+    %% KHỐI 3: KẾT QUẢ ĐỐI CHUẨN & XUẤT XƯỞNG
+    %% =========================================================================
+    subgraph STAGE_VICTORY ["3. KẾT QUẢ ĐỐI CHUẨN & XUẤT XƯỞNG PRODUCTION"]
+        direction TB
+        COMPARE_TARGET -- "Đạt hoặc Vượt Mốc Trần 100% Random<br/>(Thực nghiệm: Vòng 5 đạt mAP = 27.85%)" --> VICTORY["🏆 ĐÁNH BẠI HOÀN TOÀN MỐC TRẦN 100% RANDOM!<br/>• Active Learning: 27.85% vs 100% Random: 26.85% (+1.00% mAP)<br/>• Tiết kiệm 40.1% ngân sách gán nhãn (Đạt đỉnh chỉ với 60% dữ liệu)"]
+
+        VICTORY --> EXPORT["Niêm Phong Phả Hệ SHA-256 & Xuất Xưởng ONNX / INT8 1.6 MB"]
+    end
+
+    %% LIÊN KẾT GIỮA CÁC KHỐI
+    MODEL_V0 ==>|Khởi tạo vòng k=1: D_train_0 = seed_v0| START_LOOP
+    TARGET_100 -.->|Mốc so sánh duy nhất| COMPARE_TARGET
+
+    %% STYLING
+    style STAGE_INIT fill:#F8F7F2,stroke:#CED4DA,stroke-width:1px
+    style ACTIVE_LOOP fill:#EBFBEE,stroke:#2D5A34,stroke-width:2px
+    style STAGE_VICTORY fill:#E8F0EA,stroke:#2D5A34,stroke-width:2px
+
+    style FAST_DEDUP fill:#FFFFFF,stroke:#495057,stroke-width:1px
+    style TEST fill:#FFE3E3,stroke:#E03131,stroke-width:2px
+    style SEED_V0 fill:#E7F5FF,stroke:#1971C2,stroke-width:2px
+    style MODEL_V0 fill:#D0EBFF,stroke:#1971C2,stroke-width:2px
+    style TARGET_100 fill:#FFF3BF,stroke:#F08C00,stroke-width:2px
+
+    style START_LOOP fill:#FFFFFF,stroke:#2D5A34,stroke-width:1px
+    style MINING fill:#FFFFFF,stroke:#2B8A3E,stroke-width:1px
+    style HUMAN_ORACLE fill:#FFE3E3,stroke:#E03131,stroke-width:2px
+    style CUMULATIVE_MERGE fill:#FFF3BF,stroke:#F08C00,stroke-width:2px
+    style WARM_START_TRAIN fill:#D3F9D8,stroke:#2B8A3E,stroke-width:2px
+    style MODEL_VK fill:#B2F2BB,stroke:#2B8A3E,stroke-width:2px
+    style COMPARE_TARGET fill:#FFF9DB,stroke:#F08C00,stroke-width:2px
+    style NEXT_ROUND fill:#E7F5FF,stroke:#1971C2,stroke-width:2px
+
+    style VICTORY fill:#2D5A34,stroke:#1B3820,stroke-width:2px,color:#FFFFFF
+    style EXPORT fill:#2B8A3E,stroke:#1B3820,stroke-width:2px,color:#FFFFFF

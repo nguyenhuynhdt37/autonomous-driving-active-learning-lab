@@ -205,7 +205,8 @@ def test_splits_symlinks_materialization_four_splits():
     assert len(val_lbls) == 700
     assert len(seed_imgs) == 500
     assert len(seed_lbls) == 500
-    assert len(pool_imgs) in (4394, 4394 - active_mined)
+    # Chấp nhận pool nguyên bản 4394, hoặc sau khi tuyển chọn batch Phase 05 (4144), hoặc Phase 07 (4394 - active_mined)
+    assert len(pool_imgs) in (4394, 4144, 4394 - active_mined)
 
 
 def test_total_symlinks_count_is_9594():
@@ -223,7 +224,7 @@ def test_total_symlinks_count_is_9594():
     active_mined = len(list(seed_v1_dir.glob("*.jpg"))) if seed_v1_dir.exists() else 0
 
     all_links = test_imgs + test_lbls + val_imgs + val_lbls + seed_imgs + seed_lbls + pool_imgs
-    assert len(all_links) in (9594, 9594 - active_mined)
+    assert len(all_links) in (9594, 9344, 9594 - active_mined)
 
 
 def test_zero_broken_symlinks():
@@ -244,7 +245,7 @@ def test_zero_broken_symlinks():
     seed_v1_dir = splits_dir / "seed_v1" / "images"
     active_mined = len(list(seed_v1_dir.glob("*.jpg"))) if seed_v1_dir.exists() else 0
 
-    assert len(all_links) in (9594, 9594 - active_mined)
+    assert len(all_links) in (9594, 9344, 9594 - active_mined)
     broken = [lnk for lnk in all_links if not lnk.resolve().exists()]
     assert len(broken) == 0, f"Có {len(broken)} broken symlinks"
 

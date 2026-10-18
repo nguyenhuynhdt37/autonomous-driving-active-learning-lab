@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg-warm: #F8F7F2;
+      --surface-white: #FFFFFF;
+      --border-subtle: #E5E3DC;
+      --text-main: #1F2937;
+      --text-muted: #6B7280;
+      --brand-green: #2D5A34;
+      --brand-green-light: #E8F0EA;
+      --brand-green-border: #CDE0D1;
+      --accent-gold: #B45309;
+      --accent-gold-light: #FEF3C7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-info h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand-green);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-info p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--brand-green-light);
+      border: 1px solid var(--brand-green-border);
+      color: var(--brand-green);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      border-radius: 6px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #F3F4F6;
+      border-color: #D1D5DB;
+    }
+
+    .btn-primary {
+      background: var(--brand-green);
+      border-color: var(--brand-green);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: #234729;
+      border-color: #234729;
+    }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2;
+    }
+
+    .diagram-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+      overflow-x: auto;
+      min-height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #mermaid-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      transition: transform 0.2s ease;
+      transform-origin: top center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .stat-card h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-card .value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--brand-green);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-card .sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-info">
+        <h1>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/>
+          </svg>
+          BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)
+        </h1>
+        <p>Sơ đồ kiến trúc vòng lặp n chu kỳ tổng quát &amp; Đối chuẩn duy nhất với mốc trần 100% Random</p>
+      </div>
+      <div class="controls">
+        <span class="badge-pill">ACTIVE LOOP k = 1 ➔ n</span>
+        <button class="btn" onclick="zoomIn()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          Phóng to
+        </button>
+        <button class="btn" onclick="zoomOut()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          Thu nhỏ
+        </button>
+        <button class="btn" onclick="resetZoom()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Mặc định
+        </button>
+        <button class="btn btn-primary" onclick="exportSVG()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Tải ảnh SVG
+        </button>
+      </div>
+    </header>
+
+    <div class="diagram-card">
+      <div id="mermaid-container">
+        <pre class="mermaid">
+---
+title: "BDD10K Active Learning Lab: Hệ Thống Tự Động Hóa Vòng Lặp Dữ Liệu Học Tập Chủ Động (Human-in-the-Loop)"
+---
+flowchart TB
+    %% =========================================================================
+    %% KHỐI 1: KHỞI TẠO DỮ LIỆU & MỐC ĐỐI CHUẨN 100% RANDOM
+    %% =========================================================================
+    subgraph STAGE_INIT ["1. KHỞI TẠO DỮ LIỆU & KHÓA MỐC ĐỐI CHUẨN 100% RANDOM"]
+        direction TB
+        RAW["Dữ Liệu Thô BDD10K (Read-Only 100%)<br/>data/bdd10k/images/train/ (7.000 - 10.000 ảnh)"] --> FAST_DEDUP["FastDedup Engine (>360 FPS CPU)<br/>pHash DCT 64-bit (Khoảng cách Hamming < 5)"]
+        FAST_DEDUP --> DROP["Loại Bỏ 3.006 Khung Hình Trùng Lặp"]
+        FAST_DEDUP --> UNIQUE_POOL["Kho Ảnh Sạch Duy Nhất (6.994 ảnh)<br/>data/processed/unique_pool/"]
+        
+        UNIQUE_POOL --> PROFILER["Hồ Sơ Vật Lý 5D Không Cần Nhãn<br/>(Định danh 5 lát cắt: Đêm, Mờ, Che khuất, Sương mù, Mật độ)"]
+        
+        PROFILER --> SPLIT["Phân Chia 4 Tập (Group-Aware Video Isolation)"]
+        SPLIT --> TEST["Frozen Gold Test Set (fixed_test)<br/>1.400 ảnh (20.02%) Đóng Băng Vĩnh Viễn"]
+        SPLIT --> VAL["Fixed Validation Set (fixed_val)<br/>700 ảnh (10.01%) Dùng Chung Early Stopping"]
+        SPLIT --> SEED_V0["Tập Mầm Seed V0 (seed_v0)<br/>500 ảnh (Cân Bằng 4 Lát Cắt Khó)"]
+        SPLIT --> UNLABELED_POOL["Kho Mỏ Unlabeled Pool<br/>4.394 ảnh (Dành Riêng Cho Khai Phá)"]
+
+        SEED_V0 --> TRAIN_V0["Huấn Luyện Model Mầm V0 (YOLO11n Cfg-3)<br/>AdamW, Cosine Annealing, Focal Loss"]
+        TRAIN_V0 --> MODEL_V0["Model Mầm V0: yolo11n_v0_best.pt<br/>(Đo trên Test Set: mAP50 = 20.23%)"]
+
+        UNLABELED_POOL -.-> TRAIN_100_RANDOM["Huấn Luyện Baseline 100% Dữ Liệu Random (4.894 ảnh)"]
+        TRAIN_100_RANDOM -.-> TARGET_100["Khóa Mốc Đối Chuẩn Duy Nhất: 100% Random Target<br/>Target_mAP50 = 26.85%"]
+    end
+
+    %% =========================================================================
+    %% KHỐI 2: VÒNG LẶP ACTIVE LEARNING TỔNG QUÁT (CHU KỲ k = 1 -> n)
+    %% =========================================================================
+    subgraph ACTIVE_LOOP ["2. VÒNG LẶP ACTIVE LEARNING TỔNG QUÁT (CHU KỲ k = 1 ➔ n)"]
+        direction TB
+
+        START_LOOP["Bắt Đầu Vòng k (k = 1, 2, ..., n)<br/>• Tập huấn luyện cũ: D_train(k-1)<br/>• Trọng số khởi đầu: Model V(k-1)"]
+
+        START_LOOP --> MINING["Bước 1: Khai Phá Ảnh Khó Theo Công Thức Super-Fusion<br/>S(x_i) = U_margin * sum(C_w * G_w) * Ego_Lane * Optical_Hazard<br/>Submodular Facility Location (PCA 32D) tuyển chọn K ảnh khó nhất"]
+
+        MINING --> HUMAN_ORACLE["Bước 2: Con Người Gán Nhãn Sạch 100% (Human Annotation)<br/>• Loại bỏ hoàn toàn AI Pre-labeling để tránh ô nhiễm Confirmation Bias<br/>• Chuyên gia kiểm toán & vẽ nhãn chuẩn vàng (Zero Label Noise)"]
+
+        HUMAN_ORACLE --> NEW_BATCH["Lô K ảnh có nhãn sạch mới: Batch(k)"]
+
+        NEW_BATCH --> CUMULATIVE_MERGE["Bước 3: Gộp Tích Lũy Vào Tập Huấn Luyện Vòng Trước<br/>D_train(k) = D_train(k-1) ∪ Batch(k)<br/>(Vật chất hóa Symlinks 0 KB dung lượng đĩa)"]
+
+        CUMULATIVE_MERGE --> WARM_START_TRAIN["Bước 4: Tái Huấn Luyện Kế Thừa Model V(k-1) Trước Đó (Warm-Start)<br/>Huấn luyện trên D_train(k) với init_weights = model_v(k-1)_best.pt<br/>(Continuous Fine-Tuning 8 Epochs)"]
+
+        WARM_START_TRAIN --> MODEL_VK["Sinh Ra Checkpoint Model V(k): model_v(k)_best.pt"]
+
+        MODEL_VK --> EVAL_GOLD_TEST["Bước 5: Đánh Giá Trên Frozen Gold Test Set (1.400 ảnh)<br/>Đo Macro mAP50 của Model V(k)"]
+
+        EVAL_GOLD_TEST --> COMPARE_TARGET{"Bước 6: So Sánh Với Mốc Trần 100% Random (26.85%)"}
+
+        COMPARE_TARGET -- "Chưa vượt mốc trần & k < n" --> NEXT_ROUND["Tăng k ➔ k + 1<br/>Kế thừa Model V(k) làm xuất phát điểm"]
+        NEXT_ROUND ==>|Tiếp tục vòng lặp| START_LOOP
+    end
+
+    %% =========================================================================
+    %% KHỐI 3: KẾT QUẢ ĐỐI CHUẨN & XUẤT XƯỞNG
+    %% =========================================================================
+    subgraph STAGE_VICTORY ["3. KẾT QUẢ ĐỐI CHUẨN & XUẤT XƯỞNG PRODUCTION"]
+        direction TB
+        COMPARE_TARGET -- "Đạt hoặc Vượt Mốc Trần 100% Random<br/>(Thực nghiệm: Vòng 5 đạt mAP = 27.85%)" --> VICTORY["🏆 ĐÁNH BẠI HOÀN TOÀN MỐC TRẦN 100% RANDOM!<br/>• Active Learning: 27.85% vs 100% Random: 26.85% (+1.00% mAP)<br/>• Tiết kiệm 40.1% ngân sách gán nhãn (Đạt đỉnh chỉ với 60% dữ liệu)"]
+
+        VICTORY --> EXPORT["Niêm Phong Phả Hệ SHA-256 & Xuất Xưởng ONNX / INT8 1.6 MB"]
+    end
+
+    %% LIÊN KẾT GIỮA CÁC KHỐI
+    MODEL_V0 ==>|Khởi tạo vòng k=1: D_train_0 = seed_v0| START_LOOP
+    TARGET_100 -.->|Mốc so sánh duy nhất| COMPARE_TARGET
+
+    %% STYLING
+    style STAGE_INIT fill:#F8F7F2,stroke:#CED4DA,stroke-width:1px
+    style ACTIVE_LOOP fill:#EBFBEE,stroke:#2D5A34,stroke-width:2px
+    style STAGE_VICTORY fill:#E8F0EA,stroke:#2D5A34,stroke-width:2px
+
+    style FAST_DEDUP fill:#FFFFFF,stroke:#495057,stroke-width:1px
+    style TEST fill:#FFE3E3,stroke:#E03131,stroke-width:2px
+    style SEED_V0 fill:#E7F5FF,stroke:#1971C2,stroke-width:2px
+    style MODEL_V0 fill:#D0EBFF,stroke:#1971C2,stroke-width:2px
+    style TARGET_100 fill:#FFF3BF,stroke:#F08C00,stroke-width:2px
+
+    style START_LOOP fill:#FFFFFF,stroke:#2D5A34,stroke-width:1px
+    style MINING fill:#FFFFFF,stroke:#2B8A3E,stroke-width:1px
+    style HUMAN_ORACLE fill:#FFE3E3,stroke:#E03131,stroke-width:2px
+    style CUMULATIVE_MERGE fill:#FFF3BF,stroke:#F08C00,stroke-width:2px
+    style WARM_START_TRAIN fill:#D3F9D8,stroke:#2B8A3E,stroke-width:2px
+    style MODEL_VK fill:#B2F2BB,stroke:#2B8A3E,stroke-width:2px
+    style COMPARE_TARGET fill:#FFF9DB,stroke:#F08C00,stroke-width:2px
+    style NEXT_ROUND fill:#E7F5FF,stroke:#1971C2,stroke-width:2px
+
+    style VICTORY fill:#2D5A34,stroke:#1B3820,stroke-width:2px,color:#FFFFFF
+    style EXPORT fill:#2B8A3E,stroke:#1B3820,stroke-width:2px,color:#FFFFFF
+        </pre>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Mốc Trần 100% Random</h3>
+        <div class="value">26.85%</div>
+        <div class="sub">Toàn bộ 4.894 ảnh gán nhãn thủ công</div>
+      </div>
+      <div class="stat-card">
+        <h3>Đỉnh Active Learning</h3>
+        <div class="value">27.85%</div>
+        <div class="sub">Vượt trần 100% Random (+1.00% mAP)</div>
+      </div>
+      <div class="stat-card">
+        <h3>Tiết Kiệm Ngân Sách</h3>
+        <div class="value">40.1%</div>
+        <div class="sub">Chỉ cần 60% dữ liệu để đánh bại mốc trần</div>
+      </div>
+      <div class="stat-card">
+        <h3>Vòng Lặp Tuần Hoàn</h3>
+        <div class="value">k = 1 ➔ n</div>
+        <div class="sub">Gộp tích lũy &amp; Warm-Start kế thừa</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+
+    let currentZoom = 1;
+    const container = document.getElementById('mermaid-container');
+
+    function zoomIn() {
+      currentZoom += 0.15;
+      container.style.transform = `scale(${currentZoom})`;
+    }
+
+    function zoomOut() {
+      if (currentZoom > 0.4) {
+        currentZoom -= 0.15;
+        container.style.transform = `scale(${currentZoom})`;
+      }
+    }
+
+    function resetZoom() {
+      currentZoom = 1;
+      container.style.transform = `scale(1)`;
+    }
+
+    function exportSVG() {
+      const svgElement = document.querySelector('#mermaid-container svg');
+      if (!svgElement) {
+        alert('Biểu đồ đang tải, vui lòng thử lại sau giây lát!');
+        return;
+      }
+      const svgData = new XMLSerializer().serializeToString(svgElement);
+      const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = 'BDD10K_HITL_Production_Architecture_Diagram.svg';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  </script>
+</body>
+</html>

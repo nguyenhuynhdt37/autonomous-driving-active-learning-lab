@@ -1,0 +1,63 @@
+---
+title: "BDD10K Active Learning Lab: Kiến Trúc Vòng Lặp Human-in-the-Loop (Bản Trình Chiếu Slides)"
+---
+flowchart LR
+    %% =========================================================================
+    %% CHẶNG 1: TIẾP NHẬN & PHÂN CHIA DỮ LIỆU
+    %% =========================================================================
+    subgraph S1 ["1. TIẾP NHẬN & LỌC TRÙNG"]
+        direction TB
+        C1["<b>Dữ Liệu & Lọc Trùng</b><br/>• 10.000 ảnh thô BDD10K<br/>• <b>FastDedup (>360 FPS)</b><br/>• Loại 3.006 ảnh tĩnh trùng lặp<br/>• <b>Phân chia 4 tập độc lập:</b><br/>  - Test: 1.400 ảnh (20%)<br/>  - Val: 700 ảnh (10%)<br/>  - Seed V0: 500 ảnh<br/>  - Pool: 4.394 ảnh"]
+    end
+
+    %% =========================================================================
+    %% CHẶNG 2: MODEL MẦM V0
+    %% =========================================================================
+    subgraph S2 ["2. MODEL MẦM V0"]
+        direction TB
+        C2["<b>Huấn Luyện Khởi Đầu</b><br/>• <b>Seed V0: 500 ảnh</b><br/>• Cân bằng 4 lát cắt khó<br/>• YOLO11n Cfg-3 Recipe<br/>• AdamW, Cosine, Focal Loss<br/>• <b>mAP50 = 20.23%</b><br/>• Precision = 53.09%"]
+    end
+
+    %% =========================================================================
+    %% CHẶNG 3: KHAI PHÁ & GÁN NHÃN HITL
+    %% =========================================================================
+    subgraph S3 ["3. KHAI PHÁ & GÁN NHÃN HITL"]
+        direction TB
+        C3["<b>Chu Kỳ Khai Phá k (k = 1..n)</b><br/>• Model V(k-1) suy luận Pool<br/>• <b>Super-Fusion C6 Scoring</b><br/>• Submodular Facility Location<br/>• Tuyển K ảnh khó & đa dạng nhất<br/>• <b>Human Oracle gán nhãn 100%</b><br/>• Triệt tiêu Confirmation Bias"]
+    end
+
+    %% =========================================================================
+    %% CHẶNG 4: GỘP LŨY KẾ & WARM-START RETRAINING
+    %% =========================================================================
+    subgraph S4 ["4. GỘP & WARM-START"]
+        direction TB
+        C4["<b>Tái Huấn Luyện Kế Thừa</b><br/>• Gộp lũy kế: D(k) = D(k-1) ∪ Batch(k)<br/>• Vật chất hóa Symlinks 0 KB<br/>• <b>Warm-Start từ Model V(k-1)</b><br/>• Continuous Fine-Tuning 8 Epochs<br/>• Đánh giá Frozen Test 1.400 ảnh<br/>• Bảo toàn tri thức cũ"]
+    end
+
+    %% =========================================================================
+    %% CHẶNG 5: ĐỐI CHUẨN & CHIẾN THẮNG 100% RANDOM
+    %% =========================================================================
+    subgraph S5 ["5. ĐỐI CHUẨN & CHIẾN THẮNG"]
+        direction TB
+        C5["🏆 <b>ĐÁNH BẠI 100% RANDOM</b><br/>• Trần 100% Random: <b>26.85%</b><br/>• <b>Active V5 Đạt Đỉnh: 27.85%</b><br/>• <b>Vượt trần: +1.00% mAP</b><br/>• <b>Chỉ dùng 60% dữ liệu (3.336 ảnh)</b><br/>• <b>Tiết kiệm 40.1% ngân sách</b><br/>• Xuất xưởng ONNX/INT8 1.6 MB"]
+    end
+
+    %% DÒNG CHẢY TOÀN TRÌNH
+    C1 ==>|"Tập Seed V0 (500 ảnh)"| C2
+    C2 ==>|"Khởi tạo k=1 (Model V0)"| C3
+    C3 ==>|"Lô K ảnh có nhãn sạch"| C4
+    C4 -.->|"Chưa đạt trần & k < n (Lặp lại)"| C3
+    C4 ==>|"Đạt đỉnh Vòng 5"| C5
+
+    %% STYLING GREEN SM NORDIC EDITORIAL
+    style S1 fill:#F8F7F2,stroke:#CED4DA,stroke-width:1px
+    style S2 fill:#EBFBEE,stroke:#8CE99A,stroke-width:1px
+    style S3 fill:#FFF9DB,stroke:#FFE066,stroke-width:2px
+    style S4 fill:#E7F5FF,stroke:#74C0FC,stroke-width:2px
+    style S5 fill:#E8F0EA,stroke:#2D5A34,stroke-width:2px
+
+    style C1 fill:#FFFFFF,stroke:#ADB5BD,stroke-width:1px
+    style C2 fill:#D0EBFF,stroke:#1971C2,stroke-width:2px
+    style C3 fill:#FFE3E3,stroke:#E03131,stroke-width:2px
+    style C4 fill:#D3F9D8,stroke:#2B8A3E,stroke-width:2px
+    style C5 fill:#2D5A34,stroke:#1B3820,stroke-width:2px,color:#FFFFFF

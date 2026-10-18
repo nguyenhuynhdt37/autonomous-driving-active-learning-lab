@@ -261,23 +261,20 @@ class TestPhase04ReadOnlyAndCacheSafety:
         cache_files = list(bdd_dir.rglob("*.cache"))
         assert len(cache_files) == 0, f"Phát hiện file cache vi phạm trong data/bdd10k/: {cache_files}"
 
-    def test_clean_bdd10k_caches_function(self):
-        """Kiểm tra hàm clean_bdd10k_caches phát hiện và xóa sạch file .cache mô phỏng."""
-        from paper_v4_10k.src.paths import get_bdd10k_dir
+    def test_clean_bdd10k_caches_function(self, tmp_path):
+        """Kiểm tra hàm clean_bdd10k_caches phát hiện và xóa sạch file .cache mô phỏng trên thư mục cô lập."""
         from paper_v4_10k.src.train_engine import clean_bdd10k_caches
 
-        bdd_dir = get_bdd10k_dir()
-        if bdd_dir.is_symlink():
-            bdd_dir = bdd_dir.resolve()
-
-        # Tạo file cache giả lập tạm thời trong labels/
-        dummy_cache = bdd_dir / "labels" / "temp_audit_test.cache"
+        # Tạo file cache giả lập tạm thời trong tmp_path/labels/ (không chạm vào data/bdd10k/)
+        dummy_labels_dir = tmp_path / "labels"
+        dummy_labels_dir.mkdir(parents=True, exist_ok=True)
+        dummy_cache = dummy_labels_dir / "temp_audit_test.cache"
         try:
             dummy_cache.write_text("test_cache_entry", encoding="utf-8")
             assert dummy_cache.exists()
 
-            # Gọi clean_bdd10k_caches
-            removed = clean_bdd10k_caches()
+            # Gọi clean_bdd10k_caches với target_override=tmp_path
+            removed = clean_bdd10k_caches(target_override=tmp_path)
             assert removed >= 1, "clean_bdd10k_caches phải dọn dẹp ít nhất 1 file cache"
             assert not dummy_cache.exists(), "File cache giả lập phải bị xóa bỏ"
         finally:

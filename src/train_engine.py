@@ -59,22 +59,26 @@ from .splits import BDD10K_CLASS_NAMES
 from .utils import get_device, set_seed
 
 
-def clean_bdd10k_caches() -> int:
+def clean_bdd10k_caches(target_override: Optional[Path] = None) -> int:
     """
     Quét và dọn dẹp sạch mọi file .cache phát sinh trong data/bdd10k/ (đặc biệt thư mục labels).
     Bảo đảm tuân thủ nghiêm ngặt 100% nguyên tắc Read-Only bất biến của AGENTS.md.
+    Hỗ trợ target_override để kiểm thử cô lập trên thư mục tạm.
     """
     removed = 0
     try:
-        bdd_dir = get_bdd10k_dir()
-        dirs_to_check = [bdd_dir]
-        if bdd_dir.is_symlink():
-            try:
-                resolved = bdd_dir.resolve()
-                if resolved.exists():
-                    dirs_to_check.append(resolved)
-            except Exception:
-                pass
+        if target_override is not None:
+            dirs_to_check = [Path(target_override)]
+        else:
+            bdd_dir = get_bdd10k_dir()
+            dirs_to_check = [bdd_dir]
+            if bdd_dir.is_symlink():
+                try:
+                    resolved = bdd_dir.resolve()
+                    if resolved.exists():
+                        dirs_to_check.append(resolved)
+                except Exception:
+                    pass
 
         for target_dir in dirs_to_check:
             if target_dir.exists():
